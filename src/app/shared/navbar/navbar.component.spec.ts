@@ -1,3 +1,6 @@
+import { ToastrService } from 'toastr-ng2/toastr-service';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { ReplaySubject } from 'rxjs/Rx';
 import { BrandingService } from '../branding.service';
 import { NavbarComponent } from './navbar.component';
@@ -14,6 +17,18 @@ class BrandingServiceSpy {
   title$ = this._titleSource.asObservable();
 }
 
+class AuthServiceSpy {
+  isLoggedIn = jasmine.createSpy('isLoggedIn');
+}
+
+class RouterSpy {
+
+}
+
+class ToastrServiceSpy {
+
+}
+
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
@@ -22,7 +37,10 @@ describe('NavbarComponent', () => {
     TestBed.configureTestingModule({
       declarations: [NavbarComponent],
       providers: [
-        { provide: BrandingService, useClass: BrandingServiceSpy }
+        { provide: BrandingService, useClass: BrandingServiceSpy },
+        { provide: AuthService, useClass: AuthServiceSpy },
+        { provide: Router, useClass: RouterSpy },
+        { provide: ToastrService, useClass: ToastrServiceSpy }
       ]
     })
       .compileComponents();
