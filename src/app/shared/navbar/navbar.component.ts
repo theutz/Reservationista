@@ -1,3 +1,4 @@
+import { ToastrService } from 'toastr-ng2/toastr-service';
 import { UserInfo } from '../user-info';
 import { Observable } from 'rxjs/Rx';
 import { AuthService } from '../auth.service';
@@ -15,7 +16,9 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private _brandingService: BrandingService,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _router: Router,
+    private _toastrService: ToastrService
   ) { }
 
   ngOnInit() {
@@ -36,6 +39,9 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this._authService.logout();
+    this._router.navigateByUrl('/home').then(() => {
+      this._toastrService.success('Logged out!');
+    });
   }
 
 }

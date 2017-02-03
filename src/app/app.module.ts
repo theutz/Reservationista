@@ -13,6 +13,7 @@ import { RoutingModule } from 'app/routing/routing.module';
 import { AuthService } from 'app/shared/auth.service';
 import { SharedModule } from 'app/shared/shared.module';
 import { authConfig, firebaseConfig } from 'environments/firebaseConfig';
+import { ToastrModule } from 'toastr-ng2';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { authConfig, firebaseConfig } from 'environments/firebaseConfig';
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
     RoutingModule,
     MarketingModule,
-    SharedModule
+    SharedModule,
+    ToastrModule.forRoot({ positionClass: 'toast-bottom-right', progressBar: true })
   ],
   providers: [
     AuthService,

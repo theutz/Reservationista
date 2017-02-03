@@ -18,7 +18,8 @@
     "mobile": false,
     "styles": [
       "styles.css",
-      "../node_modules/bootswatch/paper/bootstrap.min.css"
+      "../node_modules/bootswatch/paper/bootstrap.min.css",
+      "../node_modules/toastr-ng2/toastr.css"
     ],
     "scripts": [],
     "environments": {

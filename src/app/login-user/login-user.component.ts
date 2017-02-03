@@ -1,3 +1,4 @@
+import { ToastrService } from 'toastr-ng2/toastr-service';
 import { Router } from '@angular/router';
 import { Component } from "@angular/core";
 import { Observable } from "rxjs";
@@ -15,7 +16,8 @@ export class LoginUserComponent {
 
     constructor(
         private _authService: AuthService,
-        private _router: Router
+        private _router: Router,
+        private _toastrService: ToastrService
     ) {
     }
 
@@ -28,6 +30,7 @@ export class LoginUserComponent {
         this._authService.loginViaProvider(provider)
             .subscribe(result => {
                 this._router.navigateByUrl('/home');
+                this._toastrService.success('Logged in!');
             });
     }
 
