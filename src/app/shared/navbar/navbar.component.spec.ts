@@ -6,6 +6,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 class BrandingServiceSpy {
   private _titleSource = new ReplaySubject<string>();
+
+  constructor() {
+    this._titleSource.next('Reservationista');
+  }
+
   title$ = this._titleSource.asObservable();
 }
 
@@ -32,4 +37,16 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('title', () => {
+    it(`should have as title 'Reservationista'`, async(() => {
+      expect(component.title).toEqual('Reservationista');
+    }));
+
+    it('should render title in a h1 tag', async(() => {
+      let compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('.navbar-brand').textContent).toContain('Reservationista');
+    }));
+  });
+
 });

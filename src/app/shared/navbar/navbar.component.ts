@@ -7,7 +7,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  title: string;
+  title: string = '';
 
   constructor(
     private _brandingService: BrandingService
