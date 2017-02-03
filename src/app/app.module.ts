@@ -1,3 +1,4 @@
+import { BrandingService } from './shared/branding.service';
 import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -27,7 +28,10 @@ import { SharedModule } from 'app/shared/shared.module';
     MarketingModule,
     SharedModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    BrandingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

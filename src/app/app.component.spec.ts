@@ -1,7 +1,12 @@
+import { BrandingService } from './shared/branding.service';
 /* tslint:disable:no-unused-variable */
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {TestBed, async} from "@angular/core/testing";
-import {AppComponent} from "./app.component";
+import { TestBed, async } from "@angular/core/testing";
+import { AppComponent } from "./app.component";
+
+class BrandingServiceSpy {
+    setTitle = jasmine.createSpy('setTitle');
+}
 
 describe('AppComponent', () => {
     beforeEach(() => {
@@ -9,6 +14,7 @@ describe('AppComponent', () => {
             declarations: [
                 AppComponent
             ],
+            providers: [{ provide: BrandingService, useClass: BrandingServiceSpy }],
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
         });
     });
