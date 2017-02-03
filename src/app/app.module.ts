@@ -10,6 +10,7 @@ import { MarketingModule } from 'app/marketing/marketing.module';
 import { RoutingModule } from 'app/routing/routing.module';
 import { AuthService } from 'app/shared/auth.service';
 import { authConfig, firebaseConfig } from 'environments/firebaseConfig';
+import { SharedModule } from 'app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { authConfig, firebaseConfig } from 'environments/firebaseConfig';
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
     RoutingModule,
-    MarketingModule
+    MarketingModule,
+    SharedModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
