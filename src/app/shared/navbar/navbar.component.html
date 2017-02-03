@@ -15,8 +15,14 @@
           <a routerLink="/learn-more">Learn More</a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/login">Login</a></li>
+      <ul [ngSwitch]="isLoggedIn()|async" class="nav navbar-nav navbar-right">
+        <ng-container *ngSwitchCase="true">
+          <li><a>{{(currentUser()|async).displayName}}</a></li>
+          <li><a (click)="logout()">Logout</a></li>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <li><a routerLink="/login">Login</a></li>
+        </ng-container>
       </ul>
     </div>
   </div>

@@ -1,6 +1,6 @@
-import {Component} from "@angular/core";
-import {Observable} from "rxjs";
-import {AuthService} from "app/shared/auth.service";
+import { Component } from "@angular/core";
+import { Observable } from "rxjs";
+import { AuthService } from "app/shared/auth.service";
 
 @Component({
     selector: 'app-login-user',
@@ -19,8 +19,12 @@ export class LoginUserComponent {
         this.authService.login(this.email, this.password);
     }
 
-    loginVia(provider: string) {
-        this.authService.loginViaProvider(provider);
+    loginVia(provider: string, event: Event) {
+        event.preventDefault();
+        this.authService.loginViaProvider(provider).toPromise()
+            .then(result => {
+                console.log('LOGIN SUCCESS', result);
+            });
     }
 
     isLoggedIn(): Observable<boolean> {
