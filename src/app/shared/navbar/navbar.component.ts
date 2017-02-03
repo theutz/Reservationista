@@ -1,5 +1,6 @@
 import { BrandingService } from '../branding.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
