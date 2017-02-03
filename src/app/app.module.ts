@@ -1,3 +1,4 @@
+import { HotelsModule } from './hotels/hotels.module';
 import { AppComponent } from './app.component';
 import { BrandingService } from './shared/branding.service';
 import { NgModule } from '@angular/core';
@@ -30,7 +31,8 @@ import { ToastrModule } from 'toastr-ng2';
     RoutingModule,
     MarketingModule,
     SharedModule,
-    ToastrModule.forRoot({ positionClass: 'toast-bottom-right', progressBar: true })
+    ToastrModule.forRoot({ positionClass: 'toast-bottom-right', progressBar: true }),
+    HotelsModule
   ],
   providers: [
     AuthService,

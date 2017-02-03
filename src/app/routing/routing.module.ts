@@ -7,6 +7,7 @@ import { LearnMoreComponent } from 'app/marketing/learn-more/learn-more.componen
 
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
+    { path: 'hotels', loadChildren: 'app/hotels/hotels.module#HotelsModule', data: { preload: true } },
     { path: 'learn-more', component: LearnMoreComponent },
     { path: 'login', component: LoginUserComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
