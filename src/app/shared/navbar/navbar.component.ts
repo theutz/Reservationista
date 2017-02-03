@@ -1,3 +1,4 @@
+import { UserInfo } from '../user-info';
 import { Observable } from 'rxjs/Rx';
 import { AuthService } from '../auth.service';
 import { BrandingService } from '../branding.service';
@@ -29,7 +30,7 @@ export class NavbarComponent implements OnInit {
     this._brandingService.title$.subscribe(title => this.title = title);
   }
 
-  currentUser() {
+  currentUser(): Observable<UserInfo> {
     return this._authService.currentUser();
   }
 
