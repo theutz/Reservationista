@@ -8,7 +8,7 @@ import { Title } from '@angular/platform-browser';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    title: string = 'app works! - reservationista';
+    title: string = 'Reservationista';
 
     constructor(
         private _titleService: Title,

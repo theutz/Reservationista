@@ -1,9 +1,13 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { ReplaySubject } from 'rxjs/Rx';
+import { BrandingService } from '../branding.service';
 import { NavbarComponent } from './navbar.component';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+/* tslint:disable:no-unused-variable */
+
+class BrandingServiceSpy {
+  private _titleSource = new ReplaySubject<string>();
+  title$ = this._titleSource.asObservable();
+}
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -11,9 +15,12 @@ describe('NavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      declarations: [NavbarComponent],
+      providers: [
+        { provide: BrandingService, useClass: BrandingServiceSpy }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
