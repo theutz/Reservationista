@@ -9,6 +9,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
     title: string = 'Reservationista';
+    tagline: string = 'Five-star service made fast';
 
     constructor(
         private _titleService: Title,
@@ -16,12 +17,17 @@ export class AppComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.setTitle(this.title);
+        this._setTitle(this.title);
+        this._setTagline(this.tagline);
     }
 
-    setTitle(title: string): void {
+    private _setTitle(title: string): void {
         this.title = title;
         this._brandingService.setTitle(title);
         this._titleService.setTitle(title);
+    }
+
+    private _setTagline(tagline: string) {
+        this._brandingService.setTagline(tagline);
     }
 }
