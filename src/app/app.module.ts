@@ -9,6 +9,8 @@ import {AngularFireModule} from "angularfire2";
 import {AuthService} from "app/shared/auth.service";
 import {LoginUserComponent} from "app/login-user/login-user.component";
 import {DisplayUserComponent} from "app/display-user/display-user.component";
+import { RoutingModule } from 'app/routing/routing.module';
+import { MarketingModule } from 'app/marketing/marketing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {DisplayUserComponent} from "app/display-user/display-user.component";
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig, authConfig)
+    AngularFireModule.initializeApp(firebaseConfig, authConfig),
+    RoutingModule,
+    MarketingModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
