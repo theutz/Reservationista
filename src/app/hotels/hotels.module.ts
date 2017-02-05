@@ -1,3 +1,4 @@
+import { HotelsService } from '../shared/hotels.service';
 import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,7 @@ import { SearchComponent } from './search/search.component';
     HomeComponent,
     HotelsComponent,
     SearchComponent
-  ]
+  ],
+  providers: [HotelsService]
 })
 export class HotelsModule { }
