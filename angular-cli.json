@@ -17,9 +17,9 @@
     "prefix": "app",
     "mobile": false,
     "styles": [
-      "styles.css",
-      "../node_modules/bootswatch/paper/bootstrap.min.css",
-      "../node_modules/toastr-ng2/toastr.css"
+      "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+      "../node_modules/toastr-ng2/toastr.css",
+      "styles.css"
     ],
     "scripts": [],
     "environments": {
