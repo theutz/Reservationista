@@ -1,36 +1,36 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" routerLink="/home">{{title}}</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-      <ul [ngSwitch]="isLoggedIn()|async" class="nav navbar-nav">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" routerLink="/home">{{title}}</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul [ngSwitch]="isLoggedIn()|async" class="navbar-nav mr-auto">
         <ng-container *ngSwitchCase="true">
-          <li routerLinkActive="active">
-            <a routerLink="/hotels">Hotels</a>
+          <li routerLinkActive="active" class="nav-item">
+            <a routerLink="/hotels" class="nav-link">Hotels</a>
           </li>
         </ng-container>
         <ng-container *ngSwitchDefault>
-          <li routerLinkActive="active">
-            <a routerLink="/learn-more">Learn More</a>
+          <li routerLinkActive="active" class="nav-item">
+            <a routerLink="/learn-more" class="nav-link">Learn More</a>
           </li>
         </ng-container>
       </ul>
-      <ul [ngSwitch]="isLoggedIn()|async" class="nav navbar-nav navbar-right">
+      <ul [ngSwitch]="isLoggedIn()|async" class="navbar-nav ml-auto">
         <ng-container *ngSwitchCase="true">
-          <li><a>{{(currentUser()|async).displayName}}</a></li>
-          <li><a (click)="logout()">Logout</a></li>
+          <li class="nav-item">
+            <a class="nav-link">{{(currentUser()|async).displayName}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()">Logout</a>
+          </li>
         </ng-container>
         <ng-container *ngSwitchDefault>
-          <li><a routerLink="/login">Login</a></li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
         </ng-container>
       </ul>
     </div>
-  </div>
 </nav>
