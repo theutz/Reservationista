@@ -16,6 +16,7 @@ export class HotelListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this._subscribeToHotels();
   }
 
   private _subscribeToHotels() {

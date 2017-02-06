@@ -16,7 +16,16 @@ export class HotelsService {
 }
 
 export interface Hotel {
-  name: string;
+  name?: string;
+  code?: string;
+  address?: Address;
 }
 
 export type Hotels = Hotel[];
+
+export interface Address {
+  streetAddress: string;
+  city: string;
+  state: string;
+  postalCode: string;
+}
