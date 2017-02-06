@@ -14,7 +14,7 @@ class HotelsServiceSpy {
 }
 
 class ActivatedRouteSpy {
-  data = new Subject<{ [name: string]: any }>().asObservable();
+  data = jasmine.createSpyObj('data', ['subscribe']);
 }
 
 describe('HotelDetailComponent', () => {
