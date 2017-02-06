@@ -7,7 +7,7 @@ import { AuthService } from "app/shared/auth.service";
 @Component({
     selector: 'app-login-user',
     templateUrl: './login-user.component.html',
-    styleUrls: ['./login-user.component.css']
+    styleUrls: ['./login-user.component.scss']
 })
 export class LoginUserComponent {
 
