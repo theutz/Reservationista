@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HotelsService } from '../../shared/hotels.service';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -8,7 +10,6 @@ import { HotelListComponent } from './hotel-list.component';
 
 class HotelsServiceSpy {
   getAll = jasmine.createSpy('getAll').and.callFake(() => {
-
   })
 }
 
@@ -21,6 +22,7 @@ describe('HotelListComponent', () => {
       declarations: [HotelListComponent],
       providers: [
         { provide: HotelsService, useClass: HotelsServiceSpy },
+        { provide: Router, useClass: RouterTestingModule }
       ]
     })
       .compileComponents();
