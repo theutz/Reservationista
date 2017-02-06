@@ -1,4 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
+.header {
+  @extend .d-flex;
+  @extend .justify-content-between;
+  @extend .my-3;
+}
+
+app-search {
+  @extend .align-self-center;
+}
+
 h1 {
   @extend .display-3;
 }

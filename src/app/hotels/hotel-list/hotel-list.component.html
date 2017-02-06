@@ -1,11 +1,14 @@
-<div class="col-sm-4" *ngFor="let hotel of (hotels | async)">
-  <div (click)="navigateToHotel(hotel)" class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">
-        <span *ngIf="hotel.code" class="label label-default pull-right">{{hotel.code}}</span> {{hotel.name}}
-      </h3>
+<div class="card-columns">
+  <div (click)="navigateToHotel(hotel)" class="card" *ngFor="let hotel of (hotels | async)">
+    <div class="card-header">
+      <span>{{hotel.name}}</span>
+      <span *ngIf="hotel.code" class="badge badge-pill badge-info">{{hotel.code}}</span>
     </div>
-    <div class="panel-body">
+    <div class="card-block">
+      <div class="card-title">
+        <div class="card-text">
+        </div>
+      </div>
     </div>
   </div>
 </div>

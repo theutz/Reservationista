@@ -1,0 +1,10 @@
+@import "~bootstrap/scss/bootstrap";
+.card-header {
+  @extend .bg-primary;
+  @extend .text-white;
+  @extend .d-flex;
+  @extend .justify-content-between;
+  .badge {
+    @extend .align-self-baseline;
+  }
+}

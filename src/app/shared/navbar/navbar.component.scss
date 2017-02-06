@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
 nav {
-  @extend .mb-2;
+  @extend .navbar-inverse;
+  @extend .bg-primary;
 }
