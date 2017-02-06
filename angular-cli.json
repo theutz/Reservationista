@@ -18,6 +18,7 @@
     "mobile": false,
     "styles": [
       "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+      "../node_modules/font-awesome/css/font-awesome.css",
       "../node_modules/toastr-ng2/toastr.css",
       "styles.scss"
     ],
@@ -28,7 +29,9 @@
       "prod": "environments/environment.prod.ts"
     }
   }],
-  "addons": [],
+  "addons": [
+    "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
+  ],
   "packages": [],
   "e2e": {
     "protractor": {

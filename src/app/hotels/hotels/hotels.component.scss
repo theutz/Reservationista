@@ -1,3 +1,4 @@
-app-search {
-  margin-top: 30px;
+@import '~bootstrap/scss/bootstrap';
+h1 {
+  @extend .display-3;
 }
