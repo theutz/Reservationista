@@ -4,7 +4,6 @@ import { inject, TestBed } from '@angular/core/testing';
 /* tslint:disable:no-unused-variable */
 
 class AfDbSpy {
-
 }
 
 describe('HotelsService', () => {

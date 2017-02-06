@@ -7,7 +7,9 @@ import { DebugElement } from '@angular/core';
 import { HotelListComponent } from './hotel-list.component';
 
 class HotelsServiceSpy {
+  getAll = jasmine.createSpy('getAll').and.callFake(() => {
 
+  })
 }
 
 describe('HotelListComponent', () => {
