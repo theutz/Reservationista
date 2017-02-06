@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { HotelRoutingModule } from 'app/hotels/hotel-routing/hotel-routing.module';
 import { HotelsComponent } from './hotels/hotels.component';
 import { SearchComponent } from './search/search.component';
+import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { SearchComponent } from './search/search.component';
   declarations: [
     HotelListComponent,
     HotelsComponent,
-    SearchComponent
+    SearchComponent,
+    HotelDetailComponent
   ],
   providers: [HotelsService]
 })
