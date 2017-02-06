@@ -1,5 +1,5 @@
 <div class="col-sm-4" *ngFor="let hotel of (hotels | async)">
-  <div class="panel panel-primary">
+  <div (click)="navigateToHotel(hotel)" class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">
         <span *ngIf="hotel.code" class="label label-default pull-right">{{hotel.code}}</span> {{hotel.name}}

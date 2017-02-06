@@ -1,3 +1,5 @@
+import { CanDeactivateGuard } from '../shared/can-deactivate-guard.service';
+import { HotelResolverService } from './hotel-routing/hotel-resolver.service';
 import { HotelsService } from '../shared/hotels.service';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { CommonModule } from '@angular/common';
@@ -18,6 +20,10 @@ import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
     SearchComponent,
     HotelDetailComponent
   ],
-  providers: [HotelsService]
+  providers: [
+    HotelsService,
+    HotelResolverService,
+    CanDeactivateGuard
+  ]
 })
 export class HotelsModule { }

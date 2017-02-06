@@ -1,4 +1,5 @@
-import { FirebaseListObservable } from 'angularfire2/database';
+import { Router } from '@angular/router';
+import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Component, OnInit } from '@angular/core';
 import { HotelsService, Hotel, Hotels } from 'app/shared/hotels.service';
 
@@ -12,7 +13,8 @@ export class HotelListComponent implements OnInit {
   hotels: FirebaseListObservable<Hotels>;
 
   constructor(
-    private _hs: HotelsService
+    private _hs: HotelsService,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -21,6 +23,10 @@ export class HotelListComponent implements OnInit {
 
   private _subscribeToHotels() {
     this.hotels = this._hs.getAll();
+  }
+
+  navigateToHotel(hotel: any): void {
+    this._router.navigateByUrl('hotels/details/' + hotel.$key);
   }
 
 }
