@@ -5,4 +5,7 @@
   <h2>
     {{(hotel$|async)?.name}}
   </h2>
+  <address class="lead" *ngIf="address">
+    {{address.streetAddress}}<span [hidden]="hideAddrComma">,</span> {{address.city}}<span [hidden]="hideCityComma">,</span> {{address.state}} {{address.postalCode}}
+  </address>
 </div>
