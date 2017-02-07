@@ -1,14 +1,26 @@
-<div class="card-columns">
-  <div (click)="navigateToHotel(hotel)" class="card" *ngFor="let hotel of (hotels | async)">
-    <div class="card-header">
-      <span>{{hotel.name}}</span>
-      <span *ngIf="hotel.code" class="badge badge-pill badge-info">{{hotel.code}}</span>
-    </div>
-    <div class="card-block">
-      <div class="card-title">
-        <div class="card-text">
+<ng-container [ngSwitch]="loading">
+
+  <!-- Loader -->
+  <ng-container *ngSwitchCase="true">
+    <sk-rotating-plane></sk-rotating-plane>
+  </ng-container>
+
+  <!-- Content -->
+  <ng-container *ngSwitchCase="false">
+    <div class="card-columns">
+      <div (click)="navigateToHotel(hotel)" class="card" *ngFor="let hotel of hotels">
+        <div class="card-header">
+          <span>{{hotel.name}}</span>
+          <span *ngIf="hotel.code" class="badge badge-pill badge-info">{{hotel.code}}</span>
+        </div>
+        <div class="card-block">
+          <div class="card-title">
+            <div class="card-text">
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </ng-container>
+
+</ng-container>
