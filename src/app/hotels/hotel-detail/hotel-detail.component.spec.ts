@@ -1,7 +1,7 @@
 import { Subject } from 'rxjs/Rx';
 import { Observable } from '@angular-cli/ast-tools/node_modules/rxjs/Rx';
 import { ActivatedRoute } from '@angular/router';
-import { HotelsService } from '../../shared/hotels.service';
+import { Hotel, HotelsService } from '../../shared/hotels.service';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -10,7 +10,7 @@ import { DebugElement } from '@angular/core';
 import { HotelDetailComponent } from './hotel-detail.component';
 
 class HotelsServiceSpy {
-
+  get = jasmine.createSpy('get').and.returnValue(new Subject<Hotel>().asObservable());
 }
 
 class ActivatedRouteSpy {

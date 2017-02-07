@@ -22,11 +22,6 @@ export class HotelDetailComponent implements OnInit {
 
   ngOnInit() {
     this._setHotel();
-    this.hotel$.subscribe(hotel => {
-      this.address = hotel.address;
-      this._setShowStreetAddressTrailingCommas(hotel.address);
-      this._setShowCityTrailingComma(hotel.address);
-    })
   }
 
   private _setShowStreetAddressTrailingCommas(address: Address): void {
@@ -45,9 +40,18 @@ export class HotelDetailComponent implements OnInit {
     return str === null || (/^\s*?$/).test(str) || !!str == false;
   }
 
-  private _setHotel() {
+  private _setHotel(): void {
     this._route.data.subscribe((data: { hotel: any }) => {
       this.hotel$ = this._hs.get(data.hotel.$key);
+      this._setAddress();
+    })
+  }
+
+  private _setAddress(): void {
+    this.hotel$.subscribe(hotel => {
+      this.address = hotel.address;
+      this._setShowStreetAddressTrailingCommas(hotel.address);
+      this._setShowCityTrailingComma(hotel.address);
     })
   }
 
