@@ -1,1 +1,8 @@
-<h2>{{(hotel$|async)?.name}}</h2>
+<div class="jumbotron">
+  <h1 *ngIf="(hotel$|async)?.code">
+    <span class="badge badge-info">{{(hotel$|async)?.code}}</span>
+  </h1>
+  <h2>
+    {{(hotel$|async)?.name}}
+  </h2>
+</div>

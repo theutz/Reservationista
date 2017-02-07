@@ -15,12 +15,14 @@ import { AuthService } from 'app/shared/auth.service';
 import { SharedModule } from 'app/shared/shared.module';
 import { authConfig, firebaseConfig } from 'environments/firebaseConfig';
 import { ToastrModule } from 'toastr-ng2';
+import * as spinner from 'ng2-spin-kit/app/spinners';
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayUserComponent,
-    LoginUserComponent
+    LoginUserComponent,
+    spinner.RotatingPlaneComponent
   ],
   imports: [
     BrowserModule,

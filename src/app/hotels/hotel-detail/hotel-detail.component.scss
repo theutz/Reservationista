@@ -1,1 +1,7 @@
-
+@import "~bootstrap/scss/bootstrap";
+.jumbotron {
+  @extend .text-center;
+  & h2 span {
+    display: block;
+  }
+}
