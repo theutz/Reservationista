@@ -8,11 +8,13 @@ import { HotelRoutingModule } from 'app/hotels/hotel-routing/hotel-routing.modul
 import { HotelsComponent } from './hotels/hotels.component';
 import { SearchComponent } from './search/search.component';
 import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
+import { NgSpinKitModule } from 'ng-spin-kit';
 
 @NgModule({
   imports: [
     CommonModule,
-    HotelRoutingModule
+    HotelRoutingModule,
+    NgSpinKitModule
   ],
   declarations: [
     HotelListComponent,
