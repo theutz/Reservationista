@@ -1,1 +1,20 @@
 @import "~bootstrap/scss/bootstrap";
+h1 {
+    @extend .mb-5;
+}
+.form-group {
+    @extend .d-flex;
+    @extend .flex-wrap;
+}
+.form-control-label {
+    @extend .align-self-center;
+    @extend .mr-3;
+}
+.form-control {
+    @extend .w-75;
+    @extend .ml-auto;
+}
+.form-control-feedback {
+    @extend .w-100;
+    @extend .text-right;
+}

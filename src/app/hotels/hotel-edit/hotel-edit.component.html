@@ -3,10 +3,17 @@
   <ng-container *ngSwitchCase="false">
     <h1>{{hotel.name}}</h1>
     <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+      <!-- Name -->
       <div [ngClass]="formGroupClasses(myForm.controls.name)">
         <label class="form-control-label" for="myFormHotelName">Name</label>
         <input [ngClass]="formControlClasses(myForm.controls.name)" id="myFormHotelName" type="text" formControlName="name">
         <div class="form-control-feedback" [hidden]="isValid(myForm.controls.name)">Name is required (minimum 5 characters)</div>
+      </div>
+      <!-- Code -->
+      <div [ngClass]="formGroupClasses(myForm.controls.code)">
+        <label class="form-control-label" for="myFormHotelCode">Code</label>
+        <input [ngClass]="formControlClasses(myForm.controls.code)" id="myFormHotelCode" type="text" formControlName="code">
+        <div class="form-control-feedback" [hidden]="isValid(myForm.controls.code)">Code is required</div>
       </div>
     </form>
   </ng-container>

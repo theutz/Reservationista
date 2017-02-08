@@ -40,14 +40,16 @@ export class HotelEditComponent implements OnInit {
   formControlClasses(control: AbstractControl): { [key: string]: boolean } {
     return {
       "form-control": true,
-      "form-control-danger": !this.isValid(control)
+      "form-control-danger": !this.isValid(control),
+      "form-control-success": control.valid && !control.pristine
     }
   }
 
   formGroupClasses(control: AbstractControl): { [key: string]: boolean } {
     return {
       "form-group": true,
-      "has-danger": !this.isValid(control)
+      "has-danger": !this.isValid(control),
+      "has-success": control.valid && !control.pristine
     }
   }
 
@@ -67,7 +69,7 @@ export class HotelEditComponent implements OnInit {
   private _configureForm(): void {
     this.myForm = this._fb.group({
       name: ['', [<any>Validators.required, <any>Validators.minLength(5)]],
-      code: [''],
+      code: ['', [<any>Validators.required]],
       thumbnail: [''],
       address: this._fb.group({
         streetAddress: [''],
