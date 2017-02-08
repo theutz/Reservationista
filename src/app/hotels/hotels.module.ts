@@ -1,3 +1,4 @@
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CanDeactivateGuard } from '../shared/can-deactivate-guard.service';
 import { HotelResolverService } from './hotel-routing/hotel-resolver.service';
 import { HotelsService } from '../shared/hotels.service';
@@ -16,7 +17,9 @@ import { SubtitleService } from './subtitle.service';
   imports: [
     CommonModule,
     HotelRoutingModule,
-    NgSpinKitModule
+    NgSpinKitModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     HotelListComponent,
@@ -29,7 +32,8 @@ import { SubtitleService } from './subtitle.service';
     HotelsService,
     HotelResolverService,
     CanDeactivateGuard,
-    SubtitleService
+    SubtitleService,
+    FormBuilder
   ]
 })
 export class HotelsModule { }

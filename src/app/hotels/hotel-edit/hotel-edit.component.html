@@ -1,3 +1,18 @@
-<p>
-  hotel-edit works!
-</p>
+<ng-container [ngSwitch]="loading">
+  <!-- Content -->
+  <ng-container *ngSwitchCase="false">
+    <h1>{{hotel.name}}</h1>
+    <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+      <div [ngClass]="formGroupClasses(myForm.controls.name)">
+        <label class="form-control-label" for="myFormHotelName">Name</label>
+        <input [ngClass]="formControlClasses(myForm.controls.name)" id="myFormHotelName" type="text" formControlName="name">
+        <div class="form-control-feedback" [hidden]="isValid(myForm.controls.name)">Name is required (minimum 5 characters)</div>
+      </div>
+    </form>
+  </ng-container>
+
+  <!-- Loading -->
+  <ng-container *ngSwitchCase="true">
+    <sk-rotating-plane></sk-rotating-plane>
+  </ng-container>
+</ng-container>
