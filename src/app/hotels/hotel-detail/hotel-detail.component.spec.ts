@@ -1,3 +1,4 @@
+import { SubtitleService } from '../subtitle.service';
 import { NgSpinKitModule } from 'ng-spin-kit/dist/spinners';
 import { Subject } from 'rxjs/Rx';
 import { Observable } from '@angular-cli/ast-tools/node_modules/rxjs/Rx';
@@ -19,8 +20,10 @@ class ActivatedRouteSpy {
   data = jasmine.createSpyObj('data', ['subscribe']);
 }
 
-class RouterSpy {
+class RouterSpy { }
 
+class SubtitleServiceSpy {
+  setSubtitle = jasmine.createSpy('setSubtitle');
 }
 
 describe('HotelDetailComponent', () => {
@@ -34,7 +37,8 @@ describe('HotelDetailComponent', () => {
       providers: [
         { provide: HotelsService, useClass: HotelsServiceSpy },
         { provide: ActivatedRoute, useClass: ActivatedRouteSpy },
-        { provide: Router, useClass: RouterSpy }
+        { provide: Router, useClass: RouterSpy },
+        { provide: SubtitleService, useClass: SubtitleServiceSpy }
       ]
     })
       .compileComponents();
