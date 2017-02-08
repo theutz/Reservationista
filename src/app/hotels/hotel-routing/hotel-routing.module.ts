@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HotelListComponent } from 'app/hotels/hotel-list/hotel-list.component';
 import { HotelsComponent } from 'app/hotels/hotels/hotels.component';
 import { HotelDetailComponent } from 'app/hotels/hotel-detail/hotel-detail.component';
+import { HotelEditComponent } from 'app/hotels/hotel-edit/hotel-edit.component';
 
 const hotelRoutes: Routes = [
   {
@@ -13,6 +14,14 @@ const hotelRoutes: Routes = [
       {
         path: 'details/:id',
         component: HotelDetailComponent,
+        canDeactivate: [CanDeactivateGuard],
+        resolve: {
+          hotel: HotelResolverService
+        }
+      },
+      {
+        path: 'edit/:id',
+        component: HotelEditComponent,
         canDeactivate: [CanDeactivateGuard],
         resolve: {
           hotel: HotelResolverService

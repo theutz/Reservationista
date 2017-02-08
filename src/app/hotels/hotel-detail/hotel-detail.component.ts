@@ -29,6 +29,7 @@ export class HotelDetailComponent implements OnInit {
 
   edit(event: Event) {
     event.preventDefault();
+    this._router.navigateByUrl('/hotels/edit/' + this.hotel$.$ref.key);
   }
 
   private _setHideAddrComma(address: Address): void {
