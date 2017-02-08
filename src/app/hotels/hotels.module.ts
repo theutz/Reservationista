@@ -10,6 +10,7 @@ import { SearchComponent } from './search/search.component';
 import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
 import { NgSpinKitModule } from 'ng-spin-kit';
 import { HotelEditComponent } from './hotel-edit/hotel-edit.component';
+import { SubtitleService } from './subtitle.service';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { HotelEditComponent } from './hotel-edit/hotel-edit.component';
   providers: [
     HotelsService,
     HotelResolverService,
-    CanDeactivateGuard
+    CanDeactivateGuard,
+    SubtitleService
   ]
 })
 export class HotelsModule { }

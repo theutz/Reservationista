@@ -1,3 +1,4 @@
+import { SubtitleService } from '../subtitle.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Address, Hotel, HotelsService } from '../../shared/hotels.service';
 import { FirebaseObjectObservable } from 'angularfire2/database';
@@ -20,11 +21,13 @@ export class HotelDetailComponent implements OnInit {
   constructor(
     private _hs: HotelsService,
     private _route: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _subtitleService: SubtitleService
   ) { }
 
   ngOnInit() {
     this._setHotel$();
+    this._subtitleService.setSubtitle('Details');
   }
 
   edit(event: Event) {
