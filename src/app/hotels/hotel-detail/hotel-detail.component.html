@@ -1,19 +1,22 @@
 <ng-container [ngSwitch]="loading">
+
   <!-- Content -->
   <ng-container *ngSwitchCase="false">
     <div class="jumbotron">
-      <h1 *ngIf="(hotel$|async)?.code">
-        <span class="badge badge-info">{{(hotel$|async)?.code}}</span>
+      <h1 *ngIf="hotel.code">
+        <span class="badge badge-pill badge-info">{{hotel.code}}</span>
       </h1>
-      <h2>
-        {{(hotel$|async)?.name}}
-      </h2>
+      <h2>{{hotel.name}}</h2>
       <address class="lead" *ngIf="address">
         {{address.streetAddress}}<span [hidden]="hideAddrComma">,</span> {{address.city}}<span [hidden]="hideCityComma">,</span> {{address.state}} {{address.postalCode}}
       </address>
+      <button (click)="edit($event)" class="edit-btn">Edit <i class="fa fa-edit"></i></button>
     </div>
   </ng-container>
+
+  <!-- Loader -->
   <ng-container *ngSwitchCase="true">
     <sk-rotating-plane></sk-rotating-plane>
   </ng-container>
+
 </ng-container>

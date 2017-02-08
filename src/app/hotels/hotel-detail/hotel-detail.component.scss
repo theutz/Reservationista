@@ -5,3 +5,8 @@
     display: block;
   }
 }
+
+.edit-btn {
+  @extend .btn;
+  @extend .btn-primary;
+}
