@@ -1,9 +1,11 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { SubtitleService } from '../subtitle.service';
 import { HotelEditComponent } from './hotel-edit.component';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+/* tslint:disable:no-unused-variable */
+
+class SubtitleServiceSpy {
+  setSubtitle = jasmine.createSpy('setSubtitle');
+}
 
 describe('HotelEditComponent', () => {
   let component: HotelEditComponent;
@@ -11,9 +13,12 @@ describe('HotelEditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HotelEditComponent ]
+      declarations: [HotelEditComponent],
+      providers: [
+        { provide: SubtitleService, useClass: SubtitleServiceSpy }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

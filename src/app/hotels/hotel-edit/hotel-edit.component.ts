@@ -1,3 +1,4 @@
+import { SubtitleService } from '../subtitle.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotelEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _subtitleService: SubtitleService
+  ) { }
 
   ngOnInit() {
+    this._subtitleService.setSubtitle('Edit');
   }
 
 }
