@@ -9,6 +9,7 @@ import { HotelsComponent } from './hotels/hotels.component';
 import { SearchComponent } from './search/search.component';
 import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
 import { NgSpinKitModule } from 'ng-spin-kit';
+import { HotelEditComponent } from './hotel-edit/hotel-edit.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { NgSpinKitModule } from 'ng-spin-kit';
     HotelListComponent,
     HotelsComponent,
     SearchComponent,
-    HotelDetailComponent
+    HotelDetailComponent,
+    HotelEditComponent
   ],
   providers: [
     HotelsService,
