@@ -1,3 +1,4 @@
+import { TabsModule } from 'ng2-bootstrap/tabs';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CanDeactivateGuard } from '../shared/can-deactivate-guard.service';
 import { HotelResolverService } from './hotel-routing/hotel-resolver.service';
@@ -19,7 +20,8 @@ import { SubtitleService } from './subtitle.service';
     HotelRoutingModule,
     NgSpinKitModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TabsModule
   ],
   declarations: [
     HotelListComponent,

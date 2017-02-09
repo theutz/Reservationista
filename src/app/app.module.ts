@@ -1,5 +1,5 @@
-import { HotelsModule } from './hotels/hotels.module';
 import { AppComponent } from './app.component';
+import { HotelsModule } from './hotels/hotels.module';
 import { BrandingService } from './shared/branding.service';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -14,12 +14,14 @@ import { RoutingModule } from 'app/routing/routing.module';
 import { AuthService } from 'app/shared/auth.service';
 import { SharedModule } from 'app/shared/shared.module';
 import { authConfig, firebaseConfig } from 'environments/firebaseConfig';
+import { TabsModule } from 'ng2-bootstrap';
 import { ToastrModule } from 'toastr-ng2';
+
 @NgModule({
   declarations: [
     AppComponent,
     DisplayUserComponent,
-    LoginUserComponent,
+    LoginUserComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { ToastrModule } from 'toastr-ng2';
     MarketingModule,
     SharedModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right', progressBar: true }),
-    HotelsModule
+    HotelsModule,
+    TabsModule.forRoot()
   ],
   providers: [
     AuthService,

@@ -42,7 +42,7 @@ export class HotelEditComponent implements OnInit {
       "form-control": true,
       "form-control-danger": !this.isValid(control),
       "form-control-success": control.valid && !control.pristine
-    }
+    };
   }
 
   formGroupClasses(control: AbstractControl): { [key: string]: boolean } {
@@ -50,7 +50,7 @@ export class HotelEditComponent implements OnInit {
       "form-group": true,
       "has-danger": !this.isValid(control),
       "has-success": control.valid && !control.pristine
-    }
+    };
   }
 
   private _loadHotel(): void {

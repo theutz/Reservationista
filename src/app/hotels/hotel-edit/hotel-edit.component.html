@@ -1,20 +1,49 @@
 <ng-container [ngSwitch]="loading">
+
   <!-- Content -->
   <ng-container *ngSwitchCase="false">
     <h1>{{hotel.name}}</h1>
     <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
-      <!-- Name -->
-      <div [ngClass]="formGroupClasses(myForm.controls.name)">
-        <label class="form-control-label" for="myFormHotelName">Name</label>
-        <input [ngClass]="formControlClasses(myForm.controls.name)" id="myFormHotelName" type="text" formControlName="name">
-        <div class="form-control-feedback" [hidden]="isValid(myForm.controls.name)">Name is required (minimum 5 characters)</div>
-      </div>
-      <!-- Code -->
-      <div [ngClass]="formGroupClasses(myForm.controls.code)">
-        <label class="form-control-label" for="myFormHotelCode">Code</label>
-        <input [ngClass]="formControlClasses(myForm.controls.code)" id="myFormHotelCode" type="text" formControlName="code">
-        <div class="form-control-feedback" [hidden]="isValid(myForm.controls.code)">Code is required</div>
-      </div>
+      <tabset type="pills">
+
+        <tab heading="Basic Information">
+          <!-- Name -->
+          <div [ngClass]="formGroupClasses(myForm.controls.name)">
+            <label class="form-control-label" for="myFormHotelName">Name</label>
+            <input [ngClass]="formControlClasses(myForm.controls.name)" id="myFormHotelName" type="text" formControlName="name">
+            <div class="form-control-feedback" [hidden]="isValid(myForm.controls.name)">Name is required (minimum 5 characters)</div>
+          </div>
+          <!-- Code -->
+          <div [ngClass]="formGroupClasses(myForm.controls.code)">
+            <label class="form-control-label" for="myFormHotelCode">Code</label>
+            <input [ngClass]="formControlClasses(myForm.controls.code)" id="myFormHotelCode" type="text" formControlName="code">
+            <div class="form-control-feedback" [hidden]="isValid(myForm.controls.code)">Code is required</div>
+          </div>
+        </tab>
+        <tab heading="Address">
+          <!-- Street Address -->
+          <div [ngClass]="formGroupClasses(myForm.controls.address)" formGroupName="address">
+            <label class="form-control-label" for="myFormHotelStreetAddr">Street Address</label>
+            <input [ngClass]="formControlClasses(myForm.controls.address)" id="myFormHotelStreetAddr" type="text" formControlName="streetAddress">
+          </div>
+          <!-- City -->
+          <div [ngClass]="formGroupClasses(myForm.controls.address)" formGroupName="address">
+            <label class="form-control-label" for="myFormHotelCity">City</label>
+            <input [ngClass]="formControlClasses(myForm.controls.address)" id="myFormHotelCity" type="text" formControlName="city">
+          </div>
+          <!-- State -->
+          <div [ngClass]="formGroupClasses(myForm.controls.address)" formGroupName="address">
+            <label class="form-control-label" for="myFormHotelState">State</label>
+            <input [ngClass]="formControlClasses(myForm.controls.address)" id="myFormHotelState" type="text" formControlName="state">
+          </div>
+          <!-- Postal Code -->
+          <div [ngClass]="formGroupClasses(myForm.controls.address)" formGroupName="address">
+            <label class="form-control-label" for="myFormHotelPostalCode">Postal Code</label>
+            <input [ngClass]="formControlClasses(myForm.controls.address)" id="myFormHotelPostalCode" type="text" formControlName="postalCode">
+          </div>
+        </tab>
+      </tabset>
+      <button type="submit">Save <i class="fa fa-save"></i></button>
     </form>
   </ng-container>
 
@@ -22,4 +51,5 @@
   <ng-container *ngSwitchCase="true">
     <sk-rotating-plane></sk-rotating-plane>
   </ng-container>
+
 </ng-container>
