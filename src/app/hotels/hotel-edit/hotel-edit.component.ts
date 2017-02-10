@@ -1,7 +1,8 @@
+import { FormArray } from '@angular/forms/src/model';
 import { Hotel, HotelsService } from '../../shared/hotels.service';
 import { SubtitleService } from '../subtitle.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 
@@ -11,6 +12,7 @@ import { FirebaseObjectObservable } from 'angularfire2/database';
   styleUrls: ['./hotel-edit.component.scss']
 })
 export class HotelEditComponent implements OnInit {
+  myForm: FormGroup;
   loading: boolean = true;
   hotel$: FirebaseObjectObservable<Hotel>;
   hotel: Hotel;
@@ -19,15 +21,41 @@ export class HotelEditComponent implements OnInit {
     private _subtitleService: SubtitleService,
     private _hotelService: HotelsService,
     private _route: ActivatedRoute,
+    private _fb: FormBuilder
   ) { }
 
   ngOnInit() {
     this._subtitleService.setSubtitle('Edit');
     this._loadHotel();
+
+    // Initialize forms
+    this.myForm = this._fb.group({
+      name: ['', [Validators.required, Validators.minLength(5)]],
+      restaurants: this._fb.array([
+        this._initRestaurants()
+      ])
+    })
   }
 
-  save(): void {
+  addRestaurant(): void {
+    const control = <FormArray>this.myForm.controls['restaurants'];
+    control.push(this._initRestaurants());
+  }
 
+  removeRestaurant(i: number): void {
+    const control = <FormArray>this.myForm.controls['restaurants'];
+    control.removeAt(i);
+  }
+
+  save(model: Hotel): void {
+    console.log(model);
+  }
+
+  private _initRestaurants(): FormGroup {
+    return this._fb.group({
+      name: ['', [Validators.required]],
+      phoneNumber: ['']
+    })
   }
 
   private _loadHotel(): void {

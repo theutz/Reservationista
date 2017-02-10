@@ -3,11 +3,37 @@
   <!-- Content -->
   <ng-container *ngSwitchCase="false">
     <h1>{{hotel.name}}</h1>
-    <form>
+    <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
       <tabset type="pills">
 
         <tab heading="Basic Information">
           <!-- Name -->
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" formControlName="name">
+            <small [hidden]="!myForm.controls.name.valid" class="text-danger">Name is required (minimum 5 characters)</small>
+          </div>
+          <!-- Restaurants -->
+          <div formArrayName="restaurants">
+            <div *ngFor="let restaurant of myForm.controls.restaurants.controls; let i = index">
+              <div>
+                <span>Restaurant {{i + 1}}</span>
+                <span *ngIf="myForm.controls.restaurants.length > 1" (click)="removeRestaurant(i)"><i class="fa fa-close"></i></span>
+              </div>
+              <div [formGroupName]="i">
+                <div>
+                  <label>Name</label>
+                  <input type="text" formControlName="name">
+                  <small [hidden]="myForm.controls.restaurants.controls[i].controls.name.valid">Name is required</small>
+                </div>
+                <div>
+                  <label>Phone Number</label>
+                  <input type="text" formControlName="phoneNumber">
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-link" (click)="addRestaurant()">Add another restaurant +</a>
           <!--<div [ngClass]="formGroupClasses(myForm.controls.name)">
             <label class="form-control-label" for="myFormHotelName">Name</label>
             <input [ngClass]="formControlClasses(myForm.controls.name)" id="myFormHotelName" type="text" formControlName="name">
@@ -15,7 +41,7 @@
           </div>-->
         </tab>
       </tabset>
-      <button type="submit">Save <i class="fa fa-save"></i></button>
+      <button type="submit" [disabled]="!myForm.valid">Save <i class="fa fa-save"></i></button>
     </form>
   </ng-container>
 
