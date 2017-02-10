@@ -1,3 +1,11 @@
-<p>
-  restaurants-edit works!
-</p>
+<div [formGroup]="restaurantForm">
+  <div>
+    <label>Name</label>
+    <input type="text" formControlName="name">
+    <small [hidden]="restaurantForm.controls.name.valid">Name is required</small>
+  </div>
+  <div>
+    <label>Phone Number</label>
+    <input type="text" formControlName="phoneNumber">
+  </div>
+</div>

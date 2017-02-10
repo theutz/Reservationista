@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-restaurants-edit',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./restaurants-edit.component.scss']
 })
 export class RestaurantsEditComponent implements OnInit {
+  @Input('group')
+  public restaurantForm: FormGroup
 
   constructor() { }
 

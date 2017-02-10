@@ -21,15 +21,7 @@
                 <span *ngIf="myForm.controls.restaurants.length > 1" (click)="removeRestaurant(i)"><i class="fa fa-close"></i></span>
               </div>
               <div [formGroupName]="i">
-                <div>
-                  <label>Name</label>
-                  <input type="text" formControlName="name">
-                  <small [hidden]="myForm.controls.restaurants.controls[i].controls.name.valid">Name is required</small>
-                </div>
-                <div>
-                  <label>Phone Number</label>
-                  <input type="text" formControlName="phoneNumber">
-                </div>
+                <app-restaurants-edit [group]="myForm.controls.restaurants.controls[i]"></app-restaurants-edit>
               </div>
             </div>
           </div>
