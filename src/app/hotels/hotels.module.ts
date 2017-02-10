@@ -13,6 +13,7 @@ import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
 import { NgSpinKitModule } from 'ng-spin-kit';
 import { HotelEditComponent } from './hotel-edit/hotel-edit.component';
 import { SubtitleService } from './subtitle.service';
+import { RestaurantsEditComponent } from './restaurants-edit/restaurants-edit.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { SubtitleService } from './subtitle.service';
     HotelsComponent,
     SearchComponent,
     HotelDetailComponent,
-    HotelEditComponent
+    HotelEditComponent,
+    RestaurantsEditComponent
   ],
   providers: [
     HotelsService,
