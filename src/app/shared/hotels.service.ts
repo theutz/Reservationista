@@ -23,6 +23,7 @@ export interface Hotel {
   name?: string;
   code?: string;
   address?: Address;
+  restaurants?: Restaurants
 }
 
 export type Hotels = Hotel[];
@@ -32,4 +33,11 @@ export interface Address {
   city: string;
   state: string;
   postalCode: string;
+}
+
+export type Restaurants = Restaurant[];
+
+export interface Restaurant {
+  name: string;
+  phoneNumber: string;
 }
