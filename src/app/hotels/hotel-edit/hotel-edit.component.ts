@@ -1,3 +1,4 @@
+import { ToastrService } from 'toastr-ng2/toastr-service';
 import { FormArray } from '@angular/forms/src/model';
 import { Hotel, HotelsService } from '../../shared/hotels.service';
 import { SubtitleService } from '../subtitle.service';
@@ -21,7 +22,8 @@ export class HotelEditComponent implements OnInit {
     private _subtitleService: SubtitleService,
     private _hotelService: HotelsService,
     private _route: ActivatedRoute,
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private _toast: ToastrService
   ) { }
 
   ngOnInit() {
@@ -39,8 +41,12 @@ export class HotelEditComponent implements OnInit {
     control.removeAt(i);
   }
 
-  save(model: Hotel): void {
-    console.log(model);
+  save(model: Hotel, isValid: boolean): void {
+    if (isValid) {
+      this._hotelService.update(this.hotel$.$ref.key, model).then(() => {
+        this._toast.success(model.name + ' update complete', "Success!");
+      });
+    }
   }
 
   private _loadHotel(): void {
@@ -60,9 +66,9 @@ export class HotelEditComponent implements OnInit {
       name: [this.hotel.name, [Validators.required, Validators.minLength(5)]],
       code: [this.hotel.code, [Validators.required]],
       address: this._initAddress(),
-      restaurants: this._fb.array([
-        this._initRestaurants()
-      ])
+      // restaurants: this._fb.array([
+      //   this._initRestaurants()
+      // ])
     })
   }
 

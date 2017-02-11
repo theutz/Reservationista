@@ -3,7 +3,7 @@
   <!-- Content -->
   <ng-container *ngSwitchCase="false">
     <h1>{{hotel.name}}</h1>
-    <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+    <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
       <tabset type="pills">
         <tab heading="Basic Information">
           <!-- Name -->

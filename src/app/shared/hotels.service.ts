@@ -17,6 +17,10 @@ export class HotelsService {
     return this._af.object(this._hotelsNode + '/' + id);
   }
 
+  update(id: string, model: Hotel): firebase.Promise<void> {
+    return this._af.object(this._hotelsNode + '/' + id).update(model);
+  }
+
 }
 
 export interface Hotel {
