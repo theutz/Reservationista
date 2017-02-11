@@ -8,6 +8,8 @@
         <tab heading="Basic Information">
           <!-- Name -->
           <app-form-control-text-input [group]="myForm" [name]="'name'" [label]="'Name'" [invalidMessage]="'Name is required (minimum 5 characters)'"></app-form-control-text-input>
+          <!-- Code -->
+          <app-form-control-text-input [group]="myForm" [name]="'code'" [label]="'Code'" [invalidMessage]="'Code is required'"></app-form-control-text-input>
           <!-- Restaurants -->
           <div formArrayName="restaurants">
             <div *ngFor="let restaurant of myForm.controls.restaurants.controls; let i = index">

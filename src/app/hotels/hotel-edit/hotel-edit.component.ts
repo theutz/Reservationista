@@ -28,14 +28,6 @@ export class HotelEditComponent implements OnInit {
     // Load Model
     this._subtitleService.setSubtitle('Edit');
     this._loadHotel();
-
-    // Initialize forms
-    this.myForm = this._fb.group({
-      name: ['', [Validators.required, Validators.minLength(5)]],
-      restaurants: this._fb.array([
-        this._initRestaurants()
-      ])
-    })
   }
 
   addRestaurant(): void {
@@ -59,6 +51,16 @@ export class HotelEditComponent implements OnInit {
     })
   }
 
+  private _initForms(): void {
+    this.myForm = this._fb.group({
+      name: [this.hotel.name, [Validators.required, Validators.minLength(5)]],
+      code: [this.hotel.code, [Validators.required]],
+      restaurants: this._fb.array([
+        this._initRestaurants()
+      ])
+    })
+  }
+
   private _loadHotel(): void {
     this._route.data.subscribe((data: { hotel: any }) => {
       let key = data.hotel.$key;
@@ -66,6 +68,7 @@ export class HotelEditComponent implements OnInit {
       this.hotel$.subscribe(hotel => {
         this.loading = false;
         this.hotel = hotel;
+        this._initForms();
       })
     })
   }
