@@ -22,7 +22,30 @@ export class FormControlTextInputComponent implements OnInit {
   formGroupClasses(): { [key: string]: boolean } {
     return {
       "form-group": true,
-      "has-danger": !this.control.valid
+      "has-danger": this.isInvalid()
+    }
+  }
+
+  isInvalid(): boolean {
+    return this.control.errors && (this.control.dirty || this.control.touched);
+  }
+
+  formLabelClasses(): { [key: string]: boolean } {
+    return {
+      "control-label": true
+    }
+  }
+
+  formControlClasses(): { [key: string]: boolean } {
+    return {
+      "form-control": true,
+      "form-control-danger": this.isInvalid()
+    }
+  }
+
+  formFeedbackClasses(): { [key: string]: boolean } {
+    return {
+      "form-control-feedback": true,
     }
   }
 

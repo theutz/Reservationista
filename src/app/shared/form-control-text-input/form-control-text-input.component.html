@@ -1,5 +1,5 @@
 <div [formGroup]="myForm" [ngClass]="formGroupClasses()">
-  <label class="form-control-label">{{label}}</label>
-  <input type="text" [formControlName]="controlName">
-  <div class="form-control-feedback">{{invalidMessage}}</div>
+  <label [ngClass]="formLabelClasses()" class="form-control-label">{{label}}</label>
+  <input [ngClass]="formControlClasses()" type="text" [formControlName]="controlName">
+  <div [hidden]="!isInvalid()" [ngClass]="formFeedbackClasses()">{{invalidMessage}}</div>
 </div>
