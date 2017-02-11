@@ -25,7 +25,6 @@ export class HotelEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Load Model
     this._subtitleService.setSubtitle('Edit');
     this._loadHotel();
   }
@@ -44,23 +43,6 @@ export class HotelEditComponent implements OnInit {
     console.log(model);
   }
 
-  private _initRestaurants(): FormGroup {
-    return this._fb.group({
-      name: ['', [Validators.required]],
-      phoneNumber: ['']
-    })
-  }
-
-  private _initForms(): void {
-    this.myForm = this._fb.group({
-      name: [this.hotel.name, [Validators.required, Validators.minLength(5)]],
-      code: [this.hotel.code, [Validators.required]],
-      restaurants: this._fb.array([
-        this._initRestaurants()
-      ])
-    })
-  }
-
   private _loadHotel(): void {
     this._route.data.subscribe((data: { hotel: any }) => {
       let key = data.hotel.$key;
@@ -72,4 +54,32 @@ export class HotelEditComponent implements OnInit {
       })
     })
   }
+
+  private _initForms(): void {
+    this.myForm = this._fb.group({
+      name: [this.hotel.name, [Validators.required, Validators.minLength(5)]],
+      code: [this.hotel.code, [Validators.required]],
+      address: this._initAddress(),
+      restaurants: this._fb.array([
+        this._initRestaurants()
+      ])
+    })
+  }
+
+  private _initAddress(): FormGroup {
+    return this._fb.group({
+      streetAddress: [this.hotel.address.streetAddress, [Validators.required]],
+      city: [this.hotel.address.city, [Validators.required]],
+      state: [this.hotel.address.state, [Validators.required]],
+      postalCode: [this.hotel.address.postalCode, [Validators.required]],
+    })
+  }
+
+  private _initRestaurants(): FormGroup {
+    return this._fb.group({
+      name: ['', [Validators.required]],
+      phoneNumber: ['']
+    })
+  }
+
 }

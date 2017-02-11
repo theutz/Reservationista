@@ -7,10 +7,17 @@
       <tabset type="pills">
         <tab heading="Basic Information">
           <!-- Name -->
-          <app-form-control-text-input [group]="myForm" [name]="'name'" [label]="'Name'" [invalidMessage]="'Name is required (minimum 5 characters)'"></app-form-control-text-input>
+          <app-form-control-text-input [group]="myForm" name="name" label="Name" invalidMessage="Name is required (minimum 5 characters)"></app-form-control-text-input>
           <!-- Code -->
-          <app-form-control-text-input [group]="myForm" [name]="'code'" [label]="'Code'" [invalidMessage]="'Code is required'"></app-form-control-text-input>
-          <!-- Restaurants -->
+          <app-form-control-text-input [group]="myForm" name="code" label="Code" invalidMessage="Code is required"></app-form-control-text-input>
+        </tab>
+        <tab heading="Address">
+          <app-form-control-text-input [group]="myForm.controls.address" name="streetAddress" label="Street Address" invalidMessage="Street address is required"></app-form-control-text-input>
+          <app-form-control-text-input [group]="myForm.controls.address" name="city" label="City" invalidMessage="City is required"></app-form-control-text-input>
+          <app-form-control-text-input [group]="myForm.controls.address" name="state" label="State" invalidMessage="State is required"></app-form-control-text-input>
+          <app-form-control-text-input [group]="myForm.controls.address" name="postalCode" label="Postal Code" invalidMessage="Postal Code is required"></app-form-control-text-input>
+        </tab>
+        <!--<tab heading="Restaurants">
           <div formArrayName="restaurants">
             <div *ngFor="let restaurant of myForm.controls.restaurants.controls; let i = index">
               <div>
@@ -23,7 +30,7 @@
             </div>
           </div>
           <a class="btn btn-link" (click)="addRestaurant()">Add another restaurant +</a>
-        </tab>
+        </tab>-->
       </tabset>
       <button type="submit" [disabled]="!myForm.valid">Save <i class="fa fa-save"></i></button>
     </form>
