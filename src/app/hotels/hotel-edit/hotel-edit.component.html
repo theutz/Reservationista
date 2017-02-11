@@ -5,14 +5,9 @@
     <h1>{{hotel.name}}</h1>
     <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
       <tabset type="pills">
-
         <tab heading="Basic Information">
           <!-- Name -->
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" formControlName="name">
-            <small [hidden]="!myForm.controls.name.valid" class="text-danger">Name is required (minimum 5 characters)</small>
-          </div>
+          <app-form-control-text-input [group]="myForm" [name]="'name'" [label]="'Name'" [invalidMessage]="'Name is required (minimum 5 characters)'"></app-form-control-text-input>
           <!-- Restaurants -->
           <div formArrayName="restaurants">
             <div *ngFor="let restaurant of myForm.controls.restaurants.controls; let i = index">
@@ -26,11 +21,6 @@
             </div>
           </div>
           <a class="btn btn-link" (click)="addRestaurant()">Add another restaurant +</a>
-          <!--<div [ngClass]="formGroupClasses(myForm.controls.name)">
-            <label class="form-control-label" for="myFormHotelName">Name</label>
-            <input [ngClass]="formControlClasses(myForm.controls.name)" id="myFormHotelName" type="text" formControlName="name">
-            <div class="form-control-feedback" [hidden]="isValid(myForm.controls.name)">Name is required (minimum 5 characters)</div>
-          </div>-->
         </tab>
       </tabset>
       <button type="submit" [disabled]="!myForm.valid">Save <i class="fa fa-save"></i></button>

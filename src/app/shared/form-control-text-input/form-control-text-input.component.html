@@ -1,3 +1,5 @@
-<p>
-  form-control-text-input works!
-</p>
+<div [formGroup]="myForm" [ngClass]="formGroupClasses()">
+  <label class="form-control-label">{{label}}</label>
+  <input type="text" [formControlName]="controlName">
+  <div class="form-control-feedback">{{invalidMessage}}</div>
+</div>

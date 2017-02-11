@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -7,9 +8,14 @@ import { FormControlTextInputComponent } from './form-control-text-input/form-co
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [NavbarComponent, FormControlTextInputComponent],
-  exports: [NavbarComponent]
+  exports: [
+    NavbarComponent,
+    FormControlTextInputComponent,
+  ]
 })
 export class SharedModule { }

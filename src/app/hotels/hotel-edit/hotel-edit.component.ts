@@ -25,6 +25,7 @@ export class HotelEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Load Model
     this._subtitleService.setSubtitle('Edit');
     this._loadHotel();
 
