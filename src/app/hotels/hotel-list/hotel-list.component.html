@@ -7,7 +7,7 @@
 
   <!-- Content -->
   <ng-container *ngSwitchCase="false">
-    <div class="card-columns">
+    <div class="card-container">
       <div (click)="navigateToHotel(hotel, $event)" class="card" *ngFor="let hotel of hotels">
         <div class="card-header">
           <a (click)="navigateToHotel(hotel)" class="text-truncate">{{hotel.name}}</a>

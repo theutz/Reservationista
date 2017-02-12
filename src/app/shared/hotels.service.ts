@@ -10,7 +10,7 @@ export class HotelsService {
   ) { }
 
   getAll(): FirebaseListObservable<Hotels> {
-    return this._af.list(this._hotelsNode);
+    return this._af.list(this._hotelsNode, { query: { orderByChild: 'name' } });
   }
 
   get(id: string): FirebaseObjectObservable<Hotel> {

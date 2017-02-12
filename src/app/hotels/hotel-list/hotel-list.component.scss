@@ -1,4 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
+.card-container {
+  @extend .d-flex;
+  @extend .flex-wrap;
+  @extend .justify-content-around;
+}
+.card {
+  width: 31%;
+  @extend .mb-4;
+}
 .card-header {
   @extend .bg-primary;
   @extend .text-white;
