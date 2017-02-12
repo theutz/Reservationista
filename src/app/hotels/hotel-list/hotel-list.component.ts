@@ -31,7 +31,10 @@ export class HotelListComponent implements OnInit {
     });;
   }
 
-  navigateToHotel(hotel: any): void {
+  navigateToHotel(hotel: any, event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
     this._router.navigateByUrl('hotels/details/' + hotel.$key);
   }
 

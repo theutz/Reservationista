@@ -97,9 +97,11 @@ export class HotelEditComponent implements OnInit {
 
   private _initRestaurants(): FormArray {
     let controls = [];
-    this.hotel.restaurants.map(restaurant => {
-      controls.push(this._initRestaurant(restaurant));
-    });
+    if (!!this.hotel.restaurants) {
+      this.hotel.restaurants.map(restaurant => {
+        controls.push(this._initRestaurant(restaurant));
+      });
+    }
     return this._fb.array(controls)
   }
 

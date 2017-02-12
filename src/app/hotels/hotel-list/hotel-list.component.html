@@ -8,9 +8,9 @@
   <!-- Content -->
   <ng-container *ngSwitchCase="false">
     <div class="card-columns">
-      <div (click)="navigateToHotel(hotel)" class="card" *ngFor="let hotel of hotels">
+      <div (click)="navigateToHotel(hotel, $event)" class="card" *ngFor="let hotel of hotels">
         <div class="card-header">
-          <span>{{hotel.name}}</span>
+          <a (click)="navigateToHotel(hotel)" class="text-truncate">{{hotel.name}}</a>
           <span *ngIf="hotel.code" class="badge badge-pill badge-info">{{hotel.code}}</span>
         </div>
         <div class="card-block">
