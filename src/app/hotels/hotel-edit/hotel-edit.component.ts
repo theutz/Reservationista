@@ -80,12 +80,14 @@ export class HotelEditComponent implements OnInit {
   }
 
   private _initRestaurants(): FormArray {
-    return this._fb.array([
-      this._fb.group({
-        name: ['', [Validators.required]],
-        phoneNumber: ['']
-      })
-    ])
+    let controls = [];
+    this.hotel.restaurants.map(restaurant => {
+      controls.push(this._fb.group({
+        name: [restaurant.name, [Validators.required]],
+        phoneNumber: [restaurant.phoneNumber]
+      }));
+    });
+    return this._fb.array(controls)
   }
 
 }
