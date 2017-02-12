@@ -27,3 +27,7 @@ button {
 tab {
     @extend .my-4;
 }
+.card {
+    @extend .card-inverse;
+    @extend .card-primary;
+}

@@ -1,0 +1,6 @@
+@import "~bootstrap/scss/bootstrap";
+.card {
+    @extend .card-inverse;
+    @extend .card-primary;
+    @extend .mb-4;
+}

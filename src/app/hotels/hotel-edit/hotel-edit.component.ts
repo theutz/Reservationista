@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { ToastrService } from 'toastr-ng2/toastr-service';
 import { FormArray } from '@angular/forms/src/model';
 import { Hotel, HotelsService, Restaurant } from '../../shared/hotels.service';
@@ -23,7 +24,8 @@ export class HotelEditComponent implements OnInit {
     private _hotelService: HotelsService,
     private _route: ActivatedRoute,
     private _fb: FormBuilder,
-    private _toast: ToastrService
+    private _toast: ToastrService,
+    private _location: Location
   ) { }
 
   ngOnInit() {
@@ -39,6 +41,11 @@ export class HotelEditComponent implements OnInit {
   removeRestaurant(i: number): void {
     const control = <FormArray>this.myForm.controls['restaurants'];
     control.removeAt(i);
+  }
+
+  goBack(event: Event) {
+    event.preventDefault();
+    this._location.back();
   }
 
   save(model: Hotel, isValid: boolean): void {

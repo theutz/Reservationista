@@ -1,6 +1,6 @@
 <div [formGroup]="myForm">
   <div [formArrayName]="arrayName" class="d-flex flex-wrap justify-content-around">
-    <div class="card card-outline-primary mb-4" *ngFor="let restaurant of restaurantArray.controls; let i = index;">
+    <div class="card" *ngFor="let restaurant of restaurantArray.controls; let i = index;">
       <div class="card-block">
         <h4 class="card-title">{{restaurant.controls.name.value}}
           <button (click)="remove($event, i)" class="close"><i class="fa fa-close"></i></button>
@@ -11,6 +11,10 @@
         </div>
       </div>
     </div>
+    <div class="card card-success">
+      <div class="card-block d-flex">
+        <button (click)="add($event)" class="btn btn-success align-self-center">Add Restaurant <i class="fa fa-plus"></i></button>
+      </div>
+    </div>
   </div>
 </div>
-<button (click)="add($event)" class="btn btn-success">Add Restaurant <i class="fa fa-plus"></i></button>
