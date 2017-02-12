@@ -17,6 +17,12 @@ export class HotelDetailComponent implements OnInit {
   address: Address;
   hideAddrComma: boolean = false;
   hideCityComma: boolean = false;
+  jumbotronStyle: { [key: string]: string } = {
+    'background-image': null,
+    'background-position': 'center',
+    'background-size': 'cover'
+  };
+  jumbotronBgExists: boolean = false;
 
   constructor(
     private _hs: HotelsService,
@@ -68,8 +74,20 @@ export class HotelDetailComponent implements OnInit {
       this.loading = false;
       this._setHotel(hotel);
       this._setAddress(hotel.address);
+      this._setJumbotronStyles(hotel);
     });
     return;
+  }
+
+  private _setJumbotronStyles(hotel: any): void {
+    if (!!hotel.images && !!hotel.images.thumbnail) {
+      this._hs
+        .getImageUrl(hotel.$key, hotel.images.thumbnail)
+        .then(url => {
+          this.jumbotronStyle['background-image'] = 'url(' + url + ')';
+          this.jumbotronBgExists = true;
+        });
+    }
   }
 
   private _setHotel(hotel: Hotel) {

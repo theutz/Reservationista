@@ -2,15 +2,19 @@
 
   <!-- Content -->
   <ng-container *ngSwitchCase="false">
-    <div class="jumbotron">
-      <h1 *ngIf="hotel.code">
-        <span class="badge badge-pill badge-info">{{hotel.code}}</span>
-      </h1>
-      <h2>{{hotel.name}}</h2>
-      <address class="lead" *ngIf="address">
-        {{address.streetAddress}}<span [hidden]="hideAddrComma">,</span> {{address.city}}<span [hidden]="hideCityComma">,</span> {{address.state}} {{address.postalCode}}
-      </address>
-      <button (click)="edit($event)" class="edit-btn">Edit <i class="fa fa-edit"></i></button>
+    <div class="jumbotron d-flex justify-content-center" [ngStyle]="jumbotronStyle">
+      <div [class.card]="jumbotronBgExists" class="w-50">
+        <div [class.card-block]="jumbotronBgExists">
+          <h1 *ngIf="hotel.code">
+            <span class="badge badge-pill badge-info">{{hotel.code}}</span>
+          </h1>
+          <h2>{{hotel.name}}</h2>
+          <address class="lead" *ngIf="address">
+            {{address.streetAddress}}<span [hidden]="hideAddrComma">,</span> {{address.city}}<span [hidden]="hideCityComma">,</span> {{address.state}} {{address.postalCode}}
+          </address>
+          <button (click)="edit($event)" class="edit-btn">Edit <i class="fa fa-edit"></i></button>
+        </div>
+      </div>
     </div>
     <tabset type="pills">
       <tab heading="Restaurants">
