@@ -1,5 +1,12 @@
-@import "theme.scss";
+/* Color Scheme: https://color.adobe.com/Paper-Modified-color-theme-9193057/ */
+$brand-primary: #2196f3;
+$brand-info: #9D54CC;
+$brand-success: #4caf50;
+$brand-warning: #ff9800;
+$brand-danger: #e51c23;
+
 @import "~bootstrap/scss/bootstrap";
+
 .rotating-plane-spinner {
     @extend .bg-primary;
 }
