@@ -21,7 +21,6 @@ export class FormControlTextInputComponent implements OnInit {
 
   onEnter(event: Event) {
     event.preventDefault();
-    console.log(event);
   }
 
   formGroupClasses(): { [key: string]: boolean } {
