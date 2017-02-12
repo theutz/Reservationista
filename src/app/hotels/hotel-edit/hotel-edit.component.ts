@@ -65,7 +65,7 @@ export class HotelEditComponent implements OnInit {
     let file: File = event.srcElement.files[0];
     this._hotelService.uploadImage(this.hotel$.$ref.key, imgType, file)
       .then(() => {
-        this._toast.success(file.name + 'upload complete!', 'Success!')
+        this._toast.success(file.name + ' upload complete!', 'Success!')
       })
   }
 

@@ -39,12 +39,13 @@ export class HotelsService {
     let uuid = UUID.UUID();
     let ref = this._storageRef
       .child(this._hotelsNode)
-      .child(id)
+      .child(id);
+    let storageName = imageType + '_' + uuid;
 
-    return ref.child(imageType + '_' + uuid).put(file)
+    return ref.child(storageName).put(file)
       .then(result => {
         let imgNames: Images = {};
-        imgNames[imageType] = imageType + '_' + uuid;
+        imgNames[imageType] = storageName;
         this._af.object(this._hotelsNode + '/' + id + '/images')
           .update(imgNames);
       });
