@@ -3,7 +3,7 @@
     <div class="card" *ngFor="let restaurant of restaurantArray.controls; let i = index;">
       <div class="card-block">
         <h4 class="card-title">{{restaurant.controls.name.value}}
-          <button (click)="remove($event, i)" class="close"><i class="fa fa-close"></i></button>
+          <a (click)="remove($event, i)" class="close"><i class="fa fa-close"></i></a>
         </h4>
         <div [formGroupName]="i">
           <app-form-control-text-input [group]="restaurant" name="name" label="Name"></app-form-control-text-input>
@@ -13,7 +13,7 @@
     </div>
     <div class="card card-success">
       <div class="card-block d-flex">
-        <button (click)="add($event)" class="btn btn-success align-self-center">Add Restaurant <i class="fa fa-plus"></i></button>
+        <a (click)="add($event)" class="btn btn-success align-self-center">Add Restaurant <i class="fa fa-plus"></i></a>
       </div>
     </div>
   </div>

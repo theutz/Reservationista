@@ -19,6 +19,11 @@ export class FormControlTextInputComponent implements OnInit {
     this.control = <FormControl>this.myForm.controls[this.controlName];
   }
 
+  onEnter(event: Event) {
+    event.preventDefault();
+    console.log(event);
+  }
+
   formGroupClasses(): { [key: string]: boolean } {
     return {
       "form-group": true,
