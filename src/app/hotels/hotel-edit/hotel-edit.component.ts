@@ -1,6 +1,6 @@
 import { ToastrService } from 'toastr-ng2/toastr-service';
 import { FormArray } from '@angular/forms/src/model';
-import { Hotel, HotelsService } from '../../shared/hotels.service';
+import { Hotel, HotelsService, Restaurant } from '../../shared/hotels.service';
 import { SubtitleService } from '../subtitle.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -33,7 +33,7 @@ export class HotelEditComponent implements OnInit {
 
   addRestaurant(): void {
     const control = <FormArray>this.myForm.controls['restaurants'];
-    control.push(this._initRestaurants());
+    control.push(this._initRestaurant());
   }
 
   removeRestaurant(i: number): void {
@@ -79,13 +79,18 @@ export class HotelEditComponent implements OnInit {
     })
   }
 
+  private _initRestaurant(restaurant?: Restaurant): FormGroup {
+    restaurant = !!restaurant ? restaurant : { name: '', phoneNumber: '' }
+    return this._fb.group({
+      name: [restaurant.name, [Validators.required]],
+      phoneNumber: [restaurant.phoneNumber]
+    });
+  }
+
   private _initRestaurants(): FormArray {
     let controls = [];
     this.hotel.restaurants.map(restaurant => {
-      controls.push(this._fb.group({
-        name: [restaurant.name, [Validators.required]],
-        phoneNumber: [restaurant.phoneNumber]
-      }));
+      controls.push(this._initRestaurant(restaurant));
     });
     return this._fb.array(controls)
   }

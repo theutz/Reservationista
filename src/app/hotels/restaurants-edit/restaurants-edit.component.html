@@ -1,25 +1,16 @@
 <div [formGroup]="myForm">
-  <div [formArrayName]="arrayName">
-    <div *ngFor="let restaurant of restaurantArray.controls; let i = index;">
-      <h4>New Restaurant</h4>
-      <div [formGroupName]="i">
-        <app-form-control-text-input [group]="restaurant" name="name" label="Name"></app-form-control-text-input>
-        <app-form-control-text-input [group]="restaurant" name="phoneNumber" label="Phone Number"></app-form-control-text-input>
+  <div [formArrayName]="arrayName" class="d-flex flex-wrap justify-content-around">
+    <div class="card card-outline-primary mb-4" *ngFor="let restaurant of restaurantArray.controls; let i = index;">
+      <div class="card-block">
+        <h4 class="card-title">{{restaurant.controls.name.value}}
+          <button (click)="remove($event, i)" class="close"><i class="fa fa-close"></i></button>
+        </h4>
+        <div [formGroupName]="i">
+          <app-form-control-text-input [group]="restaurant" name="name" label="Name"></app-form-control-text-input>
+          <app-form-control-text-input [group]="restaurant" name="phoneNumber" label="Phone Number"></app-form-control-text-input>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<!--<tab heading="Restaurants">
-          <div formArrayName="restaurants">
-            <div *ngFor="let restaurant of myForm.controls.restaurants.controls; let i = index">
-              <div>
-                <span>Restaurant {{i + 1}}</span>
-                <span *ngIf="myForm.controls.restaurants.length > 1" (click)="removeRestaurant(i)"><i class="fa fa-close"></i></span>
-              </div>
-              <div [formGroupName]="i">
-                <app-restaurants-edit [group]="myForm.controls.restaurants.controls[i]"></app-restaurants-edit>
-              </div>
-            </div>
-          </div>
-          <a class="btn btn-link" (click)="addRestaurant()">Add another restaurant +</a>
-        </tab>-->
+<button (click)="add($event)" class="btn btn-success">Add Restaurant <i class="fa fa-plus"></i></button>
