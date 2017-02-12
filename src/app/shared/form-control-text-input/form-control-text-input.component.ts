@@ -10,7 +10,7 @@ export class FormControlTextInputComponent implements OnInit {
   @Input('group') myForm: FormGroup
   @Input('name') controlName: string = '';
   @Input() label: string = '';
-  @Input() invalidMessage: string = '';
+  @Input() invalidMessage: string;
   @Input() control: FormControl;
 
   constructor() { }
@@ -22,12 +22,13 @@ export class FormControlTextInputComponent implements OnInit {
   formGroupClasses(): { [key: string]: boolean } {
     return {
       "form-group": true,
-      "has-danger": this.isInvalid()
+      "has-danger": !this.isValid(),
+      "has-success": this.isValid() && this.control.dirty
     }
   }
 
-  isInvalid(): boolean {
-    return this.control.errors && (this.control.dirty || this.control.touched);
+  isValid(): boolean {
+    return this.control.pristine || (!this.control.errors && this.control.dirty)
   }
 
   formLabelClasses(): { [key: string]: boolean } {
@@ -39,7 +40,8 @@ export class FormControlTextInputComponent implements OnInit {
   formControlClasses(): { [key: string]: boolean } {
     return {
       "form-control": true,
-      "form-control-danger": this.isInvalid()
+      "form-control-danger": !this.isValid(),
+      "form-control-success": this.isValid() && this.control.dirty
     }
   }
 

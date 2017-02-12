@@ -66,10 +66,9 @@ export class HotelEditComponent implements OnInit {
       name: [this.hotel.name, [Validators.required, Validators.minLength(5)]],
       code: [this.hotel.code, [Validators.required]],
       address: this._initAddress(),
-      // restaurants: this._fb.array([
-      //   this._initRestaurants()
-      // ])
+      // restaurants: this._initRestaurants()
     })
+    console.log(this.myForm);
   }
 
   private _initAddress(): FormGroup {
@@ -81,11 +80,13 @@ export class HotelEditComponent implements OnInit {
     })
   }
 
-  private _initRestaurants(): FormGroup {
-    return this._fb.group({
-      name: ['', [Validators.required]],
-      phoneNumber: ['']
-    })
+  private _initRestaurants(): FormArray {
+    return this._fb.array([
+      this._fb.group({
+        name: ['', [Validators.required]],
+        phoneNumber: ['']
+      })
+    ])
   }
 
 }
