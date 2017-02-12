@@ -52,6 +52,7 @@ export class HotelEditComponent implements OnInit {
     if (isValid) {
       this._hotelService.update(this.hotel$.$ref.key, model).then(() => {
         this._toast.success(model.name + ' update complete', "Success!");
+        this._location.back();
       });
     }
   }
