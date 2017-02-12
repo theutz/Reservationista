@@ -28,6 +28,21 @@
         <tab heading="Restaurants">
           <app-restaurants-edit [group]="myForm" name="restaurants" (onAdd)="addRestaurant()" (onRemove)="removeRestaurant($event)"></app-restaurants-edit>
         </tab>
+        <tab heading="Images">
+          <div class="card">
+            <div class="card-block">
+              <div [formGroup]="myForm.controls.images">
+                <label class="control-label">Thumbnail</label>
+                <div>
+                  <label class="custom-file d-block w-100">
+                    <input type="file" id="file" class="custom-file-input" formControlName="thumbnail" (change)="thumbnailChange($event)">
+                    <span class="custom-file-control"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </tab>
       </tabset>
       <button type="submit" [disabled]="!myForm.valid">Save <i class="fa fa-save"></i></button>
       <a (click)="goBack($event)" class="btn btn-warning text-white">Back <i class="fa fa-backward"></i></a>

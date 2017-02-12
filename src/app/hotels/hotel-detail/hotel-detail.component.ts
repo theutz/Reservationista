@@ -84,6 +84,7 @@ export class HotelDetailComponent implements OnInit {
       this._hs
         .getImageUrl(hotel.$key, hotel.images.thumbnail)
         .then(url => {
+          console.log('IMG URL', url);
           this.jumbotronStyle['background-image'] = 'url(' + url + ')';
           this.jumbotronBgExists = true;
         });

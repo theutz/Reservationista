@@ -57,6 +57,18 @@ export class HotelEditComponent implements OnInit {
     }
   }
 
+  thumbnailChange(event: any): void {
+    this._uploadImage(event, 'thumbnail');
+  }
+
+  private _uploadImage(event: any, imgType: string): void {
+    let file: File = event.srcElement.files[0];
+    this._hotelService.uploadImage(this.hotel$.$ref.key, imgType, file)
+      .then(() => {
+        this._toast.success(file.name + 'upload complete!', 'Success!')
+      })
+  }
+
   private _loadHotel(): void {
     this._route.data.subscribe((data: { hotel: any }) => {
       let key = data.hotel.$key;
@@ -74,7 +86,14 @@ export class HotelEditComponent implements OnInit {
       name: [this.hotel.name, [Validators.required, Validators.minLength(5)]],
       code: [this.hotel.code, [Validators.required]],
       address: this._initAddress(),
-      restaurants: this._initRestaurants()
+      restaurants: this._initRestaurants(),
+      images: this._initImages()
+    })
+  }
+
+  private _initImages(): FormGroup {
+    return this._fb.group({
+      thumbnail: ['']
     })
   }
 

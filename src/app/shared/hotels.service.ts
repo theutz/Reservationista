@@ -1,6 +1,7 @@
 import { FirebaseApp } from 'angularfire2/tokens';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Inject, Injectable } from '@angular/core';
+import { UUID } from 'angular2-uuid';
 
 @Injectable()
 export class HotelsService {
@@ -34,6 +35,21 @@ export class HotelsService {
       .getDownloadURL();
   }
 
+  uploadImage(id: string, imageType: string, file: File): firebase.Promise<any> {
+    let uuid = UUID.UUID();
+    let ref = this._storageRef
+      .child(this._hotelsNode)
+      .child(id)
+
+    return ref.child(imageType + '_' + uuid).put(file)
+      .then(result => {
+        let imgNames: Images = {};
+        imgNames[imageType] = imageType + '_' + uuid;
+        this._af.object(this._hotelsNode + '/' + id + '/images')
+          .update(imgNames);
+      });
+  }
+
 }
 
 export interface Hotel {
@@ -41,6 +57,7 @@ export interface Hotel {
   code?: string;
   address?: Address;
   restaurants?: Restaurants
+  images?: Images
 }
 
 export type Hotels = Hotel[];
@@ -57,4 +74,9 @@ export type Restaurants = Restaurant[];
 export interface Restaurant {
   name: string;
   phoneNumber: string;
+}
+
+export interface Images {
+  thumbnail?: string;
+  large?: string;
 }
