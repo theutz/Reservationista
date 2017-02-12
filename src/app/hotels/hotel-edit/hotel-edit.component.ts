@@ -66,9 +66,8 @@ export class HotelEditComponent implements OnInit {
       name: [this.hotel.name, [Validators.required, Validators.minLength(5)]],
       code: [this.hotel.code, [Validators.required]],
       address: this._initAddress(),
-      // restaurants: this._initRestaurants()
+      restaurants: this._initRestaurants()
     })
-    console.log(this.myForm);
   }
 
   private _initAddress(): FormGroup {

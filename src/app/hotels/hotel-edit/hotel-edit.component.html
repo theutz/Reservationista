@@ -17,20 +17,9 @@
           <app-form-control-text-input [group]="myForm.controls.address" name="state" label="State"></app-form-control-text-input>
           <app-form-control-text-input [group]="myForm.controls.address" name="postalCode" label="Postal Code"></app-form-control-text-input>
         </tab>
-        <!--<tab heading="Restaurants">
-          <div formArrayName="restaurants">
-            <div *ngFor="let restaurant of myForm.controls.restaurants.controls; let i = index">
-              <div>
-                <span>Restaurant {{i + 1}}</span>
-                <span *ngIf="myForm.controls.restaurants.length > 1" (click)="removeRestaurant(i)"><i class="fa fa-close"></i></span>
-              </div>
-              <div [formGroupName]="i">
-                <app-restaurants-edit [group]="myForm.controls.restaurants.controls[i]"></app-restaurants-edit>
-              </div>
-            </div>
-          </div>
-          <a class="btn btn-link" (click)="addRestaurant()">Add another restaurant +</a>
-        </tab>-->
+        <tab heading="Restaurants">
+          <app-restaurants-edit [group]="myForm" name="restaurants"></app-restaurants-edit>
+        </tab>
       </tabset>
       <button type="submit" [disabled]="!myForm.valid">Save <i class="fa fa-save"></i></button>
     </form>
