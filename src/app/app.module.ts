@@ -1,3 +1,4 @@
+import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { AppComponent } from './app.component';
 import { HotelsModule } from './hotels/hotels.module';
 import { BrandingService } from './shared/branding.service';
@@ -34,7 +35,8 @@ import { ToastrModule } from 'toastr-ng2';
     SharedModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right', progressBar: true }),
     HotelsModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   providers: [
     AuthService,

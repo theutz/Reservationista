@@ -10,3 +10,11 @@ $brand-danger: #e51c23;
 .rotating-plane-spinner {
     @extend .bg-primary;
 }
+
+accordion-group .card-header {
+    @extend .bg-primary;
+    @extend .text-white;
+    &>.card-title {
+        @extend .mb-0;
+    }
+}

@@ -12,6 +12,27 @@
       </address>
       <button (click)="edit($event)" class="edit-btn">Edit <i class="fa fa-edit"></i></button>
     </div>
+    <tabset type="pills">
+      <tab heading="Restaurants">
+        <accordion closeOthers="true">
+          <accordion-group #group *ngFor="let restaurant of hotel.restaurants">
+            <div accordion-heading>
+              {{restaurant.name}}
+              <div class="pull-right" [ngSwitch]="group?.isOpen">
+                <i *ngSwitchCase="false" class="fa fa-chevron-right"></i>
+                <i *ngSwitchCase="true" class="fa fa-chevron-down"></i>
+                <i *ngSwitchDefault class="fa fa-chevron-right"></i>
+              </div>
+            </div>
+            <dl>
+              <dt>Phone Number</dt>
+              <dd>{{restaurant.phoneNumber}}</dd>
+            </dl>
+          </accordion-group>
+        </accordion>
+      </tab>
+      <tab heading="Lounges"></tab>
+    </tabset>
   </ng-container>
 
   <!-- Loader -->

@@ -1,3 +1,4 @@
+import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { CanDeactivateGuard } from '../shared/can-deactivate-guard.service';
 import { HotelsService } from '../shared/hotels.service';
 import { SharedModule } from '../shared/shared.module';
@@ -24,7 +25,8 @@ import { TabsModule } from 'ng2-bootstrap/tabs';
     FormsModule,
     ReactiveFormsModule,
     TabsModule,
-    SharedModule
+    SharedModule,
+    AccordionModule
   ],
   declarations: [
     HotelListComponent,

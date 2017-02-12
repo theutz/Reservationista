@@ -5,6 +5,9 @@
     display: block;
   }
 }
+tab {
+  @extend .my-3;
+}
 
 .edit-btn {
   @extend .btn;
