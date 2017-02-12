@@ -11,7 +11,7 @@ export class FormControlTextInputComponent implements OnInit {
   @Input('name') controlName: string = '';
   @Input() label: string = '';
   @Input() invalidMessage: string;
-  @Input() control: FormControl;
+  control: FormControl;
 
   constructor() { }
 
