@@ -30,8 +30,11 @@
         </tab>
         <tab heading="Images">
           <div class="card">
-            <div class="card-block">
-              <div [formGroup]="myForm.controls.images">
+            <div class="card-block" [ngSwitch]="!!thumbnailUrl">
+              <div *ngSwitchCase="true">
+                <img src="{{thumbnailUrl}}">
+              </div>
+              <div *ngSwitchCase="false" [formGroup]="myForm.controls.images">
                 <label class="control-label">Thumbnail</label>
                 <div>
                   <label class="custom-file d-block w-100">

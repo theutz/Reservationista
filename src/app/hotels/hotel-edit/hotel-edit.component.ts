@@ -18,6 +18,7 @@ export class HotelEditComponent implements OnInit {
   loading: boolean = true;
   hotel$: FirebaseObjectObservable<Hotel>;
   hotel: Hotel;
+  thumbnailUrl: string = '';
 
   constructor(
     private _subtitleService: SubtitleService,
@@ -77,6 +78,10 @@ export class HotelEditComponent implements OnInit {
         this.loading = false;
         this.hotel = hotel;
         this._initForms();
+        this._hotelService.getImageUrl(this.hotel$.$ref.key, hotel.images.thumbnail)
+          .then(url => {
+            this.thumbnailUrl = url;
+          });
       })
     })
   }
