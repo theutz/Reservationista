@@ -74,14 +74,16 @@ export class HotelEditComponent implements OnInit {
     this._route.data.subscribe((data: { hotel: any }) => {
       let key = data.hotel.$key;
       this.hotel$ = this._hotelService.get(key);
-      this.hotel$.subscribe(hotel => {
+      this.hotel$.subscribe((hotel: Hotel) => {
         this.loading = false;
         this.hotel = hotel;
         this._initForms();
-        this._hotelService.getImageUrl(this.hotel$.$ref.key, hotel.images.thumbnail)
-          .then(url => {
-            this.thumbnailUrl = url;
-          });
+        if (hotel.images && hotel.images.thumbnail) {
+          this._hotelService.getImageUrl(this.hotel$.$ref.key, hotel.images.thumbnail)
+            .then(url => {
+              this.thumbnailUrl = url;
+            });
+        }
       })
     })
   }
