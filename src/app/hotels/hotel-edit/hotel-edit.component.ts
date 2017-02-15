@@ -58,14 +58,24 @@ export class HotelEditComponent implements OnInit {
     }
   }
 
-  thumbnailChange(event: any): void {
-    this._uploadImage(event, 'thumbnail');
+  thumbnailChange(event: Event): void {
+    this.loading = true;
+    this._uploadImage(event, 'thumbnail').then(() => {
+    });;
   }
 
-  private _uploadImage(event: any, imgType: string): void {
+  removeThumbnail(event: Event): void {
+    event.preventDefault();
+    this._hotelService.removeImage(this.hotel$.$ref.key, 'thumbnail', this.hotel.images.thumbnail).then(() => {
+      this.thumbnailUrl = null;
+    });
+  }
+
+  private _uploadImage(event: any, imgType: string): firebase.Promise<any> {
     let file: File = event.srcElement.files[0];
-    this._hotelService.uploadImage(this.hotel$.$ref.key, imgType, file)
+    return this._hotelService.uploadImage(this.hotel$.$ref.key, imgType, file)
       .then(() => {
+        this.loading = false;
         this._toast.success(file.name + ' upload complete!', 'Success!')
       })
   }

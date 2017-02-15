@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { FirebaseApp } from 'angularfire2/tokens';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Inject, Injectable } from '@angular/core';
@@ -27,28 +28,40 @@ export class HotelsService {
     return this._af.object(this._hotelsNode + '/' + id).update(model);
   }
 
-  getImageUrl(id: string, fileName: string): firebase.Promise<any> {
+  getImageUrl(hotelId: string, fileName: string): firebase.Promise<any> {
     return this._storageRef
       .child(this._hotelsNode)
-      .child(id)
+      .child(hotelId)
       .child(fileName)
       .getDownloadURL();
   }
 
-  uploadImage(id: string, imageType: string, file: File): firebase.Promise<any> {
+  uploadImage(hotelId: string, imageType: string, file: File): firebase.Promise<any> {
     let uuid = UUID.UUID();
-    let ref = this._storageRef
-      .child(this._hotelsNode)
-      .child(id);
+    let ref = this._storageRef.child(this._hotelsNode).child(hotelId);
     let storageName = imageType + '_' + uuid;
 
     return ref.child(storageName).put(file)
       .then(result => {
         let imgNames: Images = {};
         imgNames[imageType] = storageName;
-        this._af.object(this._hotelsNode + '/' + id + '/images')
+
+        // Update thumbnail
+        this._af.object(this._hotelsNode + '/' + hotelId + '/images')
           .update(imgNames);
       });
+  }
+
+  removeImage(hotelId: string, imageType: string, fileName: string) {
+    return this._storageRef
+      .child(this._hotelsNode)
+      .child(hotelId)
+      .child(fileName)
+      .delete().then(() => {
+        let hotel: Hotel = { images: {} };
+        hotel.images[imageType] = null;
+        return this.update(hotelId, hotel);
+      })
   }
 
 }
