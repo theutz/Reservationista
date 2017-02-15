@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormControlTextInputComponent } from './form-control-text-input/form-control-text-input.component';
+import { FormControlFileInputComponent } from './form-control-file-input/form-control-file-input.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { FormControlTextInputComponent } from './form-control-text-input/form-co
     ReactiveFormsModule,
     FormsModule
   ],
-  declarations: [NavbarComponent, FormControlTextInputComponent],
+  declarations: [NavbarComponent, FormControlTextInputComponent, FormControlFileInputComponent],
   exports: [
     NavbarComponent,
     FormControlTextInputComponent,
