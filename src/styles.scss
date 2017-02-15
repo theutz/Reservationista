@@ -18,3 +18,12 @@ accordion-group .card-header {
         @extend .mb-0;
     }
 }
+
+.custom-file-control::before {
+    content: 'Browse';
+}
+
+.custom-file-control::after {
+    content: 'Choose file...';
+}
+

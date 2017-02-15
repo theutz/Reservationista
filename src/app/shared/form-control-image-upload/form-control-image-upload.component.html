@@ -1,17 +1,18 @@
 <div [ngSwitch]="!!imageUrl">
-  <div class="d-flex" *ngSwitchCase="true">
-    <img src="{{thumbnailUrl}}" class="w-75">
+  <div class="d-flex flex-wrap" *ngSwitchCase="true">
+    <h5 class="w-100">{{label}}</h5>
+    <img src="{{imageUrl}}" class="w-75">
     <div class="w-25 p-3">
-      <button (click)="removeThumbnail($event)" class="btn btn-danger">Remove image <i class="fa fa-remove"></i></button>
+      <button (click)="imageRemoved($event)" class="btn btn-danger">Remove image <i class="fa fa-remove"></i></button>
     </div>
   </div>
-  <div *ngSwitchCase="false" [formGroup]="myForm.controls.images">
-    <label class="control-label">Thumbnail</label>
+  <div *ngSwitchCase="false" [formGroup]="myForm">
+    <label class="control-label">{{label}}</label>
     <div>
       <label class="custom-file d-block w-100">
-      <input type="file" id="file" class="custom-file-input" formControlName="thumbnail" (change)="thumbnailChange($event)">
-      <span class="custom-file-control"></span>
-    </label>
+        <input type="file" id="file" class="custom-file-input" [formControlName]="controlName" (change)="imageUploaded($event)">
+        <span class="custom-file-control"></span>
+      </label>
     </div>
   </div>
 </div>

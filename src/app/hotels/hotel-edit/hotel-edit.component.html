@@ -31,8 +31,7 @@
         <tab heading="Images">
           <div class="card">
             <div class="card-block">
-              <h5>Thumbnail</h5>
-              <app-form-control-image-upload></app-form-control-image-upload>
+              <app-form-control-image-upload [group]="myForm.controls.images" [name]="'thumbnail'" label="Thumbnail" [imageUrl]="thumbnailUrl"></app-form-control-image-upload>
             </div>
           </div>
         </tab>

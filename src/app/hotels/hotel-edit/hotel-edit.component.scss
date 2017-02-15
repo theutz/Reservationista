@@ -19,14 +19,6 @@ h1 {
     @extend .text-right;
 }
 
-.custom-file-control::before {
-    content: 'Browse';
-}
-
-.custom-file-control::after {
-    content: 'Choose file...';
-}
-
 button {
     @extend .btn;
     &[type="submit"] {

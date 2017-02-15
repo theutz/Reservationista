@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-form-control-image-upload',
@@ -6,10 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-control-image-upload.component.scss']
 })
 export class FormControlImageUploadComponent implements OnInit {
+  @Input() imageUrl: string = '';
+  @Input() label: string = '';
+  @Output() onUpload: EventEmitter<Event> = new EventEmitter<Event>();
+  @Input('group') myForm: FormGroup;
+  @Input('name') controlName: string;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  imageUploaded(event: Event) {
+    event.preventDefault();
+    this.onUpload.next(event);
+  }
+
+  imageRemoved(event: Event) {
+
   }
 
 }
