@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { FormControlFileInputComponent } from './form-control-file-input.component';
+import { FormControlImageUploadComponent } from './form-control-file-input.component';
 
 describe('FormControlFileInputComponent', () => {
-  let component: FormControlFileInputComponent;
-  let fixture: ComponentFixture<FormControlFileInputComponent>;
+  let component: FormControlImageUploadComponent;
+  let fixture: ComponentFixture<FormControlImageUploadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormControlFileInputComponent ]
+      declarations: [ FormControlImageUploadComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormControlFileInputComponent);
+    fixture = TestBed.createComponent(FormControlImageUploadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

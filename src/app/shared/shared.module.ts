@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormControlTextInputComponent } from './form-control-text-input/form-control-text-input.component';
-import { FormControlFileInputComponent } from './form-control-file-input/form-control-file-input.component';
+import { FormControlImageUploadComponent } from './form-control-image-upload/form-control-image-upload.component';
 
 @NgModule({
   imports: [
@@ -13,11 +13,11 @@ import { FormControlFileInputComponent } from './form-control-file-input/form-co
     ReactiveFormsModule,
     FormsModule
   ],
-  declarations: [NavbarComponent, FormControlTextInputComponent, FormControlFileInputComponent],
+  declarations: [NavbarComponent, FormControlTextInputComponent, FormControlImageUploadComponent],
   exports: [
     NavbarComponent,
     FormControlTextInputComponent,
-    FormControlFileInputComponent
+    FormControlImageUploadComponent
   ]
 })
 export class SharedModule { }
