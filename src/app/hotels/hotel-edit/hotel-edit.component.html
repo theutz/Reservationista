@@ -31,6 +31,7 @@
         <tab heading="Images">
           <div class="card">
             <div class="card-block" [ngSwitch]="!!thumbnailUrl">
+              <app-form-control-file-input></app-form-control-file-input>
               <h5>Thumbnail</h5>
               <div class="d-flex" *ngSwitchCase="true">
                 <img src="{{thumbnailUrl}}" class="w-75">

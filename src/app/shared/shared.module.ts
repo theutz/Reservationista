@@ -17,6 +17,7 @@ import { FormControlFileInputComponent } from './form-control-file-input/form-co
   exports: [
     NavbarComponent,
     FormControlTextInputComponent,
+    FormControlFileInputComponent
   ]
 })
 export class SharedModule { }
