@@ -58,9 +58,9 @@ export class HotelEditComponent implements OnInit {
     }
   }
 
-  thumbnailChange(event: Event): void {
+  thumbnailChange(file: File): void {
     this.loading = true;
-    this._uploadImage(event, 'thumbnail').then(() => {
+    this._uploadImage(file, 'thumbnail').then(() => {
     });;
   }
 
@@ -71,8 +71,7 @@ export class HotelEditComponent implements OnInit {
     });
   }
 
-  private _uploadImage(event: any, imgType: string): firebase.Promise<any> {
-    let file: File = event.srcElement.files[0];
+  private _uploadImage(file: File, imgType: string): firebase.Promise<any> {
     return this._hotelService.uploadImage(this.hotel$.$ref.key, imgType, file)
       .then(() => {
         this.loading = false;

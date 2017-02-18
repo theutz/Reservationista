@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class FormControlImageUploadComponent implements OnInit {
   @Input() imageUrl: string = '';
   @Input() label: string = '';
-  @Output() onUpload: EventEmitter<Event> = new EventEmitter<Event>();
+  @Output() onUpload: EventEmitter<File> = new EventEmitter<File>();
   @Input('group') myForm: FormGroup;
   @Input('name') controlName: string;
 
@@ -20,11 +20,17 @@ export class FormControlImageUploadComponent implements OnInit {
 
   imageUploaded(event: Event) {
     event.preventDefault();
-    this.onUpload.next(event);
+    this.onUpload.next(this._extractFileFromEvent(event));
   }
 
   imageRemoved(event: Event) {
 
+  }
+
+  private _extractFileFromEvent(event: any): File {
+    if (event.srcElement && event.srcElement.files) {
+      return event.srcElement.files[0];
+    }
   }
 
 }
