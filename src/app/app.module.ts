@@ -1,3 +1,4 @@
+import { NgSpinKitModule } from 'ng-spin-kit/dist/spinners';
 import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { AppComponent } from './app.component';
 import { HotelsModule } from './hotels/hotels.module';
@@ -36,7 +37,8 @@ import { ToastrModule } from 'toastr-ng2';
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right', progressBar: true }),
     HotelsModule,
     TabsModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    NgSpinKitModule
   ],
   providers: [
     AuthService,
