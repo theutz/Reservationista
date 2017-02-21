@@ -1,0 +1,9 @@
+@import "../../../styles.scss";
+.jumbotron {
+    background-image: url('assets/corner-hotel.jpg');
+    background-position: 0 57%;
+    &>.container {
+        background-color: rgba(255,255,255,0.6);
+        @extend .p-3;
+    }
+}
