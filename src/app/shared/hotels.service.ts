@@ -28,7 +28,7 @@ export class HotelsService {
     return this._af.object(this._hotelsNode + '/' + id).update(model);
   }
 
-  getImageUrl(hotelId: string, fileName: string): firebase.Promise<any> {
+  getImageUrl(hotelId: string, fileName: string): firebase.Promise<string> {
     return this._storageRef
       .child(this._hotelsNode)
       .child(hotelId)
@@ -44,7 +44,7 @@ export class HotelsService {
     return ref.child(storageName).put(file)
       .then(result => {
         let imgNames: Images = {};
-        imgNames[imageType] = storageName;
+        imgNames[imageType] = result.downloadURL;
 
         // Update thumbnail
         this._af.object(this._hotelsNode + '/' + hotelId + '/images')

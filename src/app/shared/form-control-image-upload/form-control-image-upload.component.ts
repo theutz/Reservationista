@@ -10,6 +10,7 @@ export class FormControlImageUploadComponent implements OnInit {
   @Input() imageUrl: string = '';
   @Input() label: string = '';
   @Output() onUpload: EventEmitter<File> = new EventEmitter<File>();
+  @Output() onRemove: EventEmitter<void> = new EventEmitter<void>();
   @Input('group') myForm: FormGroup;
   @Input('name') controlName: string;
 
@@ -24,7 +25,8 @@ export class FormControlImageUploadComponent implements OnInit {
   }
 
   imageRemoved(event: Event) {
-
+    event.preventDefault();
+    this.onRemove.next();
   }
 
   private _extractFileFromEvent(event: any): File {

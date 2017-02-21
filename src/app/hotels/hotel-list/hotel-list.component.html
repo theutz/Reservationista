@@ -9,15 +9,10 @@
   <ng-container *ngSwitchCase="false">
     <div class="card-container">
       <div (click)="navigateToHotel(hotel, $event)" class="card" *ngFor="let hotel of hotels">
+        <img *ngIf="!!hotel.images?.thumbnail" [src]="hotel.images?.thumbnail" alt="{{hotel.name}}" class="card-img-top img-fluid">
         <div class="card-header">
           <a (click)="navigateToHotel(hotel)" class="text-truncate">{{hotel.name}}</a>
           <span *ngIf="hotel.code" class="badge badge-pill badge-info">{{hotel.code}}</span>
-        </div>
-        <div class="card-block">
-          <div class="card-title">
-            <div class="card-text">
-            </div>
-          </div>
         </div>
       </div>
     </div>

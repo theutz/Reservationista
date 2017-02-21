@@ -80,13 +80,9 @@ export class HotelDetailComponent implements OnInit {
   }
 
   private _setJumbotronStyles(hotel: any): void {
-    if (!!hotel.images && !!hotel.images.thumbnail) {
-      this._hs
-        .getImageUrl(hotel.$key, hotel.images.thumbnail)
-        .then(url => {
-          this.jumbotronStyle['background-image'] = 'url(' + url + ')';
-          this.jumbotronBgExists = true;
-        });
+    if (!!hotel.images && hotel.images.thumbnail) {
+      this.jumbotronStyle['background-image'] = 'url(' + hotel.images.thumbnail + ')';
+      this.jumbotronBgExists = true;
     }
   }
 
