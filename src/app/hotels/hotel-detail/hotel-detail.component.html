@@ -16,7 +16,17 @@
         </div>
       </div>
     </div>
-    <tabset type="pills">
+    <tabset [justified]="true" type="pills">
+      <tab heading="Facility">
+        <div class="card-deck text-center">
+          <div class="card card-inverse card-primary bg-gradient-primary">
+            <div class="card-img-top">
+              <span class="display-3">3</span>
+            </div>
+            <div class="card-header text-center">Floors</div>
+          </div>
+        </div>
+      </tab>
       <tab heading="Restaurants">
         <accordion closeOthers="true">
           <accordion-group #group *ngFor="let restaurant of hotel.restaurants">
