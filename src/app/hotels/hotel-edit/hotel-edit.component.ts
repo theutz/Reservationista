@@ -108,7 +108,7 @@ export class HotelEditComponent implements OnInit {
 
   private _initImages(): FormGroup {
     return this._fb.group({
-      thumbnail: ['']
+      thumbnail: [this.hotel.images.thumbnail]
     })
   }
 
