@@ -1,5 +1,3 @@
-import { NgSpinKitModule } from 'ng-spin-kit/dist/spinners';
-import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { AppComponent } from './app.component';
 import { HotelsModule } from './hotels/hotels.module';
 import { BrandingService } from './shared/branding.service';
@@ -17,6 +15,7 @@ import { AuthService } from 'app/shared/auth.service';
 import { SharedModule } from 'app/shared/shared.module';
 import { authConfig, firebaseConfig } from 'environments/firebaseConfig';
 import { TabsModule } from 'ng2-bootstrap';
+import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { ToastrModule } from 'toastr-ng2';
 
 @NgModule({
@@ -38,7 +37,6 @@ import { ToastrModule } from 'toastr-ng2';
     HotelsModule,
     TabsModule.forRoot(),
     AccordionModule.forRoot(),
-    NgSpinKitModule
   ],
   providers: [
     AuthService,

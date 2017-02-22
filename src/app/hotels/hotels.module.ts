@@ -1,4 +1,3 @@
-import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { CanDeactivateGuard } from '../shared/can-deactivate-guard.service';
 import { HotelsService } from '../shared/hotels.service';
 import { SharedModule } from '../shared/shared.module';
@@ -14,14 +13,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HotelRoutingModule } from 'app/hotels/hotel-routing/hotel-routing.module';
-import { NgSpinKitModule } from 'ng-spin-kit';
+import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { TabsModule } from 'ng2-bootstrap/tabs';
 
 @NgModule({
   imports: [
     CommonModule,
     HotelRoutingModule,
-    NgSpinKitModule,
     FormsModule,
     ReactiveFormsModule,
     TabsModule,
