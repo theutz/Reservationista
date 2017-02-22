@@ -58,8 +58,8 @@
         </div>
       </tab>
       <tab heading="Restaurants">
-        <accordion closeOthers="true">
-          <accordion-group #group *ngFor="let restaurant of hotel.restaurants">
+        <accordion>
+          <accordion-group [isOpen]="true" #group *ngFor="let restaurant of hotel.restaurants">
             <div accordion-heading>
               {{restaurant.name}}
               <div class="pull-right" [ngSwitch]="group?.isOpen">
