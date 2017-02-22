@@ -17,7 +17,7 @@
       </div>
     </div>
     <tabset [justified]="true" type="pills">
-      <tab heading="Stats">
+      <tab *ngIf="showStats" heading="Stats">
         <div class="stats">
           <div *ngIf="hotel.floorCount" class="card">
             <div class="card-img-top">
@@ -57,7 +57,7 @@
           </div>
         </div>
       </tab>
-      <tab heading="Restaurants">
+      <tab *ngIf="showRestaurants" heading="Restaurants">
         <accordion>
           <accordion-group [isOpen]="true" #group *ngFor="let restaurant of hotel.restaurants">
             <div accordion-heading>
@@ -75,7 +75,7 @@
           </accordion-group>
         </accordion>
       </tab>
-      <tab heading="Lounges"></tab>
+      <tab *ngIf="showLounges" heading="Lounges"></tab>
     </tabset>
   </ng-container>
 

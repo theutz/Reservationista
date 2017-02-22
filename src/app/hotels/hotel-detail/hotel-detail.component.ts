@@ -23,6 +23,9 @@ export class HotelDetailComponent implements OnInit {
     'background-size': 'cover'
   };
   jumbotronBgExists: boolean = false;
+  showStats: boolean = false;
+  showRestaurants: boolean = false;
+  showLounges: boolean = false;
 
   constructor(
     private _hs: HotelsService,
@@ -75,8 +78,25 @@ export class HotelDetailComponent implements OnInit {
       this._setHotel(hotel);
       this._setAddress(hotel.address);
       this._setJumbotronStyles(hotel);
+      this._setShowStats(hotel);
+      this._setShowRestaurants(hotel);
+      this._setShowLounges(hotel);
     });
     return;
+  }
+
+  private _setShowStats(hotel: Hotel): void {
+    let aStatExists = !!hotel.floorCount || !!hotel.roomCount || !!hotel.checkInTime
+    !!hotel.checkOutTime || !!hotel.hoursToCancel || !!hotel.suiteCount;
+    this.showStats = aStatExists;
+  }
+
+  private _setShowRestaurants(hotel: Hotel): void {
+    this.showRestaurants = !!hotel.restaurants ? hotel.restaurants.length > 0 : false;
+  }
+
+  private _setShowLounges(hotel: Hotel): void {
+    // this.showLounges = hotel.lounges.length > 0;
   }
 
   private _setJumbotronStyles(hotel: any): void {
