@@ -12,6 +12,14 @@
               <app-form-control-text-input [group]="myForm" name="name" label="Name" invalidMessage="Minimum 5 characters."></app-form-control-text-input>
               <!-- Code -->
               <app-form-control-text-input [group]="myForm" name="code" label="Code"></app-form-control-text-input>
+              <!-- Street Address -->
+              <app-form-control-text-input [group]="myForm.controls.address" name="streetAddress" label="Street Address"></app-form-control-text-input>
+              <!-- City -->
+              <app-form-control-text-input [group]="myForm.controls.address" name="city" label="City"></app-form-control-text-input>
+              <!-- State -->
+              <app-form-control-text-input [group]="myForm.controls.address" name="state" label="State"></app-form-control-text-input>
+              <!-- Postal Code -->
+              <app-form-control-text-input [group]="myForm.controls.address" name="postalCode" label="Postal Code"></app-form-control-text-input>
             </div>
           </div>
         </tab>
@@ -33,18 +41,11 @@
             </div>
           </div>
         </tab>
-        <tab heading="Address">
-          <div class="card">
-            <div class="card-block">
-              <app-form-control-text-input [group]="myForm.controls.address" name="streetAddress" label="Street Address"></app-form-control-text-input>
-              <app-form-control-text-input [group]="myForm.controls.address" name="city" label="City"></app-form-control-text-input>
-              <app-form-control-text-input [group]="myForm.controls.address" name="state" label="State"></app-form-control-text-input>
-              <app-form-control-text-input [group]="myForm.controls.address" name="postalCode" label="Postal Code"></app-form-control-text-input>
-            </div>
-          </div>
-        </tab>
         <tab heading="Restaurants">
           <app-restaurants-edit [group]="myForm" name="restaurants" (onAdd)="addRestaurant()" (onRemove)="removeRestaurant($event)"></app-restaurants-edit>
+        </tab>
+        <tab heading="Lounges">
+          <app-lounges-edit [group]="myForm" name="lounges" (onAdd)="addLounge()" (onRemove)="removeLounge($event)"></app-lounges-edit>
         </tab>
         <tab heading="Images">
           <div class="card">

@@ -77,6 +77,7 @@ export interface Hotel {
   hoursToCancel?: number;
   address?: Address;
   restaurants?: Restaurants
+  lounges?: Lounges;
   images?: Images
 }
 
@@ -99,4 +100,11 @@ export interface Restaurant {
 export interface Images {
   thumbnail?: string;
   large?: string;
+}
+
+export type Lounges = Lounge[];
+
+export interface Lounge {
+  name: string;
+  phoneNumber: string;
 }

@@ -15,6 +15,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HotelRoutingModule } from 'app/hotels/hotel-routing/hotel-routing.module';
 import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { TabsModule } from 'ng2-bootstrap/tabs';
+import { LoungesEditComponent } from './lounges-edit/lounges-edit.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { TabsModule } from 'ng2-bootstrap/tabs';
     SearchComponent,
     HotelDetailComponent,
     HotelEditComponent,
-    RestaurantsEditComponent
+    RestaurantsEditComponent,
+    LoungesEditComponent
   ],
   providers: [
     HotelsService,

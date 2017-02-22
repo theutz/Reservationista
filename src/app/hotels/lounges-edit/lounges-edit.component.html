@@ -1,0 +1,20 @@
+<div [formGroup]="myForm">
+  <div [formArrayName]="arrayName" class="d-flex flex-wrap justify-content-around">
+    <div class="card" *ngFor="let lounge of loungeArray.controls; let i = index;">
+      <div class="card-block">
+        <h4 class="card-title">{{lounge.controls.name.value}}
+          <a (click)="remove($event, i)" class="close"><i class="fa fa-close"></i></a>
+        </h4>
+        <div [formGroupName]="i">
+          <app-form-control-text-input [group]="lounge" name="name" label="Name"></app-form-control-text-input>
+          <app-form-control-text-input [group]="lounge" name="phoneNumber" label="Phone Number"></app-form-control-text-input>
+        </div>
+      </div>
+    </div>
+    <div class="card card-success">
+      <div class="card-block d-flex">
+        <a (click)="add($event)" class="btn btn-success align-self-center">Add Lounge <i class="fa fa-plus"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
