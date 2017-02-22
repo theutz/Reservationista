@@ -94,6 +94,12 @@ export class HotelEditComponent implements OnInit {
     this.myForm = this._fb.group({
       name: [this.hotel.name, [Validators.required, Validators.minLength(5)]],
       code: [this.hotel.code, [Validators.required]],
+      floorCount: [this.hotel.floorCount, [Validators.required]],
+      roomCount: [this.hotel.roomCount, [Validators.required]],
+      suiteCount: [this.hotel.suiteCount, [Validators.required]],
+      checkInTime: [this.hotel.checkInTime, [Validators.required]],
+      checkOutTime: [this.hotel.checkOutTime, [Validators.required]],
+      hoursToCancel: [this.hotel.hoursToCancel, [Validators.required]],
       address: this._initAddress(),
       restaurants: this._initRestaurants(),
       images: this._initImages()

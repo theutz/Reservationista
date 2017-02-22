@@ -69,6 +69,12 @@ export class HotelsService {
 export interface Hotel {
   name?: string;
   code?: string;
+  floorCount?: number;
+  suiteCount?: number;
+  roomCount?: number;
+  checkInTime?: string;
+  checkOutTime?: string;
+  hoursToCancel?: number;
   address?: Address;
   restaurants?: Restaurants
   images?: Images

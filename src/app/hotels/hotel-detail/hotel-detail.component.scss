@@ -5,6 +5,7 @@
     display: block;
   }
 }
+
 tab {
   @extend .my-3;
 }
@@ -12,4 +13,19 @@ tab {
 .edit-btn {
   @extend .btn;
   @extend .btn-primary;
+}
+
+.stats {
+  @extend .w-100;
+  @extend .justify-content-between;
+  @extend .d-flex;
+  @extend .flex-wrap;
+
+  &>.card {
+    @extend .text-center;
+    @extend .card-inverse;
+    @extend .card-primary;
+    width: 33%;
+    @extend .my-1;
+  }
 }

@@ -17,13 +17,43 @@
       </div>
     </div>
     <tabset [justified]="true" type="pills">
-      <tab heading="Facility">
-        <div class="card-deck text-center">
-          <div class="card card-inverse card-primary bg-gradient-primary">
+      <tab heading="Stats">
+        <div class="stats">
+          <div *ngIf="hotel.floorCount" class="card">
             <div class="card-img-top">
-              <span class="display-3">3</span>
+              <span class="display-3">{{hotel.floorCount}}</span>
             </div>
-            <div class="card-header text-center">Floors</div>
+            <div class="card-header">Floors</div>
+          </div>
+          <div *ngIf="hotel.suiteCount" class="card">
+            <div class="card-img-top">
+              <span class="display-3">{{hotel.suiteCount}}</span>
+            </div>
+            <div class="card-header">Suites</div>
+          </div>
+          <div *ngIf="hotel.roomCount" class="card">
+            <div class="card-img-top">
+              <span class="display-3">{{hotel.roomCount}}</span>
+            </div>
+            <div class="card-header">Rooms</div>
+          </div>
+          <div *ngIf="hotel.checkInTime" class="card">
+            <div class="card-img-top">
+              <span class="display-3">{{hotel.checkInTime}}</span>
+            </div>
+            <div class="card-header">Check-In</div>
+          </div>
+          <div *ngIf="hotel.checkOutTime" class="card">
+            <div class="card-img-top">
+              <span class="display-3">{{hotel.checkOutTime}}</span>
+            </div>
+            <div class="card-header">Check-Out</div>
+          </div>
+          <div *ngIf="hotel.hoursToCancel" class="card">
+            <div class="card-img-top">
+              <span class="display-3">{{hotel.hoursToCancel}}</span>
+            </div>
+            <div class="card-header">Hours to Cancel</div>
           </div>
         </div>
       </tab>
