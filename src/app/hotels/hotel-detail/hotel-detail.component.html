@@ -59,10 +59,10 @@
       </tab>
       <tab *ngIf="showRestaurants" heading="Restaurants">
         <accordion>
-          <accordion-group [isOpen]="true" #group *ngFor="let restaurant of hotel.restaurants">
+          <accordion-group [isOpen]="true" #restaurantGroup *ngFor="let restaurant of hotel.restaurants">
             <div accordion-heading>
               {{restaurant.name}}
-              <div class="pull-right" [ngSwitch]="group?.isOpen">
+              <div class="pull-right" [ngSwitch]="restaurantGroup?.isOpen">
                 <i *ngSwitchCase="false" class="fa fa-chevron-right"></i>
                 <i *ngSwitchCase="true" class="fa fa-chevron-down"></i>
                 <i *ngSwitchDefault class="fa fa-chevron-right"></i>
@@ -75,7 +75,24 @@
           </accordion-group>
         </accordion>
       </tab>
-      <tab *ngIf="showLounges" heading="Lounges"></tab>
+      <tab *ngIf="showLounges" heading="Lounges">
+        <accordion>
+          <accordion-group [isOpen]="true" #loungeGroup *ngFor="let lounge of hotel.lounges">
+            <div accordion-heading>
+              {{lounge.name}}
+              <div class="pull-right" [ngSwitch]="loungeGroup?.isOpen">
+                <i class="fa fa-chevron-right" *ngSwitchCase="false"></i>
+                <i *ngSwitchCase="true" class="fa fa-chevron-down"></i>
+                <i *ngSwitchDefault class="fa fa-chevron-right"></i>
+              </div>
+            </div>
+            <dl>
+              <dt>Phone Number</dt>
+              <dd>{{lounge.phoneNumber}}</dd>
+            </dl>
+          </accordion-group>
+        </accordion>
+      </tab>
     </tabset>
   </ng-container>
 

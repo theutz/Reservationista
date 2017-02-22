@@ -96,7 +96,7 @@ export class HotelDetailComponent implements OnInit {
   }
 
   private _setShowLounges(hotel: Hotel): void {
-    // this.showLounges = hotel.lounges.length > 0;
+    this.showLounges = !!hotel.lounges ? hotel.lounges.length > 0 : false;
   }
 
   private _setJumbotronStyles(hotel: any): void {
