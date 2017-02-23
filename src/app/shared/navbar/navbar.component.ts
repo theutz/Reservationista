@@ -5,6 +5,7 @@ import { AuthService } from '../auth.service';
 import { BrandingService } from '../branding.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CollapseDirective } from 'ng2-bootstrap';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   title: string = '';
+  isCollapsed: boolean = true;
 
   constructor(
     private _brandingService: BrandingService,
@@ -23,6 +25,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this._setTitle();
+  }
+
+  toggleNavbar(): void {
+    this.isCollapsed = !this.isCollapsed;
   }
 
   isLoggedIn(): Observable<boolean> {
