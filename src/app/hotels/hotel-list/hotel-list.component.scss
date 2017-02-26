@@ -1,19 +1,19 @@
 @import "../../../styles.scss";
-.card-container {
-  @extend .d-flex;
-  @extend .flex-wrap;
-  @extend .justify-content-around;
-}
 .card {
-  width: 31%;
-  @extend .mb-4;
+  @extend .my-2;
+  @extend .mx-2;
+  &>.badge {
+    @extend .badge-pill;
+    @extend .badge-primary;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
 }
+
 .card-header {
   @extend .bg-primary;
   @extend .text-white;
   @extend .d-flex;
   @extend .justify-content-between;
-  .badge {
-    @extend .align-self-baseline;
-  }
 }

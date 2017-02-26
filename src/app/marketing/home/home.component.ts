@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  title: string = '';
   tagline: string = '';
 
   constructor(
@@ -14,11 +15,12 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._setTagline();
+    this._setBranding();
   }
 
-  private _setTagline() {
+  private _setBranding() {
     this._brandingService.tagline$.subscribe(tagline => this.tagline = tagline);
+    this._brandingService.title$.subscribe(title => this.title = title);
   }
 
 }

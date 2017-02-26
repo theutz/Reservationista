@@ -17,6 +17,15 @@ export class HotelDetailComponent implements OnInit {
   address: Address;
   hideAddrComma: boolean = false;
   hideCityComma: boolean = false;
+  jumbotronStyle: { [key: string]: string } = {
+    'background-image': null,
+    'background-position': 'center',
+    'background-size': 'cover'
+  };
+  jumbotronBgExists: boolean = false;
+  showStats: boolean = false;
+  showRestaurants: boolean = false;
+  showLounges: boolean = false;
 
   constructor(
     private _hs: HotelsService,
@@ -68,8 +77,33 @@ export class HotelDetailComponent implements OnInit {
       this.loading = false;
       this._setHotel(hotel);
       this._setAddress(hotel.address);
+      this._setJumbotronStyles(hotel);
+      this._setShowStats(hotel);
+      this._setShowRestaurants(hotel);
+      this._setShowLounges(hotel);
     });
     return;
+  }
+
+  private _setShowStats(hotel: Hotel): void {
+    let aStatExists = !!hotel.floorCount || !!hotel.roomCount || !!hotel.checkInTime
+    !!hotel.checkOutTime || !!hotel.hoursToCancel || !!hotel.suiteCount;
+    this.showStats = aStatExists;
+  }
+
+  private _setShowRestaurants(hotel: Hotel): void {
+    this.showRestaurants = !!hotel.restaurants ? hotel.restaurants.length > 0 : false;
+  }
+
+  private _setShowLounges(hotel: Hotel): void {
+    this.showLounges = !!hotel.lounges ? hotel.lounges.length > 0 : false;
+  }
+
+  private _setJumbotronStyles(hotel: any): void {
+    if (!!hotel.images && hotel.images.thumbnail) {
+      this.jumbotronStyle['background-image'] = 'url(' + hotel.images.thumbnail + ')';
+      this.jumbotronBgExists = true;
+    }
   }
 
   private _setHotel(hotel: Hotel) {

@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { ToastrService } from 'toastr-ng2/toastr-service';
 import { FormArray } from '@angular/forms/src/model';
-import { Hotel, HotelsService, Restaurant } from '../../shared/hotels.service';
+import { Hotel, HotelsService, Lounge, Restaurant } from '../../shared/hotels.service';
 import { SubtitleService } from '../subtitle.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -33,14 +33,38 @@ export class HotelEditComponent implements OnInit {
     this._loadHotel();
   }
 
+  // Restaurants
   addRestaurant(): void {
     const control = <FormArray>this.myForm.controls['restaurants'];
     control.push(this._initRestaurant());
   }
-
   removeRestaurant(i: number): void {
     const control = <FormArray>this.myForm.controls['restaurants'];
     control.removeAt(i);
+  }
+
+  // Lounges
+  addLounge(): void {
+    const control = <FormArray>this.myForm.controls['lounges'];
+    control.push(this._initLounge());
+  }
+  removeLounge(i: number): void {
+    const control = <FormArray>this.myForm.controls['lounges'];
+    control.removeAt(i);
+  }
+
+  // Images
+  thumbnailChange(file: File): void {
+    this.loading = true;
+    this._uploadImage(file, 'thumbnail').then(() => {
+    });;
+  }
+
+  removeThumbnail(event: Event): void {
+    event.preventDefault();
+    this._hotelService.removeImage(this.hotel$.$ref.key, 'thumbnail', this.hotel.images.thumbnail).then(() => {
+      this._toast.success('Deleted thumbnail', 'Success!');
+    });
   }
 
   goBack(event: Event) {
@@ -57,11 +81,20 @@ export class HotelEditComponent implements OnInit {
     }
   }
 
+  // PRIVATE
+  private _uploadImage(file: File, imgType: string): firebase.Promise<any> {
+    return this._hotelService.uploadImage(this.hotel$.$ref.key, imgType, file)
+      .then(() => {
+        this.loading = false;
+        this._toast.success(file.name + ' upload complete!', 'Success!')
+      })
+  }
+
   private _loadHotel(): void {
     this._route.data.subscribe((data: { hotel: any }) => {
       let key = data.hotel.$key;
       this.hotel$ = this._hotelService.get(key);
-      this.hotel$.subscribe(hotel => {
+      this.hotel$.subscribe((hotel: Hotel) => {
         this.loading = false;
         this.hotel = hotel;
         this._initForms();
@@ -73,8 +106,22 @@ export class HotelEditComponent implements OnInit {
     this.myForm = this._fb.group({
       name: [this.hotel.name, [Validators.required, Validators.minLength(5)]],
       code: [this.hotel.code, [Validators.required]],
+      floorCount: [this.hotel.floorCount, [Validators.required]],
+      roomCount: [this.hotel.roomCount, [Validators.required]],
+      suiteCount: [this.hotel.suiteCount, [Validators.required]],
+      checkInTime: [this.hotel.checkInTime, [Validators.required]],
+      checkOutTime: [this.hotel.checkOutTime, [Validators.required]],
+      hoursToCancel: [this.hotel.hoursToCancel, [Validators.required]],
       address: this._initAddress(),
-      restaurants: this._initRestaurants()
+      restaurants: this._initRestaurants(),
+      lounges: this._initLounges(),
+      images: this._initImages()
+    })
+  }
+
+  private _initImages(): FormGroup {
+    return this._fb.group({
+      thumbnail: [this.hotel.images.thumbnail]
     })
   }
 
@@ -88,7 +135,7 @@ export class HotelEditComponent implements OnInit {
   }
 
   private _initRestaurant(restaurant?: Restaurant): FormGroup {
-    restaurant = !!restaurant ? restaurant : { name: '', phoneNumber: '' }
+    restaurant = !!restaurant ? restaurant : { name: '', phoneNumber: '' };
     return this._fb.group({
       name: [restaurant.name, [Validators.required]],
       phoneNumber: [restaurant.phoneNumber]
@@ -103,6 +150,24 @@ export class HotelEditComponent implements OnInit {
       });
     }
     return this._fb.array(controls)
+  }
+
+  private _initLounges(): FormArray {
+    let controls = [];
+    if (!!this.hotel.lounges) {
+      this.hotel.lounges.map(lounge => {
+        controls.push(this._initLounge(lounge));
+      })
+    }
+    return this._fb.array(controls);
+  }
+
+  private _initLounge(lounge?: Lounge): FormGroup {
+    lounge = !!lounge ? lounge : { name: '', phoneNumber: '' };
+    return this._fb.group({
+      name: [lounge.name, [Validators.required]],
+      phoneNumber: [lounge.phoneNumber]
+    });
   }
 
 }

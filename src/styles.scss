@@ -1,20 +1,74 @@
 /* Color Scheme: https://color.adobe.com/Paper-Modified-color-theme-9193057/ */
+
 $brand-primary: #2196f3;
+$brand-primary-shade: #4481eb;
 $brand-info: #9D54CC;
 $brand-success: #4caf50;
 $brand-warning: #ff9800;
 $brand-danger: #e51c23;
-
 @import "~bootstrap/scss/bootstrap";
-
 .rotating-plane-spinner {
-    @extend .bg-primary;
+  @extend .bg-primary;
 }
 
-accordion-group .card-header {
-    @extend .bg-primary;
-    @extend .text-white;
-    &>.card-title {
+accordion-group {
+  & .card {
+    border: none;
+    & .card-header {
+      @extend .bg-primary;
+      @extend .text-white;
+      &>.card-title {
         @extend .mb-0;
+      }
     }
+  }
+}
+
+.custom-file-control::before {
+  content: 'Browse';
+}
+
+.custom-file-control::after {
+  content: 'Choose file...';
+}
+
+.bg-gradient-blue {
+  background-image: linear-gradient(to top, $brand-primary-shade 0%, $brand-primary 100%);
+  background-color: $brand-primary;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  @extend .bg-gradient-blue;
+  margin: 100px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% {
+    -webkit-transform: perspective(120px)
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateY(180deg)
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
 }

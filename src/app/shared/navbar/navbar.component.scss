@@ -1,5 +1,6 @@
 @import "../../../styles.scss";
 nav {
   @extend .navbar-inverse;
-  @extend .bg-primary;
+  // @extend .bg-primary;
+  @extend .bg-gradient-blue;
 }

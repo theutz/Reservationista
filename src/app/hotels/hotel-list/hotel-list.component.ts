@@ -37,5 +37,4 @@ export class HotelListComponent implements OnInit {
     }
     this._router.navigateByUrl('hotels/details/' + hotel.$key);
   }
-
 }

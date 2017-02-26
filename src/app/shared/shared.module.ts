@@ -4,18 +4,26 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormControlTextInputComponent } from './form-control-text-input/form-control-text-input.component';
+import { FormControlImageUploadComponent } from './form-control-image-upload/form-control-image-upload.component';
+import { Ng2BootstrapModule } from 'ng2-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    Ng2BootstrapModule
   ],
-  declarations: [NavbarComponent, FormControlTextInputComponent],
+  declarations: [
+    NavbarComponent,
+    FormControlTextInputComponent,
+    FormControlImageUploadComponent
+  ],
   exports: [
     NavbarComponent,
     FormControlTextInputComponent,
+    FormControlImageUploadComponent
   ]
 })
 export class SharedModule { }

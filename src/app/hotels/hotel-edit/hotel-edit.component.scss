@@ -18,6 +18,7 @@ h1 {
     @extend .w-100;
     @extend .text-right;
 }
+
 button {
     @extend .btn;
     &[type="submit"] {
