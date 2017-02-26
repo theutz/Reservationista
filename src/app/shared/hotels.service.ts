@@ -63,20 +63,11 @@ export class HotelsService {
         return this.update(hotelId, hotel);
       })
   }
-
-  search(term: string): Observable<any> {
-    return this._af.list(this._hotelsNode).map((hotels: Hotels) => {
-      return hotels.filter(hotel => {
-        let regex = new RegExp(term, 'gi');
-        let termMatches: boolean = regex.test(hotel.name)
-          || regex.test(hotel.address.city)
-          || regex.test(hotel.address.state);
-        return termMatches;
-      })
-    })
-  }
-
 }
+
+////////////////
+// Interfaces //
+////////////////
 
 export interface Hotel {
   name?: string;
