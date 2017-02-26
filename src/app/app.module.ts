@@ -1,3 +1,4 @@
+import { TypeaheadModule } from 'ng2-bootstrap/typeahead';
 import { AppComponent } from './app.component';
 import { HotelsModule } from './hotels/hotels.module';
 import { BrandingService } from './shared/branding.service';
@@ -37,6 +38,7 @@ import { ToastrModule } from 'toastr-ng2';
     HotelsModule,
     TabsModule.forRoot(),
     AccordionModule.forRoot(),
+    TypeaheadModule.forRoot(),
   ],
   providers: [
     AuthService,

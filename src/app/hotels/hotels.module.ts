@@ -1,3 +1,4 @@
+import { TypeaheadModule } from 'ng2-bootstrap/typeahead';
 import { CanDeactivateGuard } from '../shared/can-deactivate-guard.service';
 import { HotelsService } from '../shared/hotels.service';
 import { SharedModule } from '../shared/shared.module';
@@ -25,7 +26,8 @@ import { LoungesEditComponent } from './lounges-edit/lounges-edit.component';
     ReactiveFormsModule,
     TabsModule,
     SharedModule,
-    AccordionModule
+    AccordionModule,
+    TypeaheadModule,
   ],
   declarations: [
     HotelListComponent,
