@@ -1,4 +1,3 @@
-import { TypeaheadModule } from 'ng2-bootstrap/typeahead';
 import { AppComponent } from './app.component';
 import { HotelsModule } from './hotels/hotels.module';
 import { BrandingService } from './shared/branding.service';
@@ -15,8 +14,8 @@ import { RoutingModule } from 'app/routing/routing.module';
 import { AuthService } from 'app/shared/auth.service';
 import { SharedModule } from 'app/shared/shared.module';
 import { authConfig, firebaseConfig } from 'environments/firebaseConfig';
-import { TabsModule } from 'ng2-bootstrap/tabs';
 import { AccordionModule } from 'ng2-bootstrap/accordion';
+import { TabsModule } from 'ng2-bootstrap/tabs';
 import { ToastrModule } from 'toastr-ng2';
 
 @NgModule({
@@ -38,7 +37,6 @@ import { ToastrModule } from 'toastr-ng2';
     HotelsModule,
     TabsModule.forRoot(),
     AccordionModule.forRoot(),
-    TypeaheadModule.forRoot(),
   ],
   providers: [
     AuthService,

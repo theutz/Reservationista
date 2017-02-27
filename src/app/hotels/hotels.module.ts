@@ -8,7 +8,6 @@ import { HotelResolverService } from './hotel-routing/hotel-resolver.service';
 import { HotelsComponent } from './hotels/hotels.component';
 import { LoungesEditComponent } from './lounges-edit/lounges-edit.component';
 import { RestaurantsEditComponent } from './restaurants-edit/restaurants-edit.component';
-import { SearchComponent } from './search/search.component';
 import { SubtitleService } from './subtitle.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -32,7 +31,6 @@ import { TypeaheadModule } from 'ng2-bootstrap/typeahead';
   declarations: [
     HotelListComponent,
     HotelsComponent,
-    SearchComponent,
     HotelDetailComponent,
     HotelEditComponent,
     RestaurantsEditComponent,
