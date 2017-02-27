@@ -8,6 +8,15 @@
   <!-- Content -->
   <ng-container *ngSwitchCase="false">
     <div class="card-columns">
+      <div class="card card-primary">
+        <div class="card-block">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="card-header">Filter Hotels</div>
+      </div>
       <div (click)="navigateToHotel(hotel, $event)" class="card" *ngFor="let hotel of hotels">
         <img *ngIf="!!hotel.images?.thumbnail" [src]="hotel.images?.thumbnail" alt="{{hotel.name}}" class="card-img-top img-fluid">
         <span *ngIf="hotel.code" class="badge">{{hotel.code}}</span>
