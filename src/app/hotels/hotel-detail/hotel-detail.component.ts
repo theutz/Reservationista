@@ -10,7 +10,6 @@ import { FirebaseObjectObservable } from 'angularfire2/database';
   styleUrls: ['./hotel-detail.component.scss']
 })
 export class HotelDetailComponent implements OnInit {
-
   loading: boolean = true;
   hotel$: FirebaseObjectObservable<Hotel>;
   hotel: Hotel;
@@ -31,12 +30,12 @@ export class HotelDetailComponent implements OnInit {
     private _hs: HotelsService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _subtitleService: BreadcrumbService
+    private _breadSvc: BreadcrumbService
   ) { }
 
   ngOnInit() {
     this._setHotel$();
-    this._subtitleService.setSubtitle('Details');
+    this._breadSvc.setBreadcrumbs('Details');
   }
 
   edit(event: Event) {

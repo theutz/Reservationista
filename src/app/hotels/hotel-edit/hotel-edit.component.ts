@@ -20,7 +20,7 @@ export class HotelEditComponent implements OnInit {
   hotel: Hotel;
 
   constructor(
-    private _subtitleService: BreadcrumbService,
+    private _breadSvc: BreadcrumbService,
     private _hotelService: HotelsService,
     private _route: ActivatedRoute,
     private _fb: FormBuilder,
@@ -29,7 +29,7 @@ export class HotelEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._subtitleService.setSubtitle('Edit');
+    this._breadSvc.setBreadcrumbs('Edit');
     this._loadHotel();
   }
 
