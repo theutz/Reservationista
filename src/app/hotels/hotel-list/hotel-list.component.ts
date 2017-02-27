@@ -11,7 +11,6 @@ import { HotelsService, Hotel, Hotels } from 'app/shared/hotels.service';
   styleUrls: ['./hotel-list.component.scss']
 })
 export class HotelListComponent implements OnInit {
-  hotels: Hotels;
   hotels$: Observable<Hotels>;
   loading: boolean = true;
 
@@ -26,6 +25,7 @@ export class HotelListComponent implements OnInit {
 
   filterHotels(event: any) {
     let searchTerm = event.target.value;
+    this.hotels$ = this._hs.search(searchTerm);
   }
 
   navigateToHotel(hotel: any, event?: Event): void {
@@ -38,7 +38,6 @@ export class HotelListComponent implements OnInit {
   private _subscribeToHotels() {
     this.hotels$ = this._hs.getAll();
     this.hotels$.subscribe(hotels => {
-      this.hotels = hotels;
       this.loading = false;
     });
   }

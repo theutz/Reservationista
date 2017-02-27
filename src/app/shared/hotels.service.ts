@@ -63,6 +63,19 @@ export class HotelsService {
         return this.update(hotelId, hotel);
       })
   }
+
+  search(term: string): Observable<any> {
+    return this._af.list(this._hotelsNode).map(hotels => {
+      return hotels.filter((hotel: Hotel) => {
+        let regex = new RegExp(term, "gi");
+        let searchTest = regex.test(hotel.name)
+          || regex.test(hotel.code)
+          || regex.test(hotel.address.city)
+          || regex.test(hotel.address.state);
+        return searchTest;
+      });
+    });
+  }
 }
 
 ////////////////
