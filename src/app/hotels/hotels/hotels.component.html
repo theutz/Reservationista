@@ -1,5 +1,6 @@
-<div class="header">
-  <h1><a routerLink="/hotels">{{title}}</a></h1>
-  <h2 *ngIf="subtitle">{{subtitle}}</h2>
-</div>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+  <li class="breadcrumb-item" *ngIf="title"><a routerLink="/hotels">{{title}}</a></li>
+  <li class="breadcrumb-item" *ngIf="subtitle">{{subtitle}}</li>
+</ol>
 <router-outlet></router-outlet>

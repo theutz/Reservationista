@@ -1,19 +1,4 @@
 @import "../../../styles.scss";
-.header {
-  @extend .d-flex;
-  @extend .justify-content-start;
+.breadcrumb {
   @extend .my-3;
-}
-
-app-search {
-  @extend .align-self-center;
-  @extend .ml-auto;
-}
-
-h1 {
-  @extend .display-3;
-}
-
-h2 {
-  @extend .text-primary;
 }
