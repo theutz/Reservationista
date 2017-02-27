@@ -5,7 +5,6 @@
   &>.card-block {
     @extend .d-flex;
     @extend .align-items-center;
-    height: 126px;
   }
   &>.badge {
     @extend .badge-pill;
