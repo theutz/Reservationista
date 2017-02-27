@@ -1,4 +1,3 @@
-import { TypeaheadModule } from 'ng2-bootstrap/typeahead';
 import { CanDeactivateGuard } from '../shared/can-deactivate-guard.service';
 import { HotelsService } from '../shared/hotels.service';
 import { SharedModule } from '../shared/shared.module';
@@ -7,6 +6,7 @@ import { HotelEditComponent } from './hotel-edit/hotel-edit.component';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { HotelResolverService } from './hotel-routing/hotel-resolver.service';
 import { HotelsComponent } from './hotels/hotels.component';
+import { LoungesEditComponent } from './lounges-edit/lounges-edit.component';
 import { RestaurantsEditComponent } from './restaurants-edit/restaurants-edit.component';
 import { SearchComponent } from './search/search.component';
 import { SubtitleService } from './subtitle.service';
@@ -16,7 +16,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HotelRoutingModule } from 'app/hotels/hotel-routing/hotel-routing.module';
 import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { TabsModule } from 'ng2-bootstrap/tabs';
-import { LoungesEditComponent } from './lounges-edit/lounges-edit.component';
+import { TypeaheadModule } from 'ng2-bootstrap/typeahead';
 
 @NgModule({
   imports: [
