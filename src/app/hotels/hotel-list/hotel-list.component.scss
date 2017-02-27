@@ -1,7 +1,7 @@
 @import "../../../styles.scss";
 .card {
   @extend .my-2;
-  @extend .mx-2;
+  @extend .mr-2;
   &>.badge {
     @extend .badge-pill;
     @extend .badge-primary;
