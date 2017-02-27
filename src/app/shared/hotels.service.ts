@@ -63,8 +63,11 @@ export class HotelsService {
         return this.update(hotelId, hotel);
       })
   }
-
 }
+
+////////////////
+// Interfaces //
+////////////////
 
 export interface Hotel {
   name?: string;

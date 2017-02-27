@@ -14,8 +14,8 @@ import { RoutingModule } from 'app/routing/routing.module';
 import { AuthService } from 'app/shared/auth.service';
 import { SharedModule } from 'app/shared/shared.module';
 import { authConfig, firebaseConfig } from 'environments/firebaseConfig';
-import { TabsModule } from 'ng2-bootstrap';
 import { AccordionModule } from 'ng2-bootstrap/accordion';
+import { TabsModule } from 'ng2-bootstrap/tabs';
 import { ToastrModule } from 'toastr-ng2';
 
 @NgModule({
