@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { AfterViewChecked } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Router } from '@angular/router';
 import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
@@ -10,7 +11,7 @@ import { HotelsService, Hotel, Hotels } from 'app/shared/hotels.service';
   styleUrls: ['./hotel-list.component.scss']
 })
 export class HotelListComponent implements OnInit {
-  hotels$: FirebaseListObservable<Hotels>;
+  hotels$: Observable<Hotels>;
   loading: boolean = true;
 
   constructor(
