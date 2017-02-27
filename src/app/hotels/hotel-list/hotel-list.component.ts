@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { AfterViewChecked } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Router } from '@angular/router';
 import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
@@ -10,9 +11,7 @@ import { HotelsService, Hotel, Hotels } from 'app/shared/hotels.service';
   styleUrls: ['./hotel-list.component.scss']
 })
 export class HotelListComponent implements OnInit {
-
-  hotels: Hotels;
-  hotels$: FirebaseListObservable<Hotels>;
+  hotels$: Observable<Hotels>;
   loading: boolean = true;
 
   constructor(
@@ -24,11 +23,9 @@ export class HotelListComponent implements OnInit {
     this._subscribeToHotels();
   }
 
-  private _subscribeToHotels() {
-    this._hs.getAll().subscribe(hotels => {
-      this.hotels = hotels;
-      this.loading = false;
-    });;
+  filterHotels(event: any) {
+    let searchTerm = event.target.value;
+    this.hotels$ = this._hs.search(searchTerm);
   }
 
   navigateToHotel(hotel: any, event?: Event): void {
@@ -36,5 +33,12 @@ export class HotelListComponent implements OnInit {
       event.preventDefault();
     }
     this._router.navigateByUrl('hotels/details/' + hotel.$key);
+  }
+
+  private _subscribeToHotels() {
+    this.hotels$ = this._hs.getAll();
+    this.hotels$.subscribe(hotels => {
+      this.loading = false;
+    });
   }
 }

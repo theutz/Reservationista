@@ -2,6 +2,11 @@
 .card {
   @extend .my-2;
   @extend .mr-2;
+  &>.card-block {
+    @extend .d-flex;
+    @extend .align-items-center;
+    height: 126px;
+  }
   &>.badge {
     @extend .badge-pill;
     @extend .badge-primary;
