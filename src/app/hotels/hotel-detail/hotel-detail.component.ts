@@ -1,8 +1,8 @@
-import { SubtitleService } from '../subtitle.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Address, Hotel, HotelsService } from '../../shared/hotels.service';
-import { FirebaseObjectObservable } from 'angularfire2/database';
+import { BreadcrumbService } from '../breadcrumb.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FirebaseObjectObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-hotel-detail',
@@ -31,7 +31,7 @@ export class HotelDetailComponent implements OnInit {
     private _hs: HotelsService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _subtitleService: SubtitleService
+    private _subtitleService: BreadcrumbService
   ) { }
 
   ngOnInit() {

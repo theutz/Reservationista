@@ -1,8 +1,8 @@
-import { Observable, ReplaySubject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
+import { Observable, ReplaySubject } from 'rxjs/Rx';
 
 @Injectable()
-export class SubtitleService {
+export class BreadcrumbService {
   private _subtitleSource = new ReplaySubject<string>();
 
   subtitle$: Observable<string>;
