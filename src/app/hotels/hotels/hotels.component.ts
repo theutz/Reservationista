@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Event as RouterEvent, NavigationStart, Router } from '@angular/router';
+import { Event as RouterEvent, NavigationStart, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-hotels',
