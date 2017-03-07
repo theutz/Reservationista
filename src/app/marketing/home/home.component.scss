@@ -1,9 +1,37 @@
 @import "../../../styles.scss";
 .jumbotron {
-    background-image: url('assets/corner-hotel.jpg');
-    background-position: 0 57%;
-    &>.container {
-        background-color: rgba(255,255,255,0.6);
-        @extend .p-3;
+  @extend .d-flex;
+  @extend .align-items-center;
+  background-image: url('assets/corner-hotel.jpg');
+  background-position: 0 57%;
+  .logo {
+    @extend .mx-auto;
+    @extend .my-2;
+    width: 100px;
+    height: auto;
+  }
+  .card {
+    @extend .w-100;
+    @extend .d-flex;
+    @extend .justify-content-center;
+    border: none;
+    background-color: transparentize(#fff, .15);
+    .card-block {
+      @extend .d-flex;
+      @extend .flex-wrap;
+      @extend .justify-content-center;
+      @extend .text-center;
     }
+    h1 {
+      @extend .text-primary;
+      @extend .display-3;
+      @extend .w-100;
+      @include media-breakpoint-down(md) {
+        font-size: 35px;
+      }
+    }
+    p {
+      @extend .w-100;
+    }
+  }
 }
