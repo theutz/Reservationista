@@ -1,7 +1,10 @@
 @import "../../../styles.scss";
 .jumbotron {
   @extend .text-center;
-  & h2 span {
+  .card {
+    background: transparentize(#fff, .15);
+  }
+  h2 span {
     display: block;
   }
 }

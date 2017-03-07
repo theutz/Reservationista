@@ -1,4 +1,40 @@
 @import "../../../styles.scss";
+:host {
+  @extend .d-flex;
+  @extend .flex-wrap;
+  @extend .justify-content-center;
+}
+
+.header {
+  @extend .d-flex;
+  @extend .justify-content-around;
+  @extend .align-items-center;
+  @extend .w-100;
+  @extend .text-primary;
+  .fa-star {
+    font-size: 40px;
+    color: transparentize($brand-primary, .5);
+  }
+}
+
+h1 {
+  @extend .display-4;
+  @extend .text-center;
+  @extend .text-primary;
+  @extend .my-4;
+  font-family: $brand-font-display;
+}
+
+.input-group {
+  @extend .my-2;
+  @extend .w-75;
+}
+
+.card-columns {
+  @extend .my-3;
+  @extend .w-100;
+}
+
 .card {
   @extend .my-2;
   @extend .mr-2;
