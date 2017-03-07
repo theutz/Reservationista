@@ -1,3 +1,9 @@
-<p>
-  breadcrumbs works!
-</p>
+<ol class="breadcrumb">
+  <li *ngFor="let crumb of breadcrumbs" class="breadcrumb-item">
+    <ng-container [ngSwitch]="!!crumb.link">
+      <a *ngSwitchCase="true" [routerLink]="crumb.link">{{crumb.name}}</a>
+      <ng-container *ngSwitchCase="false">{{crumb.name}}</ng-container>
+      <ng-container *ngSwitchDefault>{{crumb.name}}</ng-container>
+    </ng-container>
+  </li>
+</ol>
