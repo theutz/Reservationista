@@ -1,12 +1,12 @@
-import { HotelResolverService } from './hotel-resolver.service';
 import { CanDeactivateGuard } from '../../shared/can-deactivate-guard.service';
+import { HotelResolverService } from './hotel-resolver.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HotelListComponent } from 'app/hotels/hotel-list/hotel-list.component';
-import { HotelsComponent } from 'app/hotels/hotels/hotels.component';
 import { HotelDetailComponent } from 'app/hotels/hotel-detail/hotel-detail.component';
 import { HotelEditComponent } from 'app/hotels/hotel-edit/hotel-edit.component';
+import { HotelListComponent } from 'app/hotels/hotel-list/hotel-list.component';
+import { HotelsComponent } from 'app/hotels/hotels/hotels.component';
 
 const hotelRoutes: Routes = [
   {
@@ -17,6 +17,9 @@ const hotelRoutes: Routes = [
         canDeactivate: [CanDeactivateGuard],
         resolve: {
           hotel: HotelResolverService
+        },
+        data: {
+          breadcrumb: 'Details'
         }
       },
       {
@@ -25,6 +28,9 @@ const hotelRoutes: Routes = [
         canDeactivate: [CanDeactivateGuard],
         resolve: {
           hotel: HotelResolverService
+        },
+        data: {
+          breadcrumb: 'Edit'
         }
       },
       { path: '', component: HotelListComponent }
