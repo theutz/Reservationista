@@ -17,6 +17,7 @@ import { authConfig, firebaseConfig } from 'environments/firebaseConfig';
 import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { TabsModule } from 'ng2-bootstrap/tabs';
 import { ToastrModule } from 'toastr-ng2';
+import { AdminModule } from 'app/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ToastrModule } from 'toastr-ng2';
     HotelsModule,
     TabsModule.forRoot(),
     AccordionModule.forRoot(),
+    AdminModule
   ],
   providers: [
     AuthService,
