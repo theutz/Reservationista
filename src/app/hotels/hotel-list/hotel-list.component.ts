@@ -33,6 +33,7 @@ export class HotelListComponent implements OnInit {
       event.preventDefault();
     }
     this._router.navigateByUrl('hotels/details/' + hotel.$key);
+    window.scrollTo(0, 0);
   }
 
   private _subscribeToHotels() {
