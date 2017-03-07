@@ -42,6 +42,7 @@
       @extend .text-primary;
       @extend .display-3;
       @extend .w-100;
+      text-shadow: 1px 1px transparentize(#000, .4);
       font-family: $brand-font-display;
       @include media-breakpoint-down(md) {
         font-size: 33px;
@@ -49,6 +50,30 @@
     }
     p {
       @extend .w-100;
+    }
+    .btn {
+      &>.fa-star {
+        font-size: 16px;
+        color: lighten($brand-primary, 30%);
+      }
+    }
+  }
+}
+
+.cards {
+  @extend .d-flex;
+  @extend .flex-wrap;
+  @extend .justify-content-between;
+  .card {
+    width: 32%;
+    .card-header {
+      @extend .bg-primary;
+      @extend .text-white;
+      @extend .text-center;
+      font-family: $brand-font-display;
+    }
+    .card-block {
+      @extend .text-center;
     }
   }
 }
