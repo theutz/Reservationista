@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { Ng2BootstrapModule } from 'ng2-bootstrap';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { FooterComponent } from './footer/footer.component';
+import { StatCardComponent } from './stat-card/stat-card.component';
 
 @NgModule({
   imports: [
@@ -23,13 +24,15 @@ import { FooterComponent } from './footer/footer.component';
     FormControlImageUploadComponent,
     BreadcrumbsComponent,
     FooterComponent,
+    StatCardComponent,
   ],
   exports: [
     NavbarComponent,
     FormControlTextInputComponent,
     FormControlImageUploadComponent,
     BreadcrumbsComponent,
-    FooterComponent
+    FooterComponent,
+    StatCardComponent
   ]
 })
 export class SharedModule { }

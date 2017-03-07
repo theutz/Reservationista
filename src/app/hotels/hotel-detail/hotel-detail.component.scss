@@ -29,25 +29,10 @@ tab {
   @extend .justify-content-between;
   @extend .d-flex;
   @extend .flex-wrap;
-  &>.card {
-    @extend .text-center;
-    @extend .card-inverse;
-    @extend .card-primary;
-    @extend .bg-gradient-blue;
-    @extend .my-1;
-    @extend .p-2;
-    @extend .small;
-    box-shadow: 1px 1px 5px transparentize(#000, .5);
-    width: 33%;
-    font-size: 14px;
-    @include media-breakpoint-up(sm) {
-      font-size: 20px;
-    }
-    &>.card-img-top>span {
-      @extend .h4;
-      @include media-breakpoint-up(sm) {
-        font-size: 50px;
-      }
+  app-stat-card {
+    width: 48%;
+    @include media-breakpoint-up(md) {
+      width: 33%;
     }
   }
 }

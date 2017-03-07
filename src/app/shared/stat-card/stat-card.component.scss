@@ -1,0 +1,27 @@
+@import "../../../styles.scss";
+.card {
+  @extend .text-center;
+  @extend .card-inverse;
+  @extend .card-primary;
+  @extend .bg-gradient-blue;
+  @extend .my-1;
+  @extend .p-2;
+  box-shadow: 1px 1px 5px transparentize(#000, .5);
+  font-size: 16px;
+  .card-block {
+    @include media-breakpoint-up(sm) {
+      font-size: 22px;
+    }
+  }
+  .card-img-top {
+    @extend .mt-4;
+    h3 {
+      @extend .display-2;
+      @extend .text-white;
+      font-size: 22px;
+      @include media-breakpoint-up(md) {
+        font-size: 46px;
+      }
+    }
+  }
+}
