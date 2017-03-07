@@ -30,8 +30,9 @@ export class NavbarComponent implements OnInit {
 
   private _autoCollapseNavbar() {
     Observable.fromEvent(window, 'click')
-      .filter((event: any) => event.target.id != 'navbar-toggler'
-        && event.target.parentElement.id != 'navbar-toggler')
+      .filter((event: any) => {
+        return event.target.id != 'navbar-toggler'
+      })
       .subscribe(event => {
         this.isCollapsed = true;
       })
