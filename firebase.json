@@ -4,9 +4,9 @@
   },
   "hosting": {
     "public": "dist",
-    "rewrites": {
+    "rewrites": [{
       "source": "**",
       "destination": "/index.html"
-    }
+    }]
   }
 }
