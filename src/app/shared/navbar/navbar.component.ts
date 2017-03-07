@@ -25,9 +25,20 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this._setTitle();
+    this._autoCollapseNavbar();
   }
 
-  toggleNavbar(): void {
+  private _autoCollapseNavbar() {
+    Observable.fromEvent(window, 'click')
+      .filter((event: any) => event.target.id != 'navbar-toggler'
+        && event.target.parentElement.id != 'navbar-toggler')
+      .subscribe(event => {
+        this.isCollapsed = true;
+      })
+  }
+
+  toggleNavbar(event: Event): void {
+    event.preventDefault();
     this.isCollapsed = !this.isCollapsed;
   }
 
