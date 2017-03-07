@@ -26,6 +26,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     NavbarComponent,
     FormControlTextInputComponent,
     FormControlImageUploadComponent,
+    BreadcrumbsComponent
   ]
 })
 export class SharedModule { }

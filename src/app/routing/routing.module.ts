@@ -1,6 +1,6 @@
 import { LoginUserComponent } from '../login-user/login-user.component';
 import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from 'app/marketing/home/home.component';
 import { LearnMoreComponent } from 'app/marketing/learn-more/learn-more.component';
@@ -22,3 +22,5 @@ export const appRoutes: Routes = [
     exports: [RouterModule]
 })
 export class RoutingModule { }
+
+export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
