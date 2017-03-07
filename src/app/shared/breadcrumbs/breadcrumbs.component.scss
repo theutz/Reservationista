@@ -1,5 +1,28 @@
 @import "../../../styles.scss";
 .breadcrumb {
-  @extend .my-3;
+  @extend .mb-3;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   background: lighten($brand-primary, 40%);
+  @include media-breakpoint-down(md) {
+    font-size: 14px;
+    .breadcrumb-item::before {
+      padding-left: 0.2rem;
+      padding-right: 0;
+    }
+  }
+}
+
+.breadcrumb-item:first-of-type {
+  font-family: $brand-font-display;
+  @include media-breakpoint-up(sm) {
+    margin-right: 6px;
+  }
+  .fa-star {
+    color: transparentize($brand-primary, .5);
+  }
+}
+
+.logo {
+  width: 14px;
 }

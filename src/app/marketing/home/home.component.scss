@@ -1,9 +1,54 @@
 @import "../../../styles.scss";
 .jumbotron {
-    background-image: url('assets/corner-hotel.jpg');
-    background-position: 0 57%;
-    &>.container {
-        background-color: rgba(255,255,255,0.6);
-        @extend .p-3;
+  @extend .d-flex;
+  @extend .align-items-center;
+  background-image: url('assets/corner-hotel.jpg');
+  background-position: 0 57%;
+  .stars {
+    @extend .mx-auto;
+    @extend .my-2;
+    @extend .d-flex;
+    @extend .justify-content-center;
+    @extend .align-items-center;
+    i {
+      font-size: 50px;
+      color: transparentize($brand-primary, .5);
+      @extend .px-4;
+      @extend .align-self-center;
+      @include media-breakpoint-down(md) {
+        font-size: 33px;
+        margin: -21px;
+      }
     }
+  }
+  .logo {
+    @extend .mx-auto;
+    width: 100px;
+    height: auto;
+  }
+  .card {
+    @extend .w-100;
+    @extend .d-flex;
+    @extend .justify-content-center;
+    border: none;
+    background-color: transparentize(#fff, .15);
+    .card-block {
+      @extend .d-flex;
+      @extend .flex-wrap;
+      @extend .justify-content-center;
+      @extend .text-center;
+    }
+    h1 {
+      @extend .text-primary;
+      @extend .display-3;
+      @extend .w-100;
+      font-family: $brand-font-display;
+      @include media-breakpoint-down(md) {
+        font-size: 33px;
+      }
+    }
+    p {
+      @extend .w-100;
+    }
+  }
 }

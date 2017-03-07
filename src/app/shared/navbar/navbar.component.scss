@@ -1,6 +1,14 @@
 @import "../../../styles.scss";
 nav {
   @extend .navbar-inverse;
-  // @extend .bg-primary;
   @extend .bg-gradient-blue;
+}
+
+.navbar-brand {
+  font-family: $brand-font-display;
+}
+
+.logo {
+  height: 40px;
+  margin-top: -10px;
 }
