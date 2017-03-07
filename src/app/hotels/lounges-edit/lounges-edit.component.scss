@@ -1,6 +1,6 @@
-@import "~bootstrap/scss/bootstrap";
+@import "../../../styles.scss";
 .card {
   @extend .card-inverse;
-  @extend .card-primary;
   @extend .mb-4;
+  @extend .bg-gradient-blue;
 }
