@@ -26,6 +26,7 @@
       @extend .text-primary;
       @extend .display-3;
       @extend .w-100;
+      font-family: $brand-font-display;
       @include media-breakpoint-down(md) {
         font-size: 35px;
       }

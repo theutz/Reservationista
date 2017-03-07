@@ -1,4 +1,9 @@
+
 /* Color Scheme: https://color.adobe.com/Paper-Modified-color-theme-9193057/ */
+
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+/* Bootstrap Modifications */
 
 $brand-primary: #2196f3;
 $brand-primary-shade: #4481eb;
@@ -6,7 +11,14 @@ $brand-info: #9D54CC;
 $brand-success: #4caf50;
 $brand-warning: #ff9800;
 $brand-danger: #e51c23;
+$brand-font-display: 'Pacifico';
+
+/* Import bootstrap */
+
 @import "~bootstrap/scss/bootstrap";
+
+/* Global Styles */
+
 .rotating-plane-spinner {
   @extend .bg-primary;
 }
