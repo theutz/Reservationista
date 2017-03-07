@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormControlTextInputComponent } from './form-control-text-input/form-control-text-input.component';
 import { FormControlImageUploadComponent } from './form-control-image-upload/form-control-image-upload.component';
 import { Ng2BootstrapModule } from 'ng2-bootstrap';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 @NgModule({
   imports: [
@@ -18,12 +19,14 @@ import { Ng2BootstrapModule } from 'ng2-bootstrap';
   declarations: [
     NavbarComponent,
     FormControlTextInputComponent,
-    FormControlImageUploadComponent
+    FormControlImageUploadComponent,
+    BreadcrumbsComponent
   ],
   exports: [
     NavbarComponent,
     FormControlTextInputComponent,
-    FormControlImageUploadComponent
+    FormControlImageUploadComponent,
+    BreadcrumbsComponent
   ]
 })
 export class SharedModule { }

@@ -3,15 +3,15 @@ import { Observable, ReplaySubject } from 'rxjs/Rx';
 
 @Injectable()
 export class BreadcrumbService {
-  private _breadcrumbSource = new ReplaySubject<string>();
+  private _sub = new ReplaySubject<string>();
 
   breadcrumbs$: Observable<string>;
 
   constructor() {
-    this.breadcrumbs$ = this._breadcrumbSource.asObservable();
+    this.breadcrumbs$ = this._sub.asObservable();
   }
 
   setBreadcrumbs(subtitle: string) {
-    this._breadcrumbSource.next(subtitle);
+    this._sub.next(subtitle);
   }
 }
