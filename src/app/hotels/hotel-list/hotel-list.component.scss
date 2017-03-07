@@ -30,14 +30,15 @@ h1 {
   @extend .w-75;
 }
 
-.card-columns {
-  @extend .my-3;
-  @extend .w-100;
+.card-list {
+  @extend .d-flex;
+  @extend .flex-wrap;
+  @extend .justify-content-around;
 }
 
 .card {
+  width: 32%;
   @extend .my-2;
-  @extend .mr-2;
   &>.card-block {
     @extend .d-flex;
     @extend .align-items-center;
