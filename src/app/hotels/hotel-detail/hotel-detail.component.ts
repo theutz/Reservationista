@@ -1,8 +1,7 @@
-import { SubtitleService } from '../subtitle.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Address, Hotel, HotelsService } from '../../shared/hotels.service';
-import { FirebaseObjectObservable } from 'angularfire2/database';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FirebaseObjectObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-hotel-detail',
@@ -10,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hotel-detail.component.scss']
 })
 export class HotelDetailComponent implements OnInit {
-
   loading: boolean = true;
   hotel$: FirebaseObjectObservable<Hotel>;
   hotel: Hotel;
@@ -31,12 +29,10 @@ export class HotelDetailComponent implements OnInit {
     private _hs: HotelsService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _subtitleService: SubtitleService
   ) { }
 
   ngOnInit() {
     this._setHotel$();
-    this._subtitleService.setSubtitle('Details');
   }
 
   edit(event: Event) {

@@ -1,15 +1,11 @@
-import { SubtitleService } from '../subtitle.service';
-import { NgSpinKitModule } from 'ng-spin-kit/dist/spinners';
-import { Subject } from 'rxjs/Rx';
-import { Observable } from '@angular-cli/ast-tools/node_modules/rxjs/Rx';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Hotel, HotelsService } from '../../shared/hotels.service';
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { BreadcrumbService } from '../breadcrumb.service';
 import { HotelDetailComponent } from './hotel-detail.component';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs/Rx';
+/* tslint:disable:no-unused-variable */
+
 
 class HotelsServiceSpy {
   get = jasmine.createSpy('get')
@@ -38,7 +34,7 @@ describe('HotelDetailComponent', () => {
         { provide: HotelsService, useClass: HotelsServiceSpy },
         { provide: ActivatedRoute, useClass: ActivatedRouteSpy },
         { provide: Router, useClass: RouterSpy },
-        { provide: SubtitleService, useClass: SubtitleServiceSpy }
+        { provide: BreadcrumbService, useClass: SubtitleServiceSpy }
       ]
     })
       .compileComponents();

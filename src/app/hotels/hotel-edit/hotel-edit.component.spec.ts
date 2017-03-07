@@ -1,9 +1,9 @@
-import { SubtitleService } from '../subtitle.service';
+import { BreadcrumbService } from '../breadcrumb.service';
 import { HotelEditComponent } from './hotel-edit.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 /* tslint:disable:no-unused-variable */
 
-class SubtitleServiceSpy {
+class BreadcrumbServiceSpy {
   setSubtitle = jasmine.createSpy('setSubtitle');
 }
 
@@ -15,7 +15,7 @@ describe('HotelEditComponent', () => {
     TestBed.configureTestingModule({
       declarations: [HotelEditComponent],
       providers: [
-        { provide: SubtitleService, useClass: SubtitleServiceSpy }
+        { provide: BreadcrumbService, useClass: BreadcrumbServiceSpy }
       ]
     })
       .compileComponents();

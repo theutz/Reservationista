@@ -1,16 +1,10 @@
-import { ReplaySubject } from 'rxjs/Rx';
-import { SubtitleService } from '../subtitle.service';
-import { RouterTestingModule } from '@angular/router/testing';
-import { RouterModule } from '@angular/router';
-import { SearchComponent } from '../search/search.component';
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { BreadcrumbService } from '../breadcrumb.service';
 import { HotelsComponent } from './hotels.component';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+/* tslint:disable:no-unused-variable */
 
-class SubtitleServiceSpy {
+class BreadcrumbServiceSpy {
   subtitle$ = jasmine.createSpyObj('subtitle$', ['subscribe'])
 }
 
@@ -21,9 +15,9 @@ describe('HotelsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [HotelsComponent, SearchComponent],
+      declarations: [HotelsComponent],
       providers: [
-        { provide: SubtitleService, useClass: SubtitleServiceSpy }
+        { provide: BreadcrumbService, useClass: BreadcrumbServiceSpy }
       ]
     })
       .compileComponents();

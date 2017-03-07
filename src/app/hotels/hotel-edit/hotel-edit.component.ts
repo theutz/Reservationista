@@ -1,12 +1,11 @@
-import { Location } from '@angular/common';
-import { ToastrService } from 'toastr-ng2/toastr-service';
-import { FormArray } from '@angular/forms/src/model';
 import { Hotel, HotelsService, Lounge, Restaurant } from '../../shared/hotels.service';
-import { SubtitleService } from '../subtitle.service';
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray } from '@angular/forms/src/model';
 import { ActivatedRoute } from '@angular/router';
 import { FirebaseObjectObservable } from 'angularfire2/database';
+import { ToastrService } from 'toastr-ng2/toastr-service';
 
 @Component({
   selector: 'app-hotel-edit',
@@ -20,16 +19,14 @@ export class HotelEditComponent implements OnInit {
   hotel: Hotel;
 
   constructor(
-    private _subtitleService: SubtitleService,
     private _hotelService: HotelsService,
     private _route: ActivatedRoute,
     private _fb: FormBuilder,
     private _toast: ToastrService,
-    private _location: Location
+    private _location: Location,
   ) { }
 
   ngOnInit() {
-    this._subtitleService.setSubtitle('Edit');
     this._loadHotel();
   }
 

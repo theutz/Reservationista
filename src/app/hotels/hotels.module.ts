@@ -8,7 +8,6 @@ import { HotelResolverService } from './hotel-routing/hotel-resolver.service';
 import { HotelsComponent } from './hotels/hotels.component';
 import { LoungesEditComponent } from './lounges-edit/lounges-edit.component';
 import { RestaurantsEditComponent } from './restaurants-edit/restaurants-edit.component';
-import { SubtitleService } from './subtitle.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,7 +39,6 @@ import { TypeaheadModule } from 'ng2-bootstrap/typeahead';
     HotelsService,
     HotelResolverService,
     CanDeactivateGuard,
-    SubtitleService,
     FormBuilder
   ]
 })
