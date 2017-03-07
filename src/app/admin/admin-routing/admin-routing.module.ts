@@ -8,7 +8,8 @@ import { CanDeactivateGuard } from 'app/shared/can-deactivate-guard.service';
 const adminRoutes: Routes = [
   {
     path: '', component: AdminComponent, children: [
-      { path: '', component: AdminHomeComponent, canDeactivate: [CanDeactivateGuard], data: { breadcrumb: 'Home' } }
+      { path: 'home', component: AdminHomeComponent, canDeactivate: [CanDeactivateGuard], data: { breadcrumb: 'Home' } },
+      { path: '', redirectTo: '/admin/home', pathMatch: 'full' }
     ]
   }
 ];
