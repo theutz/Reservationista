@@ -23,7 +23,7 @@ export class HotelEditComponent implements OnInit {
     private _route: ActivatedRoute,
     private _fb: FormBuilder,
     private _toast: ToastrService,
-    private _location: Location
+    private _location: Location,
   ) { }
 
   ngOnInit() {

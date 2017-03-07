@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Event as RouterEvent, NavigationStart, Router } from '@angular/router';
-import { BreadcrumbService } from 'app/hotels/breadcrumb.service';
 
 @Component({
   selector: 'app-hotels',
@@ -12,7 +11,7 @@ export class HotelsComponent implements OnInit {
   subtitle: string = '';
 
   constructor(
-    private _router: Router
+    private _router: Router,
   ) { }
 
   ngOnInit() {

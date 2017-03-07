@@ -1,5 +1,4 @@
 import { Address, Hotel, HotelsService } from '../../shared/hotels.service';
-import { BreadcrumbService } from '../breadcrumb.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseObjectObservable } from 'angularfire2/database';
@@ -30,12 +29,10 @@ export class HotelDetailComponent implements OnInit {
     private _hs: HotelsService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _breadSvc: BreadcrumbService
   ) { }
 
   ngOnInit() {
     this._setHotel$();
-    this._breadSvc.setBreadcrumbs('Details');
   }
 
   edit(event: Event) {

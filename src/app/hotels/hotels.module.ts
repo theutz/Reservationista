@@ -1,7 +1,6 @@
 import { CanDeactivateGuard } from '../shared/can-deactivate-guard.service';
 import { HotelsService } from '../shared/hotels.service';
 import { SharedModule } from '../shared/shared.module';
-import { BreadcrumbService } from './breadcrumb.service';
 import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
 import { HotelEditComponent } from './hotel-edit/hotel-edit.component';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
@@ -40,7 +39,6 @@ import { TypeaheadModule } from 'ng2-bootstrap/typeahead';
     HotelsService,
     HotelResolverService,
     CanDeactivateGuard,
-    BreadcrumbService,
     FormBuilder
   ]
 })
