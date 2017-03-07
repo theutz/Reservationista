@@ -1,8 +1,14 @@
 @import "../../../styles.scss";
 .jumbotron {
   @extend .text-center;
+  @extend .d-flex;
+  @extend .justify-content-center;
   .card {
     background: transparentize(#fff, .15);
+    .badge {
+      @extend .badge-pill;
+      @extend .badge-info;
+    }
   }
   h2 span {
     display: block;
@@ -27,11 +33,13 @@ tab {
     @extend .text-center;
     @extend .card-inverse;
     @extend .card-primary;
+    @extend .bg-gradient-blue;
     @extend .my-1;
     @extend .p-2;
+    @extend .small;
+    box-shadow: 1px 1px 5px transparentize(#000, .5);
     width: 33%;
     font-size: 14px;
-    @extend .small;
     @include media-breakpoint-up(sm) {
       font-size: 20px;
     }

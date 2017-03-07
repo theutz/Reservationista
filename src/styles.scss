@@ -36,6 +36,17 @@ accordion-group {
   }
 }
 
+
+/* Mixins */
+
+.bg-gradient-blue {
+  background-image: linear-gradient(to top, $brand-primary-shade 0%, $brand-primary 100%);
+  background-color: $brand-primary;
+}
+
+
+/* Global Styles */
+
 .custom-file-control::before {
   content: 'Browse';
 }
@@ -44,9 +55,8 @@ accordion-group {
   content: 'Choose file...';
 }
 
-.bg-gradient-blue {
-  background-image: linear-gradient(to top, $brand-primary-shade 0%, $brand-primary 100%);
-  background-color: $brand-primary;
+.nav-pills .nav-link.active {
+  @extend .bg-gradient-blue;
 }
 
 .spinner {
