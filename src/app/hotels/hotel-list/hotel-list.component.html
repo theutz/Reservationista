@@ -7,13 +7,7 @@
 
   <!-- Content -->
   <ng-container *ngSwitchCase="false">
-    <div class="header">
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-      <h1>Hotels</h1>
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-    </div>
+    <app-star-banner text="Hotels"></app-star-banner>
     <div class="input-group">
       <div class="input-group-addon"><i class="fa fa-search"></i></div>
       <input (keyup)="filterHotels($event)" type="text" class="form-control" placeholder="Filter hotels...">

@@ -5,27 +5,8 @@
   @extend .justify-content-center;
 }
 
-.header {
-  @extend .d-flex;
-  @extend .justify-content-around;
-  @extend .align-items-center;
+app-star-banner {
   @extend .w-100;
-  @extend .text-primary;
-  .fa-star {
-    font-size: 40px;
-    color: transparentize($brand-primary, .5);
-    @include media-breakpoint-down(md) {
-      font-size: 20px;
-    }
-  }
-}
-
-h1 {
-  @extend .display-4;
-  @extend .text-center;
-  @extend .text-primary;
-  @extend .my-4;
-  font-family: $brand-font-display;
 }
 
 .input-group {

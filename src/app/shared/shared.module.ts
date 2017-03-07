@@ -9,6 +9,7 @@ import { Ng2BootstrapModule } from 'ng2-bootstrap';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { FooterComponent } from './footer/footer.component';
 import { StatCardComponent } from './stat-card/stat-card.component';
+import { StarBannerComponent } from './star-banner/star-banner.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { StatCardComponent } from './stat-card/stat-card.component';
     BreadcrumbsComponent,
     FooterComponent,
     StatCardComponent,
+    StarBannerComponent,
   ],
   exports: [
     NavbarComponent,
@@ -32,7 +34,8 @@ import { StatCardComponent } from './stat-card/stat-card.component';
     FormControlImageUploadComponent,
     BreadcrumbsComponent,
     FooterComponent,
-    StatCardComponent
+    StatCardComponent,
+    StarBannerComponent
   ]
 })
 export class SharedModule { }
