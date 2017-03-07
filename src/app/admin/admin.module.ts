@@ -1,3 +1,4 @@
+import { SharedModule } from '../shared/shared.module';
 import { CanDeactivateGuard } from '../shared/can-deactivate-guard.service';
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
 import { NgModule } from '@angular/core';
@@ -8,7 +9,8 @@ import { AdminComponent } from './admin/admin.component';
 @NgModule({
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    SharedModule
   ],
   declarations: [
     AdminHomeComponent,
