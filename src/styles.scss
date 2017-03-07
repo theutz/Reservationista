@@ -43,6 +43,18 @@ accordion-group {
   background-color: $brand-primary;
 }
 
+a.btn-primary,
+a.btn-success,
+a.btn-info,
+a.btn-warning,
+a.btn-danger {
+  @extend .text-white;
+}
+
+.btn-primary {
+  @extend .bg-gradient-blue;
+}
+
 
 /* Global Styles */
 
