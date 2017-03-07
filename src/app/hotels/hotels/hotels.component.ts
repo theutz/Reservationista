@@ -12,12 +12,10 @@ export class HotelsComponent implements OnInit {
   subtitle: string = '';
 
   constructor(
-    private _breadSvc: BreadcrumbService,
     private _router: Router
   ) { }
 
   ngOnInit() {
-    this._breadSvc.breadcrumbs$.subscribe(s => this.subtitle = s);
     this._router.events.subscribe(event => this._navigateIntercept(event));
   }
 

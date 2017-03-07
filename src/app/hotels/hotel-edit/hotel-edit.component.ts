@@ -1,5 +1,4 @@
 import { Hotel, HotelsService, Lounge, Restaurant } from '../../shared/hotels.service';
-import { BreadcrumbService } from '../breadcrumb.service';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -20,7 +19,6 @@ export class HotelEditComponent implements OnInit {
   hotel: Hotel;
 
   constructor(
-    private _breadSvc: BreadcrumbService,
     private _hotelService: HotelsService,
     private _route: ActivatedRoute,
     private _fb: FormBuilder,
@@ -29,7 +27,6 @@ export class HotelEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._breadSvc.setBreadcrumbs('Edit');
     this._loadHotel();
   }
 
