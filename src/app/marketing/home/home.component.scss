@@ -64,8 +64,13 @@
   @extend .d-flex;
   @extend .flex-wrap;
   @extend .justify-content-between;
+  @extend .w-100;
   .card {
-    width: 32%;
+    @extend .mb-4;
+    width: 100%;
+    @include media-breakpoint-up(sm) {
+      width: 32%;
+    }
     .card-header {
       @extend .bg-primary;
       @extend .text-white;

@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Ng2BootstrapModule } from 'ng2-bootstrap';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -21,12 +22,14 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     FormControlTextInputComponent,
     FormControlImageUploadComponent,
     BreadcrumbsComponent,
+    FooterComponent,
   ],
   exports: [
     NavbarComponent,
     FormControlTextInputComponent,
     FormControlImageUploadComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
