@@ -26,13 +26,17 @@ accordion-group {
   & .card {
     border: none;
     & .card-header {
-      @extend .bg-primary;
+      @extend .bg-gradient-blue;
       @extend .text-white;
       &>.card-title {
         @extend .mb-0;
       }
     }
   }
+}
+
+.card-header {
+  @extend .bg-gradient-blue;
 }
 
 
