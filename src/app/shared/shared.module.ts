@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Ng2BootstrapModule } from 'ng2-bootstrap';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { Ng2BootstrapModule } from 'ng2-bootstrap';
     NavbarComponent,
     FormControlTextInputComponent,
     FormControlImageUploadComponent,
+    BreadcrumbsComponent,
   ],
   exports: [
     NavbarComponent,
