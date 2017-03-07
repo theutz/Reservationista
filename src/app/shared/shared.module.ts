@@ -31,7 +31,8 @@ import { StatCardComponent } from './stat-card/stat-card.component';
     FormControlTextInputComponent,
     FormControlImageUploadComponent,
     BreadcrumbsComponent,
-    FooterComponent
+    FooterComponent,
+    StatCardComponent
   ]
 })
 export class SharedModule { }
