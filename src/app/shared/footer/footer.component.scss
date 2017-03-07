@@ -11,6 +11,10 @@
   }
 }
 
+.fa-star {
+  color: lighten($gray-light, 10%);
+}
+
 .tagline {
   text-transform: capitalize;
 }
