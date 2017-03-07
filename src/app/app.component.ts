@@ -8,8 +8,8 @@ import { Title } from '@angular/platform-browser';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    title: string = 'Reservationista';
-    tagline: string = 'Five-star service made fast';
+    title: string;
+    tagline: string;
 
     constructor(
         private _titleService: Title,
@@ -17,17 +17,11 @@ export class AppComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this._setTitle(this.title);
-        this._setTagline(this.tagline);
+        this._setTitle();
     }
 
-    private _setTitle(title: string): void {
-        this.title = title;
-        this._brandingService.setTitle(title);
-        this._titleService.setTitle(title);
-    }
-
-    private _setTagline(tagline: string) {
-        this._brandingService.setTagline(tagline);
+    private _setTitle(): void {
+        this._brandingService.title$
+            .subscribe(title => this._titleService.setTitle(title))
     }
 }

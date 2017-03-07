@@ -1,22 +1,18 @@
-import { ReplaySubject } from 'rxjs/Rx';
+import { Observable, ReplaySubject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class BrandingService {
-  private _titleSource = new ReplaySubject<string>();
-  private _taglineSource = new ReplaySubject<string>();
+  company$: Observable<string>;
+  title$: Observable<string>;
+  tagline$: Observable<string>;
+  copyrightYear$: Observable<string>;
 
-  title$ = this._titleSource.asObservable();
-  tagline$ = this._taglineSource.asObservable();
-
-  constructor() { }
-
-  setTitle(title: string) {
-    this._titleSource.next(title);
-  }
-
-  setTagline(tagline: string) {
-    this._taglineSource.next(tagline);
+  constructor() {
+    this.company$ = Observable.of('Reservationista');
+    this.title$ = this.company$;
+    this.tagline$ = Observable.of('Five-star service made fast!')
+    this.copyrightYear$ = Observable.of('2017');
   }
 
 }
