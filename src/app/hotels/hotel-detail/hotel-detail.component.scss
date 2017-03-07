@@ -20,12 +20,23 @@ tab {
   @extend .justify-content-between;
   @extend .d-flex;
   @extend .flex-wrap;
-
   &>.card {
     @extend .text-center;
     @extend .card-inverse;
     @extend .card-primary;
-    width: 33%;
     @extend .my-1;
+    @extend .p-2;
+    width: 33%;
+    font-size: 14px;
+    @extend .small;
+    @include media-breakpoint-up(sm) {
+      font-size: 20px;
+    }
+    &>.card-img-top>span {
+      @extend .h4;
+      @include media-breakpoint-up(sm) {
+        font-size: 50px;
+      }
+    }
   }
 }
