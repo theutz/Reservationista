@@ -26,7 +26,7 @@ accordion-group {
   & .card {
     border: none;
     & .card-header {
-      @extend .bg-gradient-blue;
+      @extend .bg-gradient-primary;
       @extend .text-white;
       &>.card-title {
         @extend .mb-0;
@@ -36,7 +36,7 @@ accordion-group {
 }
 
 .card-header {
-  @extend .bg-gradient-blue;
+  @extend .bg-gradient-primary;
 }
 
 
@@ -45,10 +45,6 @@ accordion-group {
 @mixin bg-gradient($color) {
   background-image: linear-gradient(to top, darken($color, 10%) 0%, $color 100%);
   background-color: $color;
-}
-
-.bg-gradient-blue {
-  @include bg-gradient($brand-primary);
 }
 
 .bg-gradient-primary {
@@ -111,13 +107,13 @@ a.btn-danger {
 }
 
 .nav-pills .nav-link.active {
-  @extend .bg-gradient-blue;
+  @extend .bg-gradient-primary;
 }
 
 .spinner {
   width: 40px;
   height: 40px;
-  @extend .bg-gradient-blue;
+  @extend .bg-gradient-primary;
   margin: 100px auto;
   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
   animation: sk-rotateplane 1.2s infinite ease-in-out;

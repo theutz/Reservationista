@@ -2,7 +2,7 @@
 .card {
   @extend .card-inverse;
   @extend .mb-4;
-  @extend .bg-gradient-blue;
+  @extend .bg-gradient-primary;
   @extend .w-100;
   @include media-breakpoint-up(md) {
     width: 32%;
