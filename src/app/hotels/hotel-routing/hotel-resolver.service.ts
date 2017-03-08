@@ -5,6 +5,7 @@ import { Resolve } from '@angular/router/src/interfaces';
 
 @Injectable()
 export class HotelResolverService implements Resolve<Hotel> {
+
   constructor(
     private hs: HotelsService,
     private router: Router

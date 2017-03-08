@@ -1,0 +1,11 @@
+@import "../../../styles.scss";
+.tools {
+  @extend .w-100;
+  @extend .d-flex;
+  @extend .justify-content-around;
+}
+
+.add-company {
+  @extend .btn;
+  @extend .btn-success;
+}

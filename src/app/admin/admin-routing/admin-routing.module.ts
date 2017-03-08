@@ -1,3 +1,4 @@
+import { CompanyEditComponent } from '../company-edit/company-edit.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -6,6 +7,7 @@ import { AdminHomeComponent } from '../admin-home/admin-home.component';
 import { CanDeactivateGuard } from 'app/shared/can-deactivate-guard.service';
 import { CompaniesComponent } from '../companies/companies.component';
 import { UsersComponent } from '../users/users.component';
+import { CompanyResolverService } from '../company-resolver.service';
 
 const adminRoutes: Routes = [
   {
@@ -21,6 +23,15 @@ const adminRoutes: Routes = [
         component: CompaniesComponent,
         canDeactivate: [CanDeactivateGuard],
         data: { breadcrumb: 'Companies' }
+      },
+      {
+        path: 'company/edit/:id',
+        component: CompanyEditComponent,
+        canDeactivate: [CanDeactivateGuard],
+        resolve: {
+          company: CompanyResolverService
+        },
+        data: { breadcrumb: 'Edit' }
       },
       {
         path: 'users',
