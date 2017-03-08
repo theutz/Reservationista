@@ -22,7 +22,11 @@ export class LoginUserComponent {
     }
 
     login() {
-        this._authService.login(this.email, this.password);
+        this._authService.login(this.email, this.password)
+            .subscribe(user => {
+                this._toastrService.success(`Welcome ${user.displayName}!`, "Logged In!")
+                this._router.navigateByUrl('/hotels');
+            });
     }
 
     loginVia(provider: string, event: Event) {

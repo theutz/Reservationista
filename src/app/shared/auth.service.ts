@@ -1,3 +1,4 @@
+import { FirebaseAuthState } from 'angularfire2/auth';
 import { Injectable, EventEmitter, Output } from "@angular/core";
 import { User } from "firebase";
 import { AngularFireAuth, AuthProviders, AuthMethods } from "angularfire2";
@@ -34,9 +35,16 @@ export class AuthService {
         });
     }
 
-    login(email: string, password: string) {
+    login(email: string, password: string): Observable<User> {
         this.initUserInfoSubject();
-        this._afAuth.login({ email: email, password: password });
+        let sub = new ReplaySubject<User>(1);
+        this._afAuth.login({ email: email, password: password })
+            .then(auth => {
+                this._updateUserInDb();
+                sub.next(auth.auth);
+                sub.complete();
+            });
+        return sub.asObservable();
     }
 
     private initUserInfoSubject() {
@@ -69,11 +77,19 @@ export class AuthService {
         return result;
     }
 
-    createUser(email: string, password: string, displayName: string) {
+    createUser(email: string, password: string, displayName: string): Observable<FirebaseAuthState> {
+        let sub = new ReplaySubject<FirebaseAuthState>();
         this._afAuth.createUser({ email: email, password: password })
-            .then(auth => auth.auth.updateProfile(
-                { displayName: displayName, photoURL: null }
-            ));
+            .then(auth => {
+                auth.auth.updateProfile(
+                    { displayName: displayName, photoURL: null }
+                )
+                    .then(() => {
+                        sub.next(auth);
+                        sub.complete();
+                    })
+            })
+        return sub.asObservable();
     }
 
     updateEmail(email: string): Observable<string> {

@@ -1,14 +1,13 @@
+<app-breadcrumbs></app-breadcrumbs>
+<app-star-banner text="Login"></app-star-banner>
 <div class="row">
   <div class="main" *ngIf="!(isLoggedIn()|async)">
-    <h3>Please Log In
-      <!--, or <a href="#">Sign Up</a>-->
-    </h3>
     <div class="row">
       <div class="col-xs-6 col-sm-6 col-md-6">
-        <a href="#" class="btn btn-lg btn-primary btn-block" (click)="loginVia('twitter', $event)">Twitter</a>
+        <a href="#" class="btn btn-lg btn-primary btn-block" (click)="loginVia('twitter', $event)">Twitter <i class="fa fa-twitter"></i> </a>
       </div>
       <div class="col-xs-6 col-sm-6 col-md-6">
-        <a href="#" class="btn btn-lg btn-info btn-block" (click)="loginVia('google', $event)">Google</a>
+        <a href="#" class="btn btn-lg btn-info btn-block" (click)="loginVia('google', $event)">Google <i class="fa fa-google"></i></a>
       </div>
     </div>
     <div class="login-or">
@@ -25,8 +24,11 @@
         <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password">
       </div>
       <button class="btn btn btn-primary" (click)="login()">
-        Log In
+        Log In <i class="fa fa-sign-in"></i>
       </button>
+      <a routerLink="/create-user" class="btn btn-success">
+      Sign Up <i class="fa fa-user-plus"></i>
+      </a>
     </form>
   </div>
 </div>

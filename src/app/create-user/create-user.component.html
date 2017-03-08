@@ -1,3 +1,19 @@
-<p>
-  create-user works!
-</p>
+<app-star-banner text="Sign Up"></app-star-banner>
+
+<div class="container">
+  <form role="form">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input required class="form-control" [(ngModel)]="displayName" name="name" type="text" />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input required class="form-control" [(ngModel)]="email" name="email" type="email" />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input required class="form-control" [(ngModel)]="password" name="password" type="password" />
+    </div>
+    <button (click)="signUp($event)">Sign Up <i class="fa fa-user-plus"></i></button>
+  </form>
+</div>
