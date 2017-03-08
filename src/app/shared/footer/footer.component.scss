@@ -1,5 +1,6 @@
 @import "../../../styles.scss";
 .footer {
+  @extend .fixed-bottom;
   @extend .text-center;
   @extend .mt-3;
   @extend .py-2;
