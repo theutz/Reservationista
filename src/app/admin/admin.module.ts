@@ -9,6 +9,7 @@ import { CompaniesComponent } from './companies/companies.component';
 import { UsersComponent } from './users/users.component';
 import { UsersService } from '../shared/users.service';
 import { CompaniesService } from '../shared/companies.service';
+import { CompanyEditComponent } from './company-edit/company-edit.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { CompaniesService } from '../shared/companies.service';
     AdminHomeComponent,
     AdminComponent,
     CompaniesComponent,
-    UsersComponent
+    UsersComponent,
+    CompanyEditComponent
   ],
   providers: [
     CanDeactivateGuard,
