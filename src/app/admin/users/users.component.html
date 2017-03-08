@@ -4,12 +4,18 @@
     <th></th>
     <th>Name</th>
     <th>Email</th>
+    <th></th>
   </thead>
   <tbody>
     <tr class="user" *ngFor="let user of users">
       <td class="thumbnail"><img *ngIf="!!user.photoURL" src="{{user.photoURL}}" /></td>
       <td>{{user.displayName}}</td>
       <td>{{user.email}}</td>
+      <td>
+        <div class="btn-group btn-group-sm">
+          <button (click)="deleteUser(user)" class="btn btn-danger"><i class="fa fa-remove"></i> Remove</button>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>

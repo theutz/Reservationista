@@ -116,8 +116,8 @@ export class AuthService {
             this._afAuth
                 .login({ provider: AuthProviders.Google, method: AuthMethods.Popup })
                 .then(auth => {
-                    result.next("success")
                     this._updateUserInDb();
+                    result.next("success")
                 })
                 .catch(err => result.error(err));
             return result.asObservable();
@@ -126,8 +126,8 @@ export class AuthService {
             this._afAuth
                 .login({ provider: AuthProviders.Twitter, method: AuthMethods.Popup })
                 .then(auth => {
-                    result.next("success");
                     this._updateUserInDb();
+                    result.next("success");
                 })
                 .catch(err => result.error(err));
             return result.asObservable();

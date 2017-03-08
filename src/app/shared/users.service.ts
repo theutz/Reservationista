@@ -9,7 +9,7 @@ export class UsersService {
   private _node: string = '/users';
 
   constructor(
-    private _af: AngularFireDatabase
+    private _af: AngularFireDatabase,
   ) { }
 
   create(user: User): firebase.Promise<void> {
@@ -18,6 +18,10 @@ export class UsersService {
 
   update(user: User): firebase.Promise<void> {
     return this._af.object(this._userNode(user.uid)).update(user);
+  }
+
+  delete(user: User): firebase.Promise<void> {
+    return this._af.object(this._userNode(user.uid)).remove();
   }
 
   getAll(): Observable<Users> {
