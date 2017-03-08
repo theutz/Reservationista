@@ -1,23 +1,27 @@
-import {Injectable, EventEmitter, Output} from "@angular/core";
-import {User} from "firebase";
-import {AngularFireAuth, AuthProviders, AuthMethods} from "angularfire2";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {UserInfo} from "./user-info";
-import {Observable, Subject, ReplaySubject, AsyncSubject} from "rxjs";
+import { Injectable, EventEmitter, Output } from "@angular/core";
+import { User } from "firebase";
+import { AngularFireAuth, AuthProviders, AuthMethods } from "angularfire2";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { UserInfo } from "./user-info";
+import { Observable, Subject, ReplaySubject, AsyncSubject } from "rxjs";
+import { UsersService } from '../shared/users.service';
 
 @Injectable()
 export class AuthService {
-    private userInfoSubject: ReplaySubject<UserInfo>;
-    private auth: User;
+    private _userInfoSubject: ReplaySubject<UserInfo>;
+    private _auth: User;
 
-    constructor(private angularFireAuth: AngularFireAuth) {
+    constructor(
+        private _afAuth: AngularFireAuth,
+        private _users: UsersService
+    ) {
         this.initUserInfoSubject();
         // console.log("AuthService");
-        angularFireAuth.subscribe(auth => {
+        _afAuth.subscribe(auth => {
             // console.log("auth: ", JSON.stringify(auth));
             let userInfo = new UserInfo();
             if (auth != null) {
-                this.auth = auth.auth;
+                this._auth = auth.auth;
                 userInfo.isAnonymous = auth.auth.isAnonymous;
                 userInfo.email = auth.auth.email;
                 userInfo.displayName = auth.auth.displayName;
@@ -25,38 +29,38 @@ export class AuthService {
                 userInfo.photoURL = auth.auth.photoURL;
                 userInfo.uid = auth.auth.uid;
             } else {
-                this.auth = null;
+                this._auth = null;
                 userInfo.isAnonymous = true;
             }
-            this.userInfoSubject.next(userInfo);
+            this._userInfoSubject.next(userInfo);
         });
     }
 
     login(email: string, password: string) {
         // console.log("login: ", email);
         this.initUserInfoSubject();
-        this.angularFireAuth.login({email: email, password: password});
+        this._afAuth.login({ email: email, password: password });
     }
 
     private initUserInfoSubject() {
-        this.userInfoSubject = new ReplaySubject<UserInfo>(1);
+        this._userInfoSubject = new ReplaySubject<UserInfo>(1);
     }
 
     currentUser(): Observable<UserInfo> {
-        return this.userInfoSubject.asObservable();
+        return this._userInfoSubject.asObservable();
     }
 
     logout() {
         this.initUserInfoSubject();
-        this.angularFireAuth.logout();
+        this._afAuth.logout();
     }
 
     isLoggedIn(): Observable<boolean> {
         let isLoggedInBS = new AsyncSubject<boolean>();
-        this.userInfoSubject.subscribe(ui => {
+        this._userInfoSubject.subscribe(ui => {
             // console.log("isLoggedIn: anonymous=" + ui.isAnonymous);
-                isLoggedInBS.next(!ui.isAnonymous);
-                isLoggedInBS.complete();
+            isLoggedInBS.next(!ui.isAnonymous);
+            isLoggedInBS.complete();
             // setTimeout(() => {
             // }, 0);
         });
@@ -66,7 +70,7 @@ export class AuthService {
     updateDisplayName(displayName: string): Observable<string> {
         let result = new Subject<string>();
         //noinspection TypeScriptUnresolvedFunction
-        this.auth.updateProfile({displayName: displayName, photoURL: null}).then(a => {
+        this._auth.updateProfile({ displayName: displayName, photoURL: null }).then(a => {
             result.next("success");
         }).catch(err => result.error(err));
         return result;
@@ -74,14 +78,16 @@ export class AuthService {
 
     createUser(email: string, password: string, displayName: string) {
         //noinspection TypeScriptUnresolvedFunction
-        this.angularFireAuth.createUser({email: email, password: password})
-            .then(auth => auth.auth.updateProfile({displayName: displayName, photoURL: null}));
+        this._afAuth.createUser({ email: email, password: password })
+            .then(auth => auth.auth.updateProfile(
+                { displayName: displayName, photoURL: null }
+            ));
     }
 
     updateEmail(email: string): Observable<string> {
         let result = new Subject<string>();
         //noinspection TypeScriptUnresolvedFunction
-        this.auth.updateEmail(email).then(a => {
+        this._auth.updateEmail(email).then(a => {
             result.next("success");
         }).catch(err => result.error(err));
         return result.asObservable();
@@ -90,7 +96,7 @@ export class AuthService {
     updatePassword(password: string): Observable<string> {
         let result = new Subject<string>();
         //noinspection TypeScriptUnresolvedFunction
-        this.auth.updatePassword(password).then(a => {
+        this._auth.updatePassword(password).then(a => {
             result.next("success");
         }).catch(err => result.error(err));
         return result.asObservable();
@@ -100,22 +106,24 @@ export class AuthService {
         let result = new Subject<string>();
         if (provider === "google") {
             //noinspection TypeScriptUnresolvedFunction
-            this.angularFireAuth
-                .login({provider: AuthProviders.Google, method: AuthMethods.Popup})
+            this._afAuth
+                .login({ provider: AuthProviders.Google, method: AuthMethods.Popup })
                 //noinspection TypeScriptUnresolvedFunction
                 .  //noinspection TypeScriptUnresolvedFunction
                 then(auth => result.next("success"))
-                        .catch(err => result.error(err));
+                .catch(err => result.error(err));
             return result.asObservable();
         }
         else if (provider === "twitter") {
             //noinspection TypeScriptUnresolvedFunction
-            this.angularFireAuth
-                .login({provider: AuthProviders.Twitter, method: AuthMethods.Popup})
+            this._afAuth
+                .login({ provider: AuthProviders.Twitter, method: AuthMethods.Popup })
                 //noinspection TypeScriptUnresolvedFunction
                 .  //noinspection TypeScriptUnresolvedFunction
-                then(auth => result.next("success"))
-                        .catch(err => result.error(err));
+                then(auth => {
+                    result.next("success")
+                })
+                .catch(err => result.error(err));
             return result.asObservable();
         }
         result.error("Not a supported authentication method: " + provider)

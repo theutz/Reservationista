@@ -7,6 +7,8 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminComponent } from './admin/admin.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { UsersComponent } from './users/users.component';
+import { UsersService } from '../shared/users.service';
+import { CompaniesService } from '../shared/companies.service';
 
 @NgModule({
   imports: [
@@ -21,7 +23,9 @@ import { UsersComponent } from './users/users.component';
     UsersComponent
   ],
   providers: [
-    CanDeactivateGuard
+    CanDeactivateGuard,
+    UsersService,
+    CompaniesService
   ]
 })
 export class AdminModule { }

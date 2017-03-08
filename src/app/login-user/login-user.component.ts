@@ -29,7 +29,7 @@ export class LoginUserComponent {
         event.preventDefault();
         this._authService.loginViaProvider(provider)
             .subscribe(result => {
-                this._router.navigateByUrl('/home');
+                this._router.navigateByUrl('/hotels');
                 this._toastrService.success('Logged in!');
             });
     }
