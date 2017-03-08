@@ -6,6 +6,7 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { UserInfo } from "./user-info";
 import { Observable, Subject, ReplaySubject, AsyncSubject } from "rxjs";
 import { UsersService } from '../shared/users.service';
+import { User as AppUser } from '../shared/users.service';
 
 @Injectable()
 export class AuthService {
@@ -78,13 +79,14 @@ export class AuthService {
     }
 
     createUser(email: string, password: string, displayName: string): Observable<FirebaseAuthState> {
-        let sub = new ReplaySubject<FirebaseAuthState>();
+        let sub = new ReplaySubject<FirebaseAuthState>(1);
         this._afAuth.createUser({ email: email, password: password })
             .then(auth => {
                 auth.auth.updateProfile(
                     { displayName: displayName, photoURL: null }
                 )
                     .then(() => {
+                        this._users.create(this._users.mapAuthUserToAppUser(auth.auth));
                         sub.next(auth);
                         sub.complete();
                     })

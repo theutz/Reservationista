@@ -29,7 +29,7 @@ export class CreateUserComponent implements OnInit {
     this._auth.createUser(this.email, this.password, this.displayName)
       .subscribe(auth => {
         this._toast.success(`Email: ${auth.auth.email}`, "User Created!")
-        this._router.navigateByUrl('/login');
+        this._router.navigateByUrl('/hotels');
       });
   }
 }

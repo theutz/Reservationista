@@ -7,7 +7,7 @@
   </thead>
   <tbody>
     <tr class="user" *ngFor="let user of users">
-      <td class="thumbnail"><img src="{{user.photoURL}}" /></td>
+      <td class="thumbnail"><img *ngIf="!!user.photoURL" src="{{user.photoURL}}" /></td>
       <td>{{user.displayName}}</td>
       <td>{{user.email}}</td>
     </tr>
