@@ -29,3 +29,11 @@ nav {
   height: 40px;
   margin-top: -10px;
 }
+
+.user-tools {
+  @extend .d-flex;
+  @extend .justify-content-end;
+  .nav-link {
+    @extend .mx-1;
+  }
+}
