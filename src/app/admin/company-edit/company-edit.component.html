@@ -1,3 +1,27 @@
-<p>
-  company-edit works!
-</p>
+<ng-container [ngSwitch]="loading">
+
+  <!--Content-->
+  <ng-container *ngSwitchCase="false">
+    <h1 [ngSwitch]="!!company.name">
+      <ng-container *ngSwitchCase="true">{{company.name}}</ng-container>
+      <ng-container *ngSwitchCase="false">New Company</ng-container>
+    </h1>
+    <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+      <div class="card">
+        <div class="card-block">
+          <!-- Name -->
+          <app-form-control-text-input [group]="myForm" name="name" label="Name" invalidMessage="Minimum 5 characters."></app-form-control-text-input>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="submit" [disabled]="!myForm.valid">Save <i class="fa fa-save"></i></button>
+        <a (click)="goBack($event)" class="btn btn-warning text-white">Back <i class="fa fa-backward"></i></a>
+      </div>
+    </form>
+  </ng-container>
+
+  <!-- Loader -->
+  <ng-container *ngSwitchCase="true">
+    <div class="spinner"></div>
+  </ng-container>
+</ng-container>

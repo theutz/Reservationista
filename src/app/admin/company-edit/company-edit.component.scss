@@ -1,0 +1,18 @@
+@import '../../../styles.scss';
+form /deep/ .control-label {
+  @extend .text-white;
+}
+
+.card {
+  @extend .bg-gradient-primary;
+  @extend .my-4;
+}
+
+.actions {
+  button {
+    @extend .btn;
+    &[type=submit] {
+      @extend .btn-success;
+    }
+  }
+}

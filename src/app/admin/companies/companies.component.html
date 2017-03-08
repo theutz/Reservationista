@@ -1,4 +1,31 @@
 <app-star-banner text="Companies"></app-star-banner>
-<div class="tools">
-  <button (click)="addCompany($event)" class="add-company">Add Company <i class="fa fa-plus"></i></button>
-</div>
+<ng-container [ngSwitch]="loading">
+  <!-- Content -->
+  <ng-container *ngSwitchCase="false">
+    <div class="tools">
+      <button (click)="addCompany($event)" class="add-company">Add Company <i class="fa fa-plus"></i></button>
+    </div>
+    <table class="table">
+      <thead>
+        <th>Name</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr (click)="editCompany(company)" class="company" *ngFor="let company of companies">
+          <td>{{company.name}}</td>
+          <td class="actions">
+            <div class="btn-group btn-group-sm">
+              <button (click)="editCompany(company)" class="edit">Edit <i class="fa fa-edit"></i></button>
+              <button class="remove">Remove <i class="fa fa-remove"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+
+  <!-- Loader -->
+  <ng-container *ngSwitchCase="true">
+    <div class="spinner"></div>
+  </ng-container>
+</ng-container>

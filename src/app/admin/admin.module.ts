@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { CanDeactivateGuard } from '../shared/can-deactivate-guard.service';
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
@@ -16,7 +17,9 @@ import { CompanyResolverService } from './company-resolver.service';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     AdminHomeComponent,
