@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminComponent } from './admin/admin.component';
 import { CompaniesComponent } from './companies/companies.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { CompaniesComponent } from './companies/companies.component';
   declarations: [
     AdminHomeComponent,
     AdminComponent,
-    CompaniesComponent
+    CompaniesComponent,
+    UsersComponent
   ],
   providers: [
     CanDeactivateGuard

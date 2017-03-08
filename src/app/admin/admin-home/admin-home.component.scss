@@ -1,0 +1,8 @@
+@import "../../../styles.scss";
+.dashboard {
+  @extend .d-flex;
+  @extend .justify-content-around;
+  .btn {
+    @extend .m-3;
+  }
+}
