@@ -5,6 +5,7 @@
   @extend .align-items-center;
   @extend .w-100;
   @extend .text-primary;
+  @extend .my-3;
   .fa-star {
     font-size: 40px;
     color: transparentize($brand-primary, .5);
