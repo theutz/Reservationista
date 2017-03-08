@@ -18,12 +18,14 @@ import { AccordionModule } from 'ng2-bootstrap/accordion';
 import { TabsModule } from 'ng2-bootstrap/tabs';
 import { ToastrModule } from 'toastr-ng2';
 import { AdminModule } from 'app/admin/admin.module';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayUserComponent,
-    LoginUserComponent
+    LoginUserComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
