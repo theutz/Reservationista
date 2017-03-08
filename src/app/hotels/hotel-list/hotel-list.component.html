@@ -8,9 +8,12 @@
   <!-- Content -->
   <ng-container *ngSwitchCase="false">
     <app-star-banner text="Hotels"></app-star-banner>
-    <div class="input-group">
-      <div class="input-group-addon"><i class="fa fa-search"></i></div>
-      <input (keyup)="filterHotels($event)" type="text" class="form-control" placeholder="Filter hotels...">
+    <div class="tools">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input (keyup)="filterHotels($event)" type="text" class="form-control" placeholder="Filter hotels...">
+      </div>
+      <button class="btn btn-success" (click)="addHotel()">Add Hotel <i class="fa fa-plus"></i></button>
     </div>
     <div class="card-list">
       <div (click)="navigateToHotel(hotel, $event)" class="card" *ngFor="let hotel of hotels$ | async">

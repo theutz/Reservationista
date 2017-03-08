@@ -9,10 +9,12 @@ app-star-banner {
   @extend .w-100;
 }
 
-.input-group {
+.tools {
   @extend .my-2;
+  @extend .d-flex;
+  @extend .justify-content-around;
   width: 100%;
-  @include media-breakpoint-up(md) {
+  .input-group {
     width: 75%;
   }
 }

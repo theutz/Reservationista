@@ -6,31 +6,41 @@ import { UUID } from 'angular2-uuid';
 
 @Injectable()
 export class HotelsService {
-  private _hotelsNode: string = '/hotels';
+  private _node: string = '/hotels';
   private _storageRef: firebase.storage.Reference;
 
   constructor(
     private _af: AngularFireDatabase,
-    @Inject(FirebaseApp) firebaseApp: firebase.app.App
+    @Inject(FirebaseApp) private _firebaseApp: firebase.app.App
   ) {
-    this._storageRef = firebaseApp.storage().ref();
+    this._storageRef = _firebaseApp.storage().ref();
   }
 
   getAll(): FirebaseListObservable<Hotels> {
-    return this._af.list(this._hotelsNode, { query: { orderByChild: 'name' } });
+    return this._af.list(this._node, { query: { orderByChild: 'name' } });
   }
 
   get(id: string): FirebaseObjectObservable<Hotel> {
-    return this._af.object(this._hotelsNode + '/' + id);
+    return this._af.object(this._node + '/' + id);
+  }
+
+  create(hotel: Hotel): FirebaseObjectObservable<Hotel> {
+    let key = this._af.list(this._node).push(hotel).key;
+    return this._af
+      .object(this._node + '/' + key) as FirebaseObjectObservable<Hotel>;
   }
 
   update(id: string, model: Hotel): firebase.Promise<void> {
-    return this._af.object(this._hotelsNode + '/' + id).update(model);
+    return this._af.object(this._node + '/' + id).update(model);
+  }
+
+  delete(id: string): firebase.Promise<void> {
+    return this._af.object(this._node + '/' + id).remove();
   }
 
   getImageUrl(hotelId: string, fileName: string): firebase.Promise<string> {
     return this._storageRef
-      .child(this._hotelsNode)
+      .child(this._node)
       .child(hotelId)
       .child(fileName)
       .getDownloadURL();
@@ -38,7 +48,7 @@ export class HotelsService {
 
   uploadImage(hotelId: string, imageType: string, file: File): firebase.Promise<any> {
     let uuid = UUID.UUID();
-    let ref = this._storageRef.child(this._hotelsNode).child(hotelId);
+    let ref = this._storageRef.child(this._node).child(hotelId);
     let storageName = imageType + '_' + uuid;
 
     return ref.child(storageName).put(file)
@@ -47,14 +57,14 @@ export class HotelsService {
         imgNames[imageType] = result.downloadURL;
 
         // Update thumbnail
-        this._af.object(this._hotelsNode + '/' + hotelId + '/images')
+        this._af.object(this._node + '/' + hotelId + '/images')
           .update(imgNames);
       });
   }
 
   removeImage(hotelId: string, imageType: string, fileName: string) {
     return this._storageRef
-      .child(this._hotelsNode)
+      .child(this._node)
       .child(hotelId)
       .child(fileName)
       .delete().then(() => {
@@ -65,7 +75,7 @@ export class HotelsService {
   }
 
   search(term: string): Observable<any> {
-    return this._af.list(this._hotelsNode).map(hotels => {
+    return this._af.list(this._node).map(hotels => {
       return hotels.filter((hotel: Hotel) => {
         let regex = new RegExp(term, "gi");
         let searchTest = regex.test(hotel.name)

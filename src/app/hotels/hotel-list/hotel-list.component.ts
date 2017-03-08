@@ -28,6 +28,10 @@ export class HotelListComponent implements OnInit {
     this.hotels$ = this._hs.search(searchTerm);
   }
 
+  addHotel() {
+    console.log('added');
+  }
+
   navigateToHotel(hotel: any, event?: Event): void {
     if (event) {
       event.preventDefault();

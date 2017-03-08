@@ -1,0 +1,18 @@
+@import "../../../styles.scss";
+.table {
+  @extend .table-hover;
+}
+
+.user {
+  td {
+    vertical-align: middle;
+  }
+}
+
+.thumbnail {
+  img {
+    @extend .rounded-circle;
+    width: 50px;
+    height: auto;
+  }
+}

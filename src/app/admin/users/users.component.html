@@ -1,1 +1,15 @@
 <app-star-banner text="Users"></app-star-banner>
+<table class="table">
+  <thead>
+    <th></th>
+    <th>Name</th>
+    <th>Email</th>
+  </thead>
+  <tbody>
+    <tr class="user" *ngFor="let user of users">
+      <td class="thumbnail"><img src="{{user.photoURL}}" /></td>
+      <td>{{user.displayName}}</td>
+      <td>{{user.email}}</td>
+    </tr>
+  </tbody>
+</table>
