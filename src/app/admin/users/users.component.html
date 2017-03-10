@@ -8,9 +8,9 @@
   </thead>
   <tbody>
     <tr class="user" *ngFor="let user of users">
-      <td class="thumbnail"><img *ngIf="!!user.photoURL" src="{{user.photoURL}}" /></td>
-      <td>{{user.displayName}}</td>
-      <td>{{user.email}}</td>
+      <td (click)="editUser(user)" class="thumbnail"><img *ngIf="!!user.photoURL" src="{{user.photoURL}}" /></td>
+      <td (click)="editUser(user)">{{user.displayName}}</td>
+      <td (click)="editUser(user)">{{user.email}}</td>
       <td>
         <div class="btn-group btn-group-sm">
           <button (click)="deleteUser(user)" class="btn btn-danger"><i class="fa fa-remove"></i> Remove</button>

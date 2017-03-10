@@ -28,6 +28,10 @@ export class UsersService {
     return this._af.list(this._node);
   }
 
+  get(key: string): Observable<User> {
+    return this._af.object(this._userNode(key));
+  }
+
   mapAuthUserToAppUser(auth: AuthUser): User {
     return {
       isAnonymous: auth.isAnonymous,

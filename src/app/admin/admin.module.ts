@@ -13,6 +13,8 @@ import { UsersService } from '../shared/users.service';
 import { CompaniesService } from '../shared/companies.service';
 import { CompanyEditComponent } from './company-edit/company-edit.component';
 import { CompanyResolverService } from './company-resolver.service';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserResolverService } from 'app/shared/user-resolver.service';
 
 @NgModule({
   imports: [
@@ -28,13 +30,15 @@ import { CompanyResolverService } from './company-resolver.service';
     AdminComponent,
     CompaniesComponent,
     UsersComponent,
-    CompanyEditComponent
+    CompanyEditComponent,
+    UserEditComponent
   ],
   providers: [
     CanDeactivateGuard,
     UsersService,
     CompaniesService,
-    CompanyResolverService
+    CompanyResolverService,
+    UserResolverService
   ]
 })
 export class AdminModule { }
