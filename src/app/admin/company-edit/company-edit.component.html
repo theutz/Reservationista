@@ -6,7 +6,7 @@
       <ng-container *ngSwitchCase="true">{{company.name}}</ng-container>
       <ng-container *ngSwitchCase="false">New Company</ng-container>
     </h1>
-    <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+    <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)" (keyup.enter)="save(myForm.value, myForm.valid)">
       <div class="card">
         <div class="card-block">
           <!-- Name -->

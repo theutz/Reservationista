@@ -1,3 +1,4 @@
+import { ModalModule } from 'ng2-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { CanDeactivateGuard } from '../shared/can-deactivate-guard.service';
@@ -20,6 +21,7 @@ import { CompanyResolverService } from './company-resolver.service';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    ModalModule
   ],
   declarations: [
     AdminHomeComponent,

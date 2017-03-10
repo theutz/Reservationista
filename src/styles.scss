@@ -67,6 +67,10 @@ accordion-group {
   @include bg-gradient($brand-danger);
 }
 
+.modal-backdrop.fade {
+  opacity: 0.5;
+}
+
 a.btn-primary,
 a.btn-success,
 a.btn-info,

@@ -47,6 +47,20 @@ export class CompaniesService {
     return sub.asObservable();
   }
 
+  remove(key: string): Observable<void> {
+    let sub: ReplaySubject<void> = new ReplaySubject<void>(1);
+    if (!!key) {
+      this._af.object(this._companyNode(key))
+        .remove()
+        .then(() => {
+          sub.next(null);
+        })
+    } else {
+      sub.error(new Error(`Key is undefined.`));
+    }
+    return sub.asObservable();
+  }
+
   private _companyNode(key: string): string {
     return [this._nodeName, key].join('/');
   }

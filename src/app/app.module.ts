@@ -19,6 +19,7 @@ import { TabsModule } from 'ng2-bootstrap/tabs';
 import { ToastrModule } from 'toastr-ng2';
 import { AdminModule } from 'app/admin/admin.module';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { ModalModule } from 'ng2-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
     HotelsModule,
     TabsModule.forRoot(),
     AccordionModule.forRoot(),
-    AdminModule
+    AdminModule,
+    ModalModule.forRoot()
   ],
   providers: [
     AuthService,
