@@ -1,3 +1,4 @@
+import { Company } from './companies.service';
 import { Observable } from 'rxjs/Rx';
 import { UserInfo } from './user-info';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -52,4 +53,6 @@ export class UsersService {
 export type Users = User[];
 
 export interface User extends UserInfo {
+  companyKey?: string;
+  company?: Company;
 }
