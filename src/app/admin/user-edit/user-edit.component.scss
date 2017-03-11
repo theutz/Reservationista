@@ -1,0 +1,16 @@
+@import "../../../styles.scss";
+button[type=submit] {
+  @extend .btn;
+  @extend .btn-success;
+}
+
+.card {
+  @extend .bg-gradient-primary;
+  @extend .my-4;
+}
+
+app-form-control-text-input {
+  & /deep/ label {
+    @extend .text-white;
+  }
+}

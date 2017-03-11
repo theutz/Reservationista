@@ -1,3 +1,27 @@
-<p>
-  user-edit works!
-</p>
+<app-star-banner text="Edit User"></app-star-banner>
+<ng-container [ngSwitch]="loading">
+  <!--Content-->
+  <ng-container *ngSwitchCase="false">
+    <h1 [ngSwitch]="!!user.displayName">
+      <ng-container *ngSwitchCase="true">{{user.displayName}}</ng-container>
+      <ng-container *ngSwitchCase="false">New User</ng-container>
+    </h1>
+    <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)" (keyup.enter)="save(myForm.value, myForm.valid)">
+      <div class="card">
+        <div class="card-block">
+          <!-- Name -->
+          <app-form-control-text-input [group]="myForm" name="name" label="Name"></app-form-control-text-input>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="submit" [disabled]="!myForm.valid">Save <i class="fa fa-save"></i></button>
+        <a (click)="goBack($event)" class="btn btn-warning text-white">Back <i class="fa fa-backward"></i></a>
+      </div>
+    </form>
+  </ng-container>
+
+  <!-- Loader -->
+  <ng-container *ngSwitchCase="true">
+    <div class="spinner"></div>
+  </ng-container>
+</ng-container>
