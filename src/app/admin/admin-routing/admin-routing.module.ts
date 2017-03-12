@@ -24,18 +24,8 @@ const adminRoutes: Routes = [
       },
       {
         path: 'users',
-        component: UsersComponent,
-        canDeactivate: [CanDeactivateGuard],
-        data: { breadcrumb: 'Users' }
-      },
-      {
-        path: 'user/edit/:id',
-        component: UserEditComponent,
-        canDeactivate: [CanDeactivateGuard],
-        resolve: {
-          user: UserResolverService
-        },
-        data: { breadcrumb: 'Edit User' }
+        loadChildren: 'app/admin/users/users.module#UsersModule',
+        data: { preload: true, breadcrumb: 'Users' }
       },
       { path: '', redirectTo: '/admin/home', pathMatch: 'full' }
     ]

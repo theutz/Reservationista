@@ -1,14 +1,14 @@
 import { Router } from '@angular/router';
 import { ToastrService } from 'toastr-ng2/toastr-service';
-import { User, Users, UsersService } from '../../shared/users.service';
+import { User, Users, UsersService } from '../../../shared/users.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class UserListComponent implements OnInit {
   users: Users = [];
 
   constructor(
@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
 
   editUser(user: any) {
     // console.log(user);
-    this._router.navigateByUrl('/user/edit/' + user.$key);
+    this._router.navigateByUrl('/users/edit/' + user.$key);
   }
 
   deleteUser(user: User) {
