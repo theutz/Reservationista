@@ -1,5 +1,5 @@
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { CompaniesService, Company } from '../shared/companies.service';
+import { CompaniesService, Company } from 'app/shared/companies.service';
 import { Resolve } from '@angular/router/src/interfaces';
 import { Injectable } from '@angular/core';
 

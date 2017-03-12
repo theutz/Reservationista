@@ -1,14 +1,11 @@
-import { CompanyEditComponent } from '../company-edit/company-edit.component';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from '../admin/admin.component';
 import { AdminHomeComponent } from '../admin-home/admin-home.component';
-import { CanDeactivateGuard } from 'app/shared/can-deactivate-guard.service';
-import { CompaniesComponent } from '../companies/companies.component';
-import { UsersComponent } from '../users/users.component';
-import { CompanyResolverService } from '../company-resolver.service';
+import { AdminComponent } from '../admin/admin.component';
 import { UserEditComponent } from '../user-edit/user-edit.component';
+import { UsersComponent } from '../users/users.component';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { CanDeactivateGuard } from 'app/shared/can-deactivate-guard.service';
 import { UserResolverService } from 'app/shared/user-resolver.service';
 
 const adminRoutes: Routes = [
@@ -22,18 +19,8 @@ const adminRoutes: Routes = [
       },
       {
         path: 'companies',
-        component: CompaniesComponent,
-        canDeactivate: [CanDeactivateGuard],
-        data: { breadcrumb: 'Companies' }
-      },
-      {
-        path: 'company/edit/:id',
-        component: CompanyEditComponent,
-        canDeactivate: [CanDeactivateGuard],
-        resolve: {
-          company: CompanyResolverService
-        },
-        data: { breadcrumb: 'Edit Company' }
+        loadChildren: 'app/admin/companies/companies.module#CompaniesModule',
+        data: { preload: true, breadcrumb: 'Companies' }
       },
       {
         path: 'users',

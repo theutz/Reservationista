@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { ToastrService } from 'toastr-ng2/toastr-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { CompaniesService, Company } from '../../shared/companies.service';
+import { CompaniesService, Company } from 'app/shared/companies.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
