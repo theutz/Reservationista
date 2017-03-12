@@ -1,0 +1,29 @@
+@import "../../../../styles.scss";
+.table {
+  @extend .table-hover;
+  @extend .my-4;
+  .edit {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+  .remove {
+    @extend .btn;
+    @extend .btn-danger;
+  }
+}
+
+.actions {
+  @extend .d-flex;
+  @extend .justify-content-end;
+}
+
+.tools {
+  @extend .w-100;
+  @extend .d-flex;
+  @extend .justify-content-around;
+}
+
+.add-company {
+  @extend .btn;
+  @extend .btn-success;
+}

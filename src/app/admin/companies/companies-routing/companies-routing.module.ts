@@ -1,3 +1,4 @@
+import { CompaniesListComponent } from '../companies-list/companies-list.component';
 import { CompanyEditComponent } from '../company-edit/company-edit.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -10,13 +11,13 @@ const routes: Routes = [
   {
     path: '', component: CompaniesComponent, children: [
       {
-        path: 'companies',
-        component: CompaniesComponent,
+        path: 'all',
+        component: CompaniesListComponent,
         canDeactivate: [CanDeactivateGuard],
-        data: { breadcrumb: 'Companies' }
+        data: { breadcrumb: 'All Companies' }
       },
       {
-        path: 'company/edit/:id',
+        path: 'edit/:id',
         component: CompanyEditComponent,
         canDeactivate: [CanDeactivateGuard],
         resolve: {
@@ -24,7 +25,7 @@ const routes: Routes = [
         },
         data: { breadcrumb: 'Edit Company' }
       },
-      { path: '', redirectTo: '/admin/companies', pathMatch: 'full' }
+      { path: '', redirectTo: '/admin/companies/all', pathMatch: 'full' }
     ]
   }
 ];
