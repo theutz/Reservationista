@@ -1,0 +1,24 @@
+@import "../../../styles.scss";
+.footer {
+  @extend .text-center;
+  @extend .mt-3;
+  @extend .py-2;
+  background: $gray-lighter;
+  color: $gray-light;
+  p {
+    font-size: 13px;
+    @extend .mb-0;
+  }
+}
+
+.fa-star {
+  color: lighten($gray-light, 10%);
+}
+
+.tagline {
+  text-transform: capitalize;
+}
+
+.company-name {
+  font-family: $brand-font-display;
+}

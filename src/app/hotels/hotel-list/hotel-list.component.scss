@@ -1,0 +1,75 @@
+@import "../../../styles.scss";
+:host {
+  @extend .d-flex;
+  @extend .flex-wrap;
+  @extend .justify-content-center;
+}
+
+.header {
+  @extend .d-flex;
+  @extend .justify-content-around;
+  @extend .align-items-center;
+  @extend .w-100;
+  @extend .text-primary;
+  .fa-star {
+    font-size: 40px;
+    color: transparentize($brand-primary, .5);
+    @include media-breakpoint-down(md) {
+      font-size: 20px;
+    }
+  }
+}
+
+h1 {
+  @extend .display-4;
+  @extend .text-center;
+  @extend .text-primary;
+  @extend .my-4;
+  font-family: $brand-font-display;
+}
+
+.input-group {
+  @extend .my-2;
+  width: 100%;
+  @include media-breakpoint-up(md) {
+    width: 75%;
+  }
+}
+
+.card-list {
+  @extend .d-flex;
+  @extend .flex-wrap;
+  @extend .justify-content-around;
+  @extend .my-3;
+  @extend .w-100;
+}
+
+.card {
+  @extend .my-2;
+  width: 32%;
+  box-shadow: 1px 1px 6px transparentize(#000, .5);
+  border: none;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+  }
+  &>.card-block {
+    @extend .d-flex;
+    @extend .align-items-center;
+  }
+  &>.badge {
+    @extend .badge-pill;
+    @extend .badge-primary;
+    box-shadow: 1px 1px 5px -1px #000;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+}
+
+.card-header {
+  @extend .bg-primary;
+  @extend .bg-gradient-blue;
+  @extend .text-white;
+  @extend .d-flex;
+  @extend .justify-content-between;
+}

@@ -1,0 +1,6 @@
+<div [formGroup]="myForm" [ngClass]="formGroupClasses()">
+  <label [ngClass]="formLabelClasses()" class="form-control-label">{{label}}</label>
+  <input (keyup.enter)="onEnter($event)" [ngClass]="formControlClasses()" type="text" [formControlName]="controlName">
+  <div [hidden]="isValid()" [ngClass]="formFeedbackClasses()">{{invalidMessage}}</div>
+  <div [ngClass]="formFeedbackClasses()" [hidden]="!control.errors?.required">Field is required.</div>
+</div>

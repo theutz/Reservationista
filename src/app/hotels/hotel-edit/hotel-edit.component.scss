@@ -1,0 +1,60 @@
+@import "../../../styles.scss";
+h1 {
+  @extend .mb-5;
+}
+
+.form-group {
+  @extend .d-flex;
+  @extend .flex-wrap;
+}
+
+.form-control-label {
+  @extend .align-self-center;
+  @extend .mr-3;
+}
+
+.form-control {
+  @extend .w-75;
+  @extend .ml-auto;
+}
+
+.form-control-feedback {
+  @extend .w-100;
+  @extend .text-right;
+}
+
+button {
+  @extend .btn;
+  &[type="submit"] {
+    @extend .btn-success;
+  }
+}
+
+:host /deep/ ul.nav.nav-pills {
+  @extend .my-4;
+  @extend .w-100;
+  @extend .d-flex;
+  @extend .flex-wrap;
+  @extend .justify-content-around;
+}
+
+.actions {
+  @extend .my-4;
+}
+
+.card {
+  @extend .card-inverse;
+  @extend .bg-gradient-blue;
+}
+
+.card-block {
+  @extend .d-flex;
+  @extend .flex-wrap;
+  app-form-control-text-input {
+    @extend .p-1;
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      width: 50%;
+    }
+  }
+}

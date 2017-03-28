@@ -1,0 +1,74 @@
+<ng-container [ngSwitch]="loading">
+
+  <!-- Content -->
+  <ng-container *ngSwitchCase="false">
+    <div class="jumbotron" [ngStyle]="jumbotronStyle">
+      <div [class.card]="jumbotronBgExists">
+        <div [class.card-block]="jumbotronBgExists">
+          <h1 *ngIf="hotel.code">
+            <span class="badge">{{hotel.code}}</span>
+          </h1>
+          <h2>{{hotel.name}}</h2>
+          <address class="lead" *ngIf="address">
+            {{address.streetAddress}}<span [hidden]="hideAddrComma">,</span> {{address.city}}<span [hidden]="hideCityComma">,</span> {{address.state}} {{address.postalCode}}
+          </address>
+          <button (click)="edit($event)" class="edit-btn">Edit <i class="fa fa-edit"></i></button>
+        </div>
+      </div>
+    </div>
+    <tabset [justified]="true" type="pills">
+      <tab *ngIf="showStats" heading="Stats">
+        <div class="stats">
+          <app-stat-card [value]="hotel.floorCount" label="Floors"></app-stat-card>
+          <app-stat-card [value]="hotel.suiteCount" label="Suites"></app-stat-card>
+          <app-stat-card [value]="hotel.roomCount" label="Rooms"></app-stat-card>
+          <app-stat-card [value]="hotel.checkInTime" label="Check In"></app-stat-card>
+          <app-stat-card [value]="hotel.checkOutTime" label="Check Out"></app-stat-card>
+          <app-stat-card [value]="hotel.hoursToCancel" label="Cancellation"></app-stat-card>
+        </div>
+      </tab>
+      <tab *ngIf="showRestaurants" heading="Restaurants">
+        <accordion>
+          <accordion-group [isOpen]="true" #restaurantGroup *ngFor="let restaurant of hotel.restaurants">
+            <div accordion-heading>
+              {{restaurant.name}}
+              <div class="pull-right" [ngSwitch]="restaurantGroup?.isOpen">
+                <i *ngSwitchCase="false" class="fa fa-chevron-right"></i>
+                <i *ngSwitchCase="true" class="fa fa-chevron-down"></i>
+                <i *ngSwitchDefault class="fa fa-chevron-right"></i>
+              </div>
+            </div>
+            <dl>
+              <dt>Phone Number</dt>
+              <dd>{{restaurant.phoneNumber}}</dd>
+            </dl>
+          </accordion-group>
+        </accordion>
+      </tab>
+      <tab *ngIf="showLounges" heading="Lounges">
+        <accordion>
+          <accordion-group [isOpen]="true" #loungeGroup *ngFor="let lounge of hotel.lounges">
+            <div accordion-heading>
+              {{lounge.name}}
+              <div class="pull-right" [ngSwitch]="loungeGroup?.isOpen">
+                <i class="fa fa-chevron-right" *ngSwitchCase="false"></i>
+                <i *ngSwitchCase="true" class="fa fa-chevron-down"></i>
+                <i *ngSwitchDefault class="fa fa-chevron-right"></i>
+              </div>
+            </div>
+            <dl>
+              <dt>Phone Number</dt>
+              <dd>{{lounge.phoneNumber}}</dd>
+            </dl>
+          </accordion-group>
+        </accordion>
+      </tab>
+    </tabset>
+  </ng-container>
+
+  <!-- Loader -->
+  <ng-container *ngSwitchCase="true">
+    <div class="spinner"></div>
+  </ng-container>
+
+</ng-container>

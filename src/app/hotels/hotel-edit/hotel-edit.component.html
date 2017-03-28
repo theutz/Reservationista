@@ -1,0 +1,70 @@
+<ng-container [ngSwitch]="loading">
+
+  <!-- Content -->
+  <ng-container *ngSwitchCase="false">
+    <h1>{{hotel.name}}</h1>
+    <form class="mb-4" [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+      <tabset type="pills">
+        <tab heading="Basic Information">
+          <div class="card">
+            <div class="card-block">
+              <!-- Name -->
+              <app-form-control-text-input [group]="myForm" name="name" label="Name" invalidMessage="Minimum 5 characters."></app-form-control-text-input>
+              <!-- Code -->
+              <app-form-control-text-input [group]="myForm" name="code" label="Code"></app-form-control-text-input>
+              <!-- Street Address -->
+              <app-form-control-text-input [group]="myForm.controls.address" name="streetAddress" label="Street Address"></app-form-control-text-input>
+              <!-- City -->
+              <app-form-control-text-input [group]="myForm.controls.address" name="city" label="City"></app-form-control-text-input>
+              <!-- State -->
+              <app-form-control-text-input [group]="myForm.controls.address" name="state" label="State"></app-form-control-text-input>
+              <!-- Postal Code -->
+              <app-form-control-text-input [group]="myForm.controls.address" name="postalCode" label="Postal Code"></app-form-control-text-input>
+            </div>
+          </div>
+        </tab>
+        <tab heading="Stats">
+          <div class="card">
+            <div class="card-block">
+              <!-- Floor Count -->
+              <app-form-control-text-input [group]="myForm" name="floorCount" label="Number of Floors"></app-form-control-text-input>
+              <!-- Room Count -->
+              <app-form-control-text-input [group]="myForm" name="roomCount" label="Number of Rooms"></app-form-control-text-input>
+              <!-- Suite Count -->
+              <app-form-control-text-input [group]="myForm" name="suiteCount" label="Number of Suites"></app-form-control-text-input>
+              <!-- Check-in Time -->
+              <app-form-control-text-input [group]="myForm" name="checkInTime" label="Check-in Time"></app-form-control-text-input>
+              <!-- Check-out Time -->
+              <app-form-control-text-input [group]="myForm" name="checkOutTime" label="Check-out Time"></app-form-control-text-input>
+              <!-- Hours to Cancel -->
+              <app-form-control-text-input [group]="myForm" name="hoursToCancel" label="Hours to Cancel"></app-form-control-text-input>
+            </div>
+          </div>
+        </tab>
+        <tab heading="Restaurants">
+          <app-restaurants-edit [group]="myForm" name="restaurants" (onAdd)="addRestaurant()" (onRemove)="removeRestaurant($event)"></app-restaurants-edit>
+        </tab>
+        <tab heading="Lounges">
+          <app-lounges-edit [group]="myForm" name="lounges" (onAdd)="addLounge()" (onRemove)="removeLounge($event)"></app-lounges-edit>
+        </tab>
+        <tab heading="Images">
+          <div class="card">
+            <div class="card-block">
+              <app-form-control-image-upload [group]="myForm.controls.images" [name]="'thumbnail'" label="Thumbnail" [imageUrl]="hotel?.images?.thumbnail" (onUpload)="thumbnailChange($event)"></app-form-control-image-upload>
+            </div>
+          </div>
+        </tab>
+      </tabset>
+      <div class="actions">
+        <button type="submit" [disabled]="!myForm.valid">Save <i class="fa fa-save"></i></button>
+        <a (click)="goBack($event)" class="btn btn-warning text-white">Back <i class="fa fa-backward"></i></a>
+      </div>
+    </form>
+  </ng-container>
+
+  <!-- Loading -->
+  <ng-container *ngSwitchCase="true">
+    <div class="spinner"></div>
+  </ng-container>
+
+</ng-container>

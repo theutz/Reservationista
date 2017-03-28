@@ -1,0 +1,31 @@
+@import "../../../styles.scss";
+.navbar {
+  @extend .sticky-top;
+  @extend .navbar-toggleable-md;
+  @extend .navbar-inverse;
+  @extend .bg-gradient-blue;
+}
+
+.navbar-brand-lg {
+  @extend .hidden-md-down;
+}
+
+.navbar-brand-sm {
+  @extend .d-flex;
+  @extend .hidden-lg-up;
+  @extend .justify-content-between;
+}
+
+nav {
+  @extend .navbar-inverse;
+  @extend .bg-gradient-blue;
+}
+
+.navbar-brand {
+  font-family: $brand-font-display;
+}
+
+.logo {
+  height: 40px;
+  margin-top: -10px;
+}

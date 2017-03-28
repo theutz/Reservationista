@@ -1,10 +1,19 @@
+import { ToastrService } from 'toastr-ng2/toastr-service';
+import { LoginUserComponent } from './login-user.component';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'app/shared/auth.service';
+import { AsyncSubject } from 'rxjs';
 /* tslint:disable:no-unused-variable */
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {LoginUserComponent} from "./login-user.component";
-import {AuthService} from "app/shared/auth.service";
-import {FormsModule} from "@angular/forms";
-import {AsyncSubject, Observable, ReplaySubject} from "rxjs";
-import {UserInfo} from "app/shared/user-info";
+
+class RouterSpy {
+
+}
+
+class ToastrServiceSpy {
+
+}
 
 describe('LoginUserComponent', () => {
     let component: LoginUserComponent;
@@ -27,7 +36,9 @@ describe('LoginUserComponent', () => {
             imports: [FormsModule],
             declarations: [LoginUserComponent],
             providers: [
-                {provide: AuthService, useValue: authServiceStub}
+                { provide: AuthService, useValue: authServiceStub },
+                { provide: Router, useClass: RouterSpy },
+                { provide: ToastrService, useClass: ToastrServiceSpy }
             ]
         })
             .compileComponents();

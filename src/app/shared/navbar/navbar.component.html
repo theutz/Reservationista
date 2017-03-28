@@ -1,0 +1,44 @@
+<header class="navbar">
+  <nav class="container">
+    <div class="navbar-brand-lg">
+      <a class="navbar-brand" routerLink="/home">
+        <img src="assets/R-logo-white.png" class="logo" /> {{title}}
+      </a>
+    </div>
+    <div class="navbar-brand-sm">
+      <a class="navbar-brand" routerLink="/home">{{title}}</a>
+      <button (click)="toggleNavbar($event)" class="navbar-toggler">
+        <span id="navbar-toggler" class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse" [collapse]="isCollapsed">
+      <ul [ngSwitch]="isLoggedIn()|async" class="navbar-nav mr-auto">
+        <ng-container *ngSwitchCase="true">
+          <li routerLinkActive="active" class="nav-item">
+            <a routerLink="/hotels" class="nav-link">Hotels</a>
+          </li>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <li routerLinkActive="active" class="nav-item">
+            <a routerLink="/learn-more" class="nav-link">Learn More</a>
+          </li>
+        </ng-container>
+      </ul>
+      <ul [ngSwitch]="isLoggedIn()|async" class="navbar-nav ml-auto">
+        <ng-container *ngSwitchCase="true">
+          <li class="nav-item">
+            <a class="nav-link">{{(currentUser()|async).displayName}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()">Logout</a>
+          </li>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,115 @@
+
+/* Color Scheme: https://color.adobe.com/Paper-Modified-color-theme-9193057/ */
+
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+/* Bootstrap Modifications */
+
+$brand-primary: #2196f3;
+$brand-info: #9D54CC;
+$brand-success: #4caf50;
+$brand-warning: #ff9800;
+$brand-danger: #e51c23;
+$brand-font-display: 'Pacifico';
+
+/* Import bootstrap */
+
+@import "~bootstrap/scss/bootstrap";
+
+/* Global Styles */
+
+.rotating-plane-spinner {
+  @extend .bg-primary;
+}
+
+accordion-group {
+  & .card {
+    border: none;
+    & .card-header {
+      @extend .bg-gradient-blue;
+      @extend .text-white;
+      &>.card-title {
+        @extend .mb-0;
+      }
+    }
+  }
+}
+
+.card-header {
+  @extend .bg-gradient-blue;
+}
+
+
+/* Mixins */
+
+.bg-gradient-blue {
+  background-image: linear-gradient(to top, darken($brand-primary, 10%) 0%, $brand-primary 100%);
+  background-color: $brand-primary;
+}
+
+a.btn-primary,
+a.btn-success,
+a.btn-info,
+a.btn-warning,
+a.btn-danger {
+  @extend .text-white;
+}
+
+.btn-primary {
+  @extend .bg-gradient-blue;
+}
+
+
+/* Global Styles */
+
+.custom-file-control::before {
+  content: 'Browse';
+}
+
+.custom-file-control::after {
+  content: 'Choose file...';
+}
+
+.nav-pills .nav-link.active {
+  @extend .bg-gradient-blue;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  @extend .bg-gradient-blue;
+  margin: 100px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% {
+    -webkit-transform: perspective(120px)
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateY(180deg)
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+body {
+  padding-bottom: 0;
+}
